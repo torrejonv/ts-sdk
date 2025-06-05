@@ -1,18 +1,23 @@
-# TypeScript Library API Documentation
+# BSV TypeScript SDK Documentation
 
-The documentation is split into various pages, each covering a set of related functionality. The pages are as follows:
+> **Note:** We're migrating to a new documentation structure. Please see our [main documentation page](./index.md) for the new organization.
 
-- [Primitives](./primitives.md) — Covers public and private keys, key derivation, digital signaturs, symmetric keys, and low-level operations
-- [Script](./script.md) — Covers Bitcoin scripts, the templating system, serialization, and the Spend class (script interpreter)
-- [Transaction](./transaction.md) — Covers transaction construction, signing, broadcasters, fee models, merkle proofs, and SPV structures like BUMP
-- [Messages](./messages.md) — Covers generalizable message signing, verification, encryption and decryption
-- [TOTP](./totp.md) - Covers Time-based One Time Password, useful for validating counterparties across unsecured mediums.
-- [Wallet](./wallet.md) - Covers the Wallet interface for communication between applications and wallets using a standard interface.
-- [Wallet Substrates](./wallet-substrates.md) - Covers the Wallet Substrates which facilitate communication between apps and wallets.
-- [Overlay Tools](./overlay-tools.md) - Covers the use of Overlays for broadcast of transactions based on topics, as well as distributed lookup of tokens.
-- [Auth](./auth.md) - Mutual Authentication and Service Monetization Framework
-- [Storage](./storage.md) — Covers a UHRP client for storing and retrieving data from distributed data storage services by hash.
-- [Compat](./compat.md) — Covers deprecated functionality for legacy systems like BIP32 and ECIES
+
+## API Reference Documentation
+
+The following reference documentation pages cover specific functional areas of the SDK:
+
+- [Primitives](./reference/primitives.md) — Public and private keys, key derivation, digital signatures, symmetric keys, and low-level operations
+- [Script](./reference/script.md) — Bitcoin scripts, templating system, serialization, and script interpreter
+- [Transaction](./reference/transaction.md) — Transaction construction, signing, broadcasters, fee models, merkle proofs, and SPV structures
+- [Messages](./reference/messages.md) — Message signing, verification, encryption and decryption
+- [TOTP](./reference/totp.md) - Time-based One Time Password for secure counterparty validation
+- [Wallet](./reference/wallet.md) - Wallet interface for standardized communication between applications and wallets
+- [Overlay Tools](./reference/overlay-tools.md) - Overlays for transaction broadcasting and token lookup
+- [Auth](./reference/auth.md) - Mutual Authentication and Service Monetization Framework
+- [Storage](./reference/storage.md) — UHRP client for distributed data storage by hash
+- [Registry](./reference/registry.md) — Distributed protocol and certificate registration
+- [Compat](./reference/compat.md) — Deprecated functionality for legacy systems like BIP32 and ECIES
 
 ## Swagger
 

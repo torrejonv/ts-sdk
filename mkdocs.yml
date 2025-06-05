@@ -1,0 +1,62 @@
+site_name: BSV TypeScript SDK
+site_description: TypeScript SDK for Bitcoin SV
+site_url: https://bitcoin-sv.github.io/ts-sdk/
+repo_url: https://github.com/bitcoin-sv/ts-sdk
+repo_name: bitcoin-sv/ts-sdk
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.expand
+    - navigation.indexes
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+
+nav:
+  - Home: index.md
+  - Tutorials:
+    - tutorials/index.md
+    - First Transaction: tutorials/first-transaction.md
+    - Working with Testnet Transactions: tutorials/testnet-transactions.md
+    - Key Management: tutorials/key-management.md
+    - Hashes and HMACs: tutorials/hashes-and-hmacs.md
+  - How-to Guides:
+    - guides/index.md
+  - Reference:
+    - reference/index.md
+  - Concepts:
+    - concepts/index.md
