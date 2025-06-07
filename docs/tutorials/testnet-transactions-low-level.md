@@ -1,6 +1,6 @@
 # Working with Testnet Transactions
 
-**Duration**: 45 minutes  
+**Duration**: 30 minutes  
 **Prerequisites**: Completed "Your First BSV Transaction" tutorial, Node.js, basic TypeScript knowledge  
 
 ## Learning Goals
@@ -8,7 +8,7 @@
 - Obtain and manage testnet coins
 - Create and broadcast real transactions on the testnet
 - Track and verify transaction confirmations
-- Understand transaction fees in practice
+- Configure WalletClient for different environments
 
 ## Introduction
 

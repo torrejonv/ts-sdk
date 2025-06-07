@@ -12,6 +12,15 @@ Welcome to the BSV TypeScript SDK tutorials. These step-by-step lessons will tea
   - Create a simple P2PKH transaction
   - Understand BSV transaction anatomy
 
+### [Transaction Types and Data](./transaction-types.md)
+- **Duration**: 30 minutes
+- **Prerequisites**: Completed "Your First BSV Transaction" tutorial
+- **Learning Goals**:
+  - Create transactions with multiple outputs
+  - Add data to transactions
+  - Work with different output types
+  - Use advanced WalletClient features
+
 ### [Working with Testnet Transactions](./testnet-transactions.md)
 - **Duration**: 45 minutes
 - **Prerequisites**: Completed "Your First BSV Transaction" tutorial
@@ -125,3 +134,25 @@ Welcome to the BSV TypeScript SDK tutorials. These step-by-step lessons will tea
   - Secure key storage patterns
   - Input validation and sanitization
   - Side-channel attack prevention
+
+## Alternative Low-Level Transaction API Track
+
+These tutorials demonstrate how to use the lower-level APIs of the BSV TypeScript SDK for more direct control over transaction creation and management.
+
+### [Your First BSV Transaction (Low-level API)](./first-transaction-low-level.md)
+- **Duration**: 45 minutes
+- **Prerequisites**: Node.js, basic TypeScript knowledge
+- **Learning Goals**:
+  - Work with low-level transaction APIs
+  - Create transactions without WalletClient abstraction
+  - Understand transaction construction internals
+  - Manually manage inputs, outputs, and signing
+
+### [Working with Testnet Transactions (Low-level API)](./testnet-transactions-low-level.md)
+- **Duration**: 60 minutes
+- **Prerequisites**: Completed "Your First BSV Transaction (Low-level API)" tutorial
+- **Learning Goals**:
+  - Set up a BSV testnet environment with low-level APIs
+  - Manually handle testnet transactions
+  - Understand UTXO management without WalletClient
+  - Implement custom transaction workflows
