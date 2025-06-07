@@ -4,6 +4,12 @@ Practical, problem-oriented guides to help you accomplish specific tasks with th
 
 ## Transaction Management
 
+### [Transaction Signing Methods](./transaction-signing-methods.md)
+- WalletClient approach for secure key management
+- Low-level API approach for direct control
+- Comparison of different signing methods
+- Best practices for transaction signing
+
 ### [Advanced Transaction Signing](./advanced-transaction-signing.md)
 - Different signature hash types (SIGHASH flags)
 - Manual signature creation

@@ -21,16 +21,6 @@ Welcome to the BSV TypeScript SDK tutorials. These step-by-step lessons will tea
   - Work with different output types
   - Use advanced WalletClient features
 
-### [Working with Testnet Transactions](./testnet-transactions.md)
-- **Duration**: 45 minutes
-- **Prerequisites**: Completed "Your First BSV Transaction" tutorial
-- **Learning Goals**:
-  - Set up a BSV testnet environment
-  - Obtain and manage testnet coins
-  - Create and broadcast real transactions
-  - Track and verify transaction confirmations
-  - Understand transaction fees in practice
-
 ### [Key Management and Cryptography](./key-management.md)
 - **Duration**: 45 minutes
 - **Prerequisites**: Completed "Your First BSV Transaction" tutorial
@@ -41,7 +31,7 @@ Welcome to the BSV TypeScript SDK tutorials. These step-by-step lessons will tea
 
 ### [Transaction Broadcasting and ARC](./transaction-broadcasting.md)
 - **Duration**: 60 minutes
-- **Prerequisites**: Completed "Working with Testnet Transactions" tutorial
+- **Prerequisites**: Completed "Your First BSV Transaction" tutorial
 - **Learning Goals**:
   - Configure ARC broadcaster
   - Handle transaction broadcasting
