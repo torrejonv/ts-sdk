@@ -206,6 +206,9 @@ async function signatureWalletExamples() {
   console.log('\n=== WalletClient Signature Example ===')
   
   try {
+    // Connect to the wallet substrate
+    await wallet.connectToSubstrate()
+    
     // 1. Define protocol and key identifiers for wallet operations
     // In a real app, these would be specific to your application
     // Using 1 to represent medium security level
@@ -376,7 +379,7 @@ npx ts-node signatures-low-level.ts
 
 ## Step 5: Practical Application: Signing Transactions with WalletClient
 
-Let's put our knowledge to practical use by creating and signing a Bitcoin transaction using the WalletClient. This approach is recommended for production applications as it provides better security by handling keys within the wallet environment.
+Let's put our knowledge to practical use by creating and signing a Bitcoin transaction using the WalletClient. 
 
 Create a file called `wallet-transaction-signing.ts`:
 
@@ -388,7 +391,10 @@ async function walletTransactionDemo() {
   
   try {
     // 1. WalletClient Key Management
+    // Note: This tutorial requires a BSV wallet to be installed and available
+    // If you get connection errors, you may need to install a compatible BSV wallet
     const wallet = new WalletClient('auto', 'localhost')
+    
     console.log('\n1. WalletClient Key Management')
     
     // Define protocol and key identifiers for wallet operations
@@ -411,7 +417,7 @@ async function walletTransactionDemo() {
     
     // Set up payment details
     const recipientAddress = '1DBz6V6CmvjZTvfjvJpfnrBk9Lf8fJ8dW8' // Example recipient
-    const amountSatoshis = 10000
+    const amountSatoshis = 100
     
     // Create a payment action using WalletClient
     // This builds a complete transaction structure internally
@@ -435,6 +441,7 @@ async function walletTransactionDemo() {
     console.log('Payment action created:')
     if (actionResult.signableTransaction) {
       console.log(`- Action Reference: ${actionResult.signableTransaction.reference}`)
+      console.log(`- Transaction available: ${!!actionResult.signableTransaction.tx}`)
     } else {
       console.log('No signable transaction returned - check wallet configuration')
       return
@@ -449,9 +456,14 @@ async function walletTransactionDemo() {
     const signResult = await wallet.signAction({
       // Use the reference from the createAction result
       reference: actionResult.signableTransaction.reference,
-      // The spends parameter is a map of input indexes to unlocking scripts
-      // For wallet-managed keys, we provide an empty map and let the wallet handle it
-      spends: {}
+      // For wallet-managed transactions, we can let the wallet handle unlocking scripts
+      spends: {},
+      // Add options to ensure proper handling
+      options: {
+        acceptDelayedBroadcast: true,
+        returnTXIDOnly: false,
+        noSend: true // Don't broadcast automatically for this tutorial
+      }
     })
     
     console.log('Transaction signed successfully!')
@@ -465,28 +477,9 @@ async function walletTransactionDemo() {
     // Check if we have a transaction ID from the sign result
     if (signResult.txid) {
       console.log(`Transaction ID: ${signResult.txid}`)
-      console.log('Transaction was successfully signed and broadcast!')
-      
-      // Note: In a real application, you would fetch the transaction details
-      // from the blockchain using the txid to examine its structure
-      
-      // In a real application, you would examine the transaction structure here
-      console.log('\nTo examine the transaction structure, you would:')
-      console.log('1. Fetch the transaction from the blockchain using the txid')
-      console.log('2. Parse the transaction to view inputs, outputs, and scripts')
-      console.log('3. Verify signatures and validate the transaction')
-      
-      console.log('\nExample output information you would see:')
-      console.log('- Input count: typically 1 or more inputs from your wallet')
-      console.log('- Output count: at least 2 (payment + change)')
-      console.log('- Input scripts: Contains signatures and public keys')
-      console.log('- Output scripts: Contains P2PKH or other locking scripts')
+      console.log('Transaction was successfully signed!')
     } else {
-      console.log('No transaction ID available - transaction may not have been broadcast')
-    }
-    
-    } else {
-      console.log('No transaction data available in the sign result')
+      console.log('No transaction ID available - transaction may not have been completed')
     }
     
   } catch (error) {
@@ -517,28 +510,6 @@ For a detailed comparison between WalletClient transaction signing and low-level
 
 For more advanced transaction signing techniques like using different SIGHASH flags, manual signature creation, and multi-signature transactions, please refer to the [Advanced Transaction Signing guide](../guides/advanced-transaction-signing.md).
 
-## Step 6: Best Practices for Key Management
-
-Now that you understand how to work with keys and signatures, let's discuss best practices for managing keys securely.
-
-### Security Considerations
-
-1. **Never share private keys**: Private keys should never be shared, posted online, or stored in plain text
-
-2. **Use hardware wallets for significant funds**: Hardware wallets provide strong security by keeping private keys offline
-
-3. **Implement proper backup procedures**: Create secure backups of private keys or seed phrases
-
-4. **Use encryption**: Encrypt private keys when they must be stored
-
-5. **Consider multi-signature setups**: For high-security applications, consider requiring multiple signatures
-
-6. **Use WalletClient**: For production applications, use WalletClient instead of directly handling private keys
-
-7. **Implement key rotation**: Regularly rotate keys for critical operations
-
-8. **Follow protocol standards**: Adhere to industry-standard protocols for key derivation and management
-
 ## Conclusion
 
 Congratulations! You've learned the fundamentals of key management and cryptography with the BSV TypeScript SDK. In this tutorial, you've:
@@ -559,4 +530,3 @@ For more advanced techniques like different signature hash types (SIGHASH flags)
 - Learn about [Transaction Broadcasting and ARC](./transaction-broadcasting.md)
 - Explore [Advanced Transaction Construction](./advanced-transaction.md)
 - Dive deeper into [Script Construction and Custom Logic](./script-construction.md)
-
