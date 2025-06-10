@@ -101,7 +101,7 @@ async function createTransaction() {
       description: 'My first BSV transaction', 
       outputs: [
         {
-          satoshis: 1000, // Amount in satoshis (very small amount)
+          satoshis: 100, // Amount in satoshis (very small amount)
           // For this basic example, we'll use a standard P2PKH script template
           // In a real application, you would create a proper script from the public key
           // Here we use a pre-defined script for simplicity (OP_RETURN with simple data)
@@ -151,7 +151,7 @@ async function createTransaction() {
     }
     
     console.log('Transaction successfully created and broadcast to the BSV mainnet!')
-    console.log('**Note**: This transaction uses real BSV, though only a very small amount (1000 satoshis + fees)')
+    console.log('**Note**: This transaction uses real BSV, though only a very small amount (100 satoshis + fees)')
     
   } catch (error) {
     console.error('Error:', error)

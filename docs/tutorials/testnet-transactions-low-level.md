@@ -138,9 +138,9 @@ After requesting coins from a faucet, you'll need to verify that you received th
 7. On the transaction details page, find the following information:
    - **Transaction ID (txid)**: This is the long hexadecimal string at the top of the page (e.g., `7f4e6ea49a847f557fccd9bf99d4a07ac103e5e8cb3464abb852af552516317e`)
    - **Output Index**: In the "Outputs" section, find your address and note its index number (0-based). If your address is the first output, the index is 0.
-   - **Output Amount**: Note the amount sent to your address in this specific output. WhatsOnChain displays amounts in BSV (e.g., 0.00100000 BSV), but our code needs satoshis. To convert:
+   - **Output Amount**: Note the amount sent to your address in this specific output. WhatsOnChain displays amounts in BSV (e.g., 0.00010000 BSV), but our code needs satoshis. To convert:
      * 1 BSV = 100,000,000 satoshis
-     * Example: 0.00100000 BSV = 100,000 satoshis (multiply by 100,000,000)
+     * Example: 0.00010000 BSV = 10,000 satoshis (multiply by 100,000,000)
      * You can use a calculator or simply move the decimal point 8 places to the right
 
 8. Write down or copy these three pieces of information:
@@ -148,7 +148,7 @@ After requesting coins from a faucet, you'll need to verify that you received th
    Transaction ID (txid): [your transaction id]
    Output Index: [your output index, usually 0]
    Output Amount: [amount in BSV shown on WhatsOnChain] = [converted amount in satoshis]
-                 Example: 0.00100000 BSV = 100000 satoshis
+                 Example: 0.00010000 BSV = 10000 satoshis
    ```
 
 > **Important**: Make sure you're looking at an *unspent* output. If the coins have already been spent, you won't be able to use them in your transaction. WhatsOnChain typically shows if an output has been spent.
@@ -215,7 +215,7 @@ async function main() {
     // 5. Add the recipient output
     tx.addOutput({
       lockingScript: new P2PKH().lock(recipientAddress),
-      satoshis: 5000 // Amount to send (must be less than input amount)
+      satoshis: 100 // Amount to send (must be less than input amount)
     })
     
     // 6. Add the change output back to our address
@@ -265,7 +265,7 @@ Before running this script, make sure to replace these values in the code:
 2. `testnet_address_to_send_coins_to`: The recipient's testnet address - for the purpose of this tutorial, use your own address
 3. `source_transaction_id_here`: The ID of the transaction containing your UTXO
 4. Update the `sourceOutputIndex` value if your output index is not 0
-5. Adjust the recipient output `satoshis` value (currently 5000) to be less than your input amount
+5. Adjust the recipient output `satoshis` value (currently 100) to be less than your input amount
 
 Once you've made these changes, run the script:
 

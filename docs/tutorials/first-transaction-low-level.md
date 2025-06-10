@@ -87,7 +87,7 @@ async function createTransaction() {
   // Add an output
   tx.addOutput({
     lockingScript: new P2PKH().lock(address),
-    satoshis: 1000
+    satoshis: 100
   })
   
   // Serialize the transaction

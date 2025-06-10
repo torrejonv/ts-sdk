@@ -29,13 +29,15 @@ Welcome to the BSV TypeScript SDK tutorials. These step-by-step lessons will tea
   - Understand ECDSA signatures
   - Create and verify digital signatures
 
-### [Transaction Broadcasting and ARC](./transaction-broadcasting.md)
-- **Duration**: 60 minutes
-- **Prerequisites**: Completed "Your First BSV Transaction" tutorial
+### [Transaction Broadcasting](./transaction-broadcasting.md)
+- **Duration**: 25 minutes
+- **Prerequisites**: Completed "Your First BSV Transaction" tutorial, Node.js, basic TypeScript knowledge
 - **Learning Goals**:
-  - Configure ARC broadcaster
-  - Handle transaction broadcasting
-  - Monitor transaction status
+  - Understand WalletClient vs direct broadcasting approaches
+  - Configure broadcasting for testnet vs mainnet
+  - Implement custom broadcasters (ARC, WhatsOnChain)
+  - Handle broadcasting errors and implement retry logic
+  - Monitor and verify transaction acceptance
 
 ## Intermediate Development Track
 

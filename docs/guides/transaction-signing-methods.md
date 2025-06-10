@@ -58,7 +58,7 @@ async function walletTransactionDemo() {
     
     // Set up payment details
     const recipientAddress = '1DBz6V6CmvjZTvfjvJpfnrBk9Lf8fJ8dW8' // Example recipient
-    const amountSatoshis = 10000
+    const amountSatoshis = 100
     
     // Create a payment action using WalletClient
     // This builds a complete transaction structure internally
@@ -181,7 +181,7 @@ async function transactionSigningDemo() {
   const dummyTx = new Transaction()
   dummyTx.addOutput({
     lockingScript: new P2PKH().lock(address),
-    satoshis: 10000
+    satoshis: 100
   })
   
   // Now add an input that references our dummy transaction
@@ -194,7 +194,7 @@ async function transactionSigningDemo() {
   // Add an output
   tx.addOutput({
     lockingScript: new P2PKH().lock(address),
-    satoshis: 10000
+    satoshis: 100
   })
   
   console.log('\n=== Transaction Before Signing ===')  

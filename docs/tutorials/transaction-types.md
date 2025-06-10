@@ -51,13 +51,13 @@ async function createMultiOutputTransaction() {
       outputs: [
         {
           // First output - uses simple OP_RETURN with data
-          satoshis: 1000,
+          satoshis: 100,
           lockingScript: '006a0461626364', // OP_RETURN with data 'abcd'
           outputDescription: 'First data output'
         },
         {
           // Second output - also uses OP_RETURN with different data
-          satoshis: 1000,
+          satoshis: 100,
           lockingScript: '006a04656667', // OP_RETURN with data 'efgh'
           outputDescription: 'Second data output'
         }
@@ -134,7 +134,7 @@ async function createDataTransaction() {
       description: 'Store data on-chain',
       outputs: [
         {
-          satoshis: 1000, // Small amount of satoshis
+          satoshis: 100, // Small amount of satoshis
           lockingScript: lockingScript, // Dynamic OP_RETURN with our message data
           outputDescription: 'Data storage'
         }
@@ -219,13 +219,13 @@ async function createCombinedTransaction() {
       outputs: [
         {
           // First data output
-          satoshis: 2000,
+          satoshis: 100,
           lockingScript: receiptScript, // OP_RETURN with payment receipt data
           outputDescription: 'Payment receipt data'
         },
         {
           // Second data output with different content
-          satoshis: 1000,
+          satoshis: 100,
           lockingScript: orderScript, // OP_RETURN with order reference data
           outputDescription: 'Order reference data'
         }
@@ -350,7 +350,7 @@ async function workWithBaskets() {
       description: 'Transaction with basket assignment',
       outputs: [
         {
-          satoshis: 1000,
+          satoshis: 100,
           lockingScript: '006a0c426173746b657420746573742e', // Simple OP_RETURN
           outputDescription: 'Basket demonstration',
           basket: basketName // Assign this output to our basket

@@ -72,7 +72,7 @@ async function createCompleteTransaction() {
   // Add the recipient output
   tx.addOutput({
     lockingScript: new P2PKH().lock(recipientAddress),
-    satoshis: 5000 // Amount to send
+    satoshis: 100 // Amount to send
   })
   
   // Add the change output back to our address
