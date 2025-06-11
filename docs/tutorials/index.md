@@ -62,6 +62,13 @@ Welcome to the BSV TypeScript SDK tutorials. These step-by-step lessons will tea
   - Verify Merkle proofs
   - Implement lightweight verification
 
+### [Error Handling and Edge Cases](./error-handling.md)
+- **Duration**: 60 minutes
+- **Learning Goals**:
+  - Robust error handling patterns
+  - Network failure recovery
+  - Transaction validation edge cases
+
 ## Low-Level Cryptography Track
 
 ### [Elliptic Curve Fundamentals: Numbers & Points](./elliptic-curve-fundamentals.md)
@@ -83,49 +90,34 @@ Welcome to the BSV TypeScript SDK tutorials. These step-by-step lessons will tea
 ### [AES Symmetric Encryption](./aes-encryption.md)
 - **Duration**: 60 minutes
 - **Learning Goals**:
-  - Understand symmetric encryption principles
-  - Implement AES encryption/decryption with the SDK
-  - Manage encryption keys securely
-  - Apply encryption in practical Bitcoin scenarios
+  - Understand AES-GCM symmetric encryption principles
+  - Use the `SymmetricKey` class for encryption and decryption
+  - Implement secure key generation and management
+  - Apply AES encryption in practical Bitcoin applications
+  - Combine AES with ECDH for secure communication
+  - Handle different data formats and encoding
 
 ### [Hashes and HMACs](./hashes-and-hmacs.md)
-- **Duration**: 60 minutes
-- **Learning Goals**:
-  - Understand cryptographic hashing functions and their properties
-  - Implement various hash algorithms using the SDK
-  - Create and verify HMACs (Hash-based Message Authentication Codes)
-  - Apply hashing techniques in practical Bitcoin scenarios
-
-### [Type 42 Implementation](./type-42.md)
-- **Duration**: 60 minutes
-- **Learning Goals**:
-  - Understand Type 42 protocol and its use cases
-  - Implement Type 42 operations with the SDK
-  - Create and parse Type 42 data
-  - Apply Type 42 in practical Bitcoin applications
-
-## Production-Ready Track
-
-### [Error Handling and Edge Cases](./error-handling.md)
-- **Duration**: 60 minutes
-- **Learning Goals**:
-  - Robust error handling patterns
-  - Network failure recovery
-  - Transaction validation edge cases
-
-### [Performance Optimization](./performance-optimization.md)
 - **Duration**: 75 minutes
 - **Learning Goals**:
-  - Memory management for large transactions
-  - Batch processing techniques
-  - Caching strategies
+  - Understand cryptographic hash functions and their properties
+  - Master the Hash module classes and helper functions in the BSV TypeScript SDK
+  - Implement various hash algorithms (SHA-256, SHA-512, SHA-1, RIPEMD-160)
+  - Create and verify HMACs for message authentication
+  - Apply Bitcoin-specific hashing patterns (hash256, hash160)
+  - Build practical applications using hashing for data integrity and authentication
+  - Understand performance considerations and security best practices
 
-### [Security Best Practices](./security-best-practices.md)
-- **Duration**: 90 minutes
+### [Type-42 Key Derivation](./type-42.md)
+- **Duration**: 75 minutes
+- **Prerequisites**: Basic TypeScript knowledge, Elliptic Curve Fundamentals tutorial completed, ECDH Key Exchange tutorial completed
 - **Learning Goals**:
-  - Secure key storage patterns
-  - Input validation and sanitization
-  - Side-channel attack prevention
+  - Understand Type-42 key derivation protocol and its use cases
+  - Implement Type-42 operations with the BSV TypeScript SDK
+  - Create shared key universes between two parties
+  - Apply Type-42 in practical Bitcoin applications like message signing and encryption
+  - Understand the "anyone key" concept and its applications
+
 
 ## Alternative Low-Level Transaction API Track
 

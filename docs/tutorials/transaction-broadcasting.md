@@ -10,13 +10,15 @@
 - Implement custom broadcasters for different services (ARC, WhatsOnChain)
 - Handle broadcasting errors and responses
 
+> **📚 Related Concepts**: Review [Chain Tracking](../concepts/chain-tracking.md), [Transaction Fees](../concepts/fees.md), and [Wallet Integration](../concepts/wallet-integration.md) for background on network interaction.
+
 ## Introduction
 
 Transaction broadcasting is the process of submitting your signed transaction to the Bitcoin SV network so it can be included in a block. The BSV TypeScript SDK provides multiple approaches for broadcasting transactions, each suited for different use cases and deployment scenarios.
 
 In this tutorial, you'll learn about the two main broadcasting approaches:
 
-1. **WalletClient Broadcasting**: Uses the configured backend Wallet as a proxy (for example, the MetaNet Desktop Wallet)
+1. **WalletClient Broadcasting**: Uses a BRC-100 compliant wallet as a proxy (such as the MetaNet Desktop Wallet)
 2. **Direct Broadcasting**: Connects directly to mining services and APIs
 
 ## Understanding Broadcasting Architecture
@@ -30,7 +32,7 @@ Your App → WalletClient → Wallet → Mining Services → BSV Network
 ```
 
 The Wallet acts as a proxy that:
-- Manages your broadcasting preferences
+- Manages your broadcasting preferences 
 - Handles fallback logic between different services
 - Provides a consistent API regardless of the underlying service
 
@@ -175,23 +177,36 @@ walletClientBroadcasting()
 
 When you use `WalletClient`:
 
-1. **Connection**: Your app connects to the MetaNet Desktop Wallet's local HTTP API (usually `http://localhost:3321`)
+1. **Connection**: Your app connects to the BRC-100 wallet's local HTTP API (usually `http://localhost:3321` for MetaNet Desktop Wallet)
 2. **Transaction Creation**: The wallet helps construct the transaction using your available UTXOs
 3. **Signing**: The wallet signs the transaction with your private keys
 4. **Broadcasting**: The wallet submits the transaction to whatever broadcast service is configured in its settings
 5. **Response**: You receive either a transaction ID (success) or an error message
 
-The key advantage is that **you don't control the broadcasting directly** - the MetaNet Desktop Wallet handles it based on its configuration. This means:
-
+The key advantage is that **you don't control the broadcasting directly** - the BRC-100 wallet handles it based on its configuration. This means:
 - ✅ Easy to use - no need to manage API keys or endpoints
 - ✅ Fallback logic built-in
 - ✅ User can configure preferred services through the wallet UI
-- ❌ Less control over broadcasting behavior
-- ❌ Requires MetaNet Desktop Wallet to be running
+
+
 
 ## Step 2: Direct Broadcasting with Custom Broadcasters
 
-For more control, you can broadcast transactions directly using custom broadcaster implementations.
+The WalletClient approach in step 1 is the recommended approach. However, if you need more control, you can broadcast transactions directly using custom broadcaster implementations. We will demonstrate the main broadcaster implementations in the SDK: ARC and WhatsOnChain.
+
+### Automatic vs Manual Broadcasting
+
+**Important**: By default, `wallet.createAction()` automatically broadcasts transactions through the wallet's configured broadcaster. To demonstrate manual broadcasting with specific services, you need to:
+
+1. **Prevent automatic broadcast**: Use `options: { noSend: true }` in `createAction()`
+2. **Convert to Transaction**: Convert the returned `AtomicBEEF` to a `Transaction` object
+3. **Manual broadcast**: Use your chosen broadcaster to submit the transaction
+
+This approach is useful when you need to:
+- Use a specific broadcasting service (ARC, WhatsOnChain, etc.)
+- Implement custom retry logic or error handling
+- Broadcast to multiple services for redundancy
+- Control exactly when and how transactions are broadcast
 
 ### Understanding Broadcaster Interface
 
@@ -224,51 +239,78 @@ interface BroadcastFailure {
 ARC (Application Resource Component) is TAAL's enterprise-grade transaction processing service. Create `arc-broadcasting.ts`:
 
 ```typescript
-import { Transaction, PrivateKey, P2PKH, ARC, NodejsHttpClient, Script } from '@bsv/sdk'
+import { WalletClient, ARC, NodejsHttpClient, Transaction } from '@bsv/sdk'
 import https from 'https'
 
 async function arcBroadcasting() {
   try {
-    // 1. Set up your wallet (using testnet for this example)
-    const privateKey = PrivateKey.fromRandom()
-    const myAddress = privateKey.toAddress([0x6f]) // 0x6f is testnet prefix
-    console.log(`Generated address: ${myAddress}`)
-    console.log('Note: You would need to fund this address with testnet coins first')
+    // 1. Set up wallet connection
+    const wallet = new WalletClient('auto', 'localhost')
     
-    // 2. For this example, we'll create a simple transaction with an OP_RETURN output
-    // In practice, you would add inputs from your funded UTXOs
-    const tx = new Transaction()
+    // Check if wallet is connected
+    const isAuthenticated = await wallet.isAuthenticated()
+    if (!isAuthenticated) {
+      console.log('Please authenticate with your BRC-100 wallet first')
+      return
+    }
     
-    // Add a simple OP_RETURN output (doesn't require inputs for demonstration)
-    tx.addOutput({
-      lockingScript: Script.fromHex('006a0c42726f6164636173742054585821'), // OP_RETURN with "Broadcast TX!"
-      satoshis: 0 // OP_RETURN outputs typically have 0 satoshis
+    // 2. Create a transaction action WITHOUT automatic broadcasting
+    const actionResult = await wallet.createAction({
+      description: 'ARC broadcasting tutorial transaction',
+      outputs: [
+        {
+          satoshis: 100, // Small payment amount
+          lockingScript: '76a914f1c075a01882ae0972f95d3a4177c86c852b7d9188ac', // P2PKH script to a test address
+          outputDescription: 'ARC broadcasting tutorial payment'
+        }
+      ],
+      options: {
+        noSend: true // Prevent automatic broadcasting - we'll broadcast manually with ARC
+      }
     })
     
-    // 3. Set up ARC broadcaster for testnet
+    console.log('Transaction created successfully (not broadcast yet)')
+    console.log(`Transaction ID: ${actionResult.txid}`)
+    
+    // 3. Convert AtomicBEEF to Transaction for manual broadcasting
+    if (!actionResult.tx) {
+      throw new Error('Transaction creation failed - no transaction returned')
+    }
+    const tx = Transaction.fromAtomicBEEF(actionResult.tx)
+    
+    // 4. Set up ARC broadcaster for testnet
+    // You need to provide your Taal API key here
+    // Get it by signing up at https://console.taal.com
     const apiKey = process.env.TAAL_API_KEY || 'your_taal_api_key_here'
     const httpClient = new NodejsHttpClient(https)
     
-    const arc = new ARC('https://arc-test.taal.com', {
+    const arc = new ARC('https://arc.taal.com', {
       apiKey,
       httpClient,
       deploymentId: 'broadcasting-tutorial'
     })
     
-    // 4. Broadcast the transaction
+    // 5. Manually broadcast the transaction using ARC
     console.log('Broadcasting transaction with ARC...')
     const result = await tx.broadcast(arc)
     
     if (result.status === 'success') {
       console.log('✅ Transaction broadcast successful!')
       console.log(`Transaction ID: ${result.txid}`)
-      console.log(`View on explorer: https://test.whatsonchain.com/tx/${result.txid}`)
+      console.log(`View on explorer: https://www.whatsonchain.com/tx/${result.txid}`)
     } else {
       console.log('❌ Broadcasting failed:', result)
     }
     
-  } catch (error) {
+  } catch (error: any) {
     console.error('❌ Error during ARC broadcasting:', error)
+    
+    // Common troubleshooting
+    if (error.message?.includes('Insufficient funds')) {
+      console.log('💡 Make sure your wallet has sufficient testnet coins')
+    } else if (error.message?.includes('no header should have returned false')) {
+      console.log('💡 Try restarting your wallet application and ensure it is fully synced')
+    }
   }
 }
 
@@ -281,38 +323,70 @@ arcBroadcasting()
 WhatsOnChain provides a free broadcasting service. Create `whatsonchain-broadcasting.ts`:
 
 ```typescript
-import { Transaction, PrivateKey, P2PKH, WhatsOnChainBroadcaster, NodejsHttpClient, Script } from '@bsv/sdk'
+import { WalletClient, WhatsOnChainBroadcaster, NodejsHttpClient, Transaction } from '@bsv/sdk'
 import https from 'https'
 
 async function whatsOnChainBroadcasting() {
   try {
-    // 1. Create a simple transaction with OP_RETURN data
-    const tx = new Transaction()
+    // 1. Set up wallet connection
+    const wallet = new WalletClient('auto', 'localhost')
     
-    // Add OP_RETURN output for demonstration
-    tx.addOutput({
-      lockingScript: Script.fromHex('006a0c57686174734f6e436861696e21'), // OP_RETURN with "WhatsOnChain!"
-      satoshis: 0
+    // Check if wallet is connected
+    const isAuthenticated = await wallet.isAuthenticated()
+    if (!isAuthenticated) {
+      console.log('Please authenticate with your BRC-100 wallet first')
+      return
+    }
+    
+    // 2. Create a transaction action WITHOUT automatic broadcasting
+    const actionResult = await wallet.createAction({
+      description: 'WhatsOnChain broadcasting tutorial transaction',
+      outputs: [
+        {
+          satoshis: 100, // Small payment amount
+          lockingScript: '76a914f1c075a01882ae0972f95d3a4177c86c852b7d9188ac', // P2PKH script to a test address
+          outputDescription: 'WhatsOnChain broadcasting tutorial payment'
+        }
+      ],
+      options: {
+        noSend: true // Prevent automatic broadcasting - we'll broadcast manually with WhatsOnChain
+      }
     })
     
-    // 2. Set up WhatsOnChain broadcaster for testnet
-    const httpClient = new NodejsHttpClient(https)
-    const broadcaster = new WhatsOnChainBroadcaster('test', httpClient)
+    console.log('Transaction created successfully (not broadcast yet)')
+    console.log(`Transaction ID: ${actionResult.txid}`)
     
-    // 3. Broadcast the transaction
+    // 3. Convert AtomicBEEF to Transaction for manual broadcasting
+    if (!actionResult.tx) {
+      throw new Error('Transaction creation failed - no transaction returned')
+    }
+    const tx = Transaction.fromAtomicBEEF(actionResult.tx)
+    
+    // 4. Set up WhatsOnChain broadcaster for mainnet
+    const httpClient = new NodejsHttpClient(https)
+    const broadcaster = new WhatsOnChainBroadcaster('main', httpClient)
+    
+    // 5. Manually broadcast the transaction using WhatsOnChain
     console.log('Broadcasting transaction with WhatsOnChain...')
     const result = await tx.broadcast(broadcaster)
     
     if (result.status === 'success') {
       console.log('✅ Transaction broadcast successful!')
       console.log(`Transaction ID: ${result.txid}`)
-      console.log(`View on explorer: https://test.whatsonchain.com/tx/${result.txid}`)
+      console.log(`View on explorer: https://www.whatsonchain.com/tx/${result.txid}`)
     } else {
       console.log('❌ Broadcasting failed:', result)
     }
     
-  } catch (error) {
+  } catch (error: any) {
     console.error('❌ Error during WhatsOnChain broadcasting:', error)
+    
+    // Common troubleshooting
+    if (error.message?.includes('Insufficient funds')) {
+      console.log('💡 Make sure your wallet has sufficient mainnet coins')
+    } else if (error.message?.includes('no header should have returned false')) {
+      console.log('💡 Try restarting your wallet application and ensure it is fully synced')
+    }
   }
 }
 
@@ -320,88 +394,13 @@ async function whatsOnChainBroadcasting() {
 whatsOnChainBroadcasting()
 ```
 
-## Step 3: Building a Custom Broadcaster
+## Step 3: Network Configuration (Testnet vs Mainnet)
 
-You can also create your own broadcaster for services not included in the SDK. Here's an example for a generic HTTP-based broadcaster:
+For advanced broadcasting scenarios like custom broadcaster implementations, see the [Custom Broadcasters Guide](../guides/custom-broadcasters.md).
 
-Create `custom-broadcaster.ts`:
-
-```typescript
-import { Transaction, Broadcaster, BroadcastResponse, BroadcastFailure } from '@bsv/sdk'
-
-class CustomHTTPBroadcaster implements Broadcaster {
-  private url: string
-  private headers: Record<string, string>
-  
-  constructor(url: string, headers: Record<string, string> = {}) {
-    this.url = url
-    this.headers = {
-      'Content-Type': 'application/json',
-      ...headers
-    }
-  }
-  
-  async broadcast(tx: Transaction): Promise<BroadcastResponse | BroadcastFailure> {
-    try {
-      const txHex = tx.toHex()
-      
-      const response = await fetch(this.url, {
-        method: 'POST',
-        headers: this.headers,
-        body: JSON.stringify({ 
-          txhex: txHex 
-        })
-      })
-      
-      const data = await response.json()
-      
-      if (response.ok && data.txid) {
-        return {
-          status: 'success',
-          txid: data.txid,
-          message: data.message || 'Broadcast successful'
-        }
-      } else {
-        return {
-          status: 'error',
-          code: response.status.toString(),
-          description: data.error || data.message || 'Unknown error'
-        }
-      }
-      
-    } catch (error) {
-      return {
-        status: 'error',
-        code: '500',
-        description: error instanceof Error ? error.message : 'Network error'
-      }
-    }
-  }
-}
-
-// Example usage
-async function customBroadcasterExample() {
-  const customBroadcaster = new CustomHTTPBroadcaster(
-    'https://api.example.com/broadcast',
-    {
-      'Authorization': 'Bearer your-api-key',
-      'X-Custom-Header': 'value'
-    }
-  )
-  
-  // Use with any transaction
-  const tx = new Transaction() // Your transaction here
-  const result = await tx.broadcast(customBroadcaster)
-  
-  console.log('Custom broadcast result:', result)
-}
-```
-
-## Step 4: Network Configuration (Testnet vs Mainnet)
+**Important**: When using manual broadcasting, ensure your wallet and broadcasters are configured for the same network. If your BRC-100 wallet is connected to testnet, use testnet broadcasters. If it's on mainnet, use mainnet broadcasters. Mismatched networks will cause broadcasting failures.
 
 Different networks require different broadcaster configurations:
-
-Create `network-config.ts`:
 
 ```typescript
 import { ARC, WhatsOnChainBroadcaster, Broadcaster } from '@bsv/sdk'
@@ -428,157 +427,11 @@ const networks: Record<string, NetworkConfig> = {
     whatsOnChain: new WhatsOnChainBroadcaster('main')
   }
 }
-
-async function networkAwareBroadcasting(networkName: 'testnet' | 'mainnet') {
-  const config = networks[networkName]
-  
-  console.log(`Broadcasting on ${config.name}`)
-  
-  // Your transaction here
-  const tx = new Transaction()
-  
-  // Try ARC first, fallback to WhatsOnChain
-  try {
-    console.log('Trying ARC...')
-    const result = await tx.broadcast(config.arc)
-    
-    if (result.status === 'success') {
-      console.log('✅ ARC broadcast successful:', result.txid)
-      return result
-    } else {
-      console.log('ARC failed, trying WhatsOnChain...')
-      throw new Error(result.description)
-    }
-    
-  } catch (error) {
-    console.log('ARC failed, trying WhatsOnChain...')
-    
-    try {
-      const result = await tx.broadcast(config.whatsOnChain)
-      
-      if (result.status === 'success') {
-        console.log('✅ WhatsOnChain broadcast successful:', result.txid)
-        return result
-      } else {
-        console.log('❌ All broadcasters failed')
-        throw new Error(result.description)
-      }
-      
-    } catch (wocError) {
-      console.error('❌ All broadcasting attempts failed')
-      throw wocError
-    }
-  }
-}
-
-// Example usage
-networkAwareBroadcasting('testnet')
-  .then(result => console.log('Final result:', result))
-  .catch(error => console.error('Broadcasting failed:', error))
 ```
 
-## Step 5: Error Handling and Retry Logic
-
-Robust applications need proper error handling for broadcasting:
-
-Create `robust-broadcasting.ts`:
-
-```typescript
-import { Transaction, Broadcaster, BroadcastResponse, BroadcastFailure } from '@bsv/sdk'
-
-class RobustBroadcaster {
-  private broadcasters: Broadcaster[]
-  private maxRetries: number
-  private retryDelay: number
-  
-  constructor(
-    broadcasters: Broadcaster[], 
-    maxRetries: number = 3, 
-    retryDelay: number = 1000
-  ) {
-    this.broadcasters = broadcasters
-    this.maxRetries = maxRetries
-    this.retryDelay = retryDelay
-  }
-  
-  private async delay(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms))
-  }
-  
-  async broadcast(tx: Transaction): Promise<BroadcastResponse> {
-    let lastError: Error | null = null
-    
-    for (const broadcaster of this.broadcasters) {
-      for (let attempt = 1; attempt <= this.maxRetries; attempt++) {
-        try {
-          console.log(`Attempt ${attempt} with broadcaster ${broadcaster.constructor.name}`)
-          
-          const result = await broadcaster.broadcast(tx)
-          
-          if (result.status === 'success') {
-            console.log(`✅ Success with ${broadcaster.constructor.name}`)
-            return result
-          } else {
-            console.log(`❌ Failed with ${broadcaster.constructor.name}: ${result.description}`)
-            lastError = new Error(`${result.code}: ${result.description}`)
-            
-            // Don't retry on certain errors
-            if (this.isNonRetryableError(result.code)) {
-              break
-            }
-          }
-          
-        } catch (error) {
-          console.log(`❌ Exception with ${broadcaster.constructor.name}:`, error)
-          lastError = error instanceof Error ? error : new Error(String(error))
-        }
-        
-        // Wait before retry (except on last attempt)
-        if (attempt < this.maxRetries) {
-          await this.delay(this.retryDelay * attempt) // Exponential backoff
-        }
-      }
-    }
-    
-    throw lastError || new Error('All broadcasting attempts failed')
-  }
-  
-  private isNonRetryableError(code: string): boolean {
-    // Don't retry on these error codes
-    const nonRetryableCodes = [
-      '400', // Bad request - transaction is invalid
-      '409', // Conflict - transaction already exists
-      '422'  // Unprocessable entity - transaction validation failed
-    ]
-    
-    return nonRetryableCodes.includes(code)
-  }
-}
-
-// Example usage
-async function robustBroadcastingExample() {
-  const robustBroadcaster = new RobustBroadcaster([
-    networks.testnet.arc,
-    networks.testnet.whatsOnChain
-  ])
-  
-  try {
-    const tx = new Transaction() // Your transaction
-    const result = await robustBroadcaster.broadcast(tx)
-    
-    console.log('✅ Transaction broadcast successfully:', result.txid)
-    
-  } catch (error) {
-    console.error('❌ Failed to broadcast transaction:', error)
-  }
-}
-```
-
-## Step 6: Monitoring and Verification
+## Step 4: Monitoring and Verification
 
 After broadcasting, you should verify that your transaction was accepted:
-
-Create `transaction-monitoring.ts`:
 
 ```typescript
 import { Transaction } from '@bsv/sdk'
@@ -628,6 +481,7 @@ async function waitForTransaction(
       return txData
     }
     
+    // Transactions can take a few seconds to show up in WhatsOnChain
     // Wait 2 seconds before checking again
     await new Promise(resolve => setTimeout(resolve, 2000))
   }
@@ -636,13 +490,10 @@ async function waitForTransaction(
 }
 
 // Example usage
-async function monitoringExample() {
-  // After broadcasting a transaction
-  const txid = 'your-transaction-id-here'
-  
+async function monitoringExample(txid: string) {
   try {
     console.log('Waiting for transaction to appear on network...')
-    const txData = await waitForTransaction(txid, 'test')
+    const txData = await waitForTransaction(txid, 'main')
     
     console.log('✅ Transaction confirmed:', txData)
     
@@ -650,6 +501,9 @@ async function monitoringExample() {
     console.error('❌ Transaction monitoring failed:', error)
   }
 }
+
+// Run the example
+monitoringExample('your-transaction-id-here')
 ```
 
 ## Summary
@@ -657,11 +511,10 @@ async function monitoringExample() {
 In this tutorial, you learned about the two main approaches to transaction broadcasting in BSV:
 
 ### WalletClient Approach
-- ✅ **Simple**: Easy to use with MetaNet Desktop Wallet
+- ✅ **Simple**: Easy to use with BRC-100 wallets
 - ✅ **Managed**: Wallet handles service selection and fallbacks
 - ✅ **User Control**: Users can configure preferred services
-- ❌ **Dependency**: Requires wallet software running
-- ❌ **Limited Control**: Less control over broadcasting behavior
+
 
 ### Direct Broadcasting Approach
 - ✅ **Full Control**: Choose exactly which service to use
@@ -670,19 +523,13 @@ In this tutorial, you learned about the two main approaches to transaction broad
 - ✅ **Error Handling**: Direct access to service responses
 - ❌ **More Complex**: Requires more setup and configuration
 
-### Key Takeaways
-
-1. **For Development**: Use WalletClient with MetaNet Desktop Wallet for quick prototyping
-2. **For Production**: Consider direct broadcasting for better control and reliability
-3. **Network Configuration**: Always use appropriate endpoints for testnet vs mainnet
-4. **Error Handling**: Implement robust retry logic and fallback mechanisms
-5. **Monitoring**: Verify transactions were accepted by the network
 
 ### Next Steps
 
 - Experiment with different broadcaster configurations
-- Implement custom broadcasters for other services
+- Implement custom broadcasters for other services  
 - Build monitoring dashboards for your applications
 - Explore advanced features like batch broadcasting
+- Implement robust error handling: See the [Error Handling and Edge Cases Tutorial](./error-handling.md) for comprehensive patterns and the [Custom Broadcasters Guide](../guides/custom-broadcasters.md) for advanced retry logic and failover strategies
 
 The broadcasting approach you choose depends on your application's requirements, deployment environment, and control needs. Both approaches are valid and can be used effectively in different scenarios.

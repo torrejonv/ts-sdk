@@ -8,13 +8,15 @@
 - Create a simple transaction using WalletClient
 - Understand BSV transaction anatomy
 
+> **📚 Related Concepts**: Before starting, you may want to review [Transaction Structure](../concepts/transaction-structure.md) and [Wallet Integration](../concepts/wallet-integration.md) to understand the fundamentals.
+
 ## Introduction
 
 In this tutorial, you'll learn how to create your first Bitcoin SV transaction using the TypeScript SDK's WalletClient interface on the mainnet network. This approach makes it easy to build transactions by abstracting away many of the low-level details. By the end, you'll understand the basic components of a BSV transaction and how to construct, sign, and broadcast one on the BSV blockchain.
 
 ## Precondition 
 
-Install the [MetaNet Desktop Wallet](https://metanet.bsvb.tech/). When you install it, you'll receive a small amount of funds to play with. 
+Install a BRC-100 compliant wallet such as the [MetaNet Desktop Wallet](https://metanet.bsvb.tech/). When you install it, you'll receive a small amount of funds to play with.
 
 ## Step 1: Setting Up Your Environment
 
