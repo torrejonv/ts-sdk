@@ -1,102 +1,62 @@
-# Concepts & Explanations
+# Concepts
 
-Deep dives into the architecture, design principles, and concepts behind the BSV TypeScript SDK.
+Essential concepts for understanding and using the BSV TypeScript SDK effectively.
 
-## Bitcoin Protocol Fundamentals
+## Core Bitcoin Concepts
 
-### [BEEF (Bitcoin Extras Extension Format)](./beef.md)
-- Standardized format for including additional data with Bitcoin transactions
-- Integration with transaction processing in the SDK
-- Use cases and implementation patterns
-
-### [Transaction Fees](./fees.md)
-- Fee calculation and management in Bitcoin
-- Fee estimation strategies in the SDK
-- Best practices for fee optimization
+### [Transaction Structure](./transaction-structure.md)
+Understanding Bitcoin transactions, inputs, outputs, and how they work in the SDK.
 
 ### [Script Templates](./script-templates.md)
-- Standard and custom Bitcoin script templates
-- Implementation of templates in the SDK
-- Template selection and composition patterns
+Standard and custom Bitcoin script patterns available in the SDK.
 
-### [Transaction Signatures](./signatures.md)
-- Digital signature fundamentals in Bitcoin
-- SIGHASH types and their applications
-- Implementation best practices in the SDK
+### [Digital Signatures](./signatures.md)
+How digital signatures work in Bitcoin and their implementation in the SDK.
 
 ### [Transaction Verification](./verification.md)
-- Transaction validity criteria and verification levels
-- SPV verification implementation
-- Best practices for secure verification
+Understanding how to verify Bitcoin transactions using the SDK.
 
-## Architecture and Design Principles
+### [SPV Verification](./spv-verification.md)
+Simplified Payment Verification and merkle proof concepts for lightweight clients.
 
-### [BSV SDK Philosophy](./sdk-philosophy.md)
-- Why TypeScript SDK was created
-- Design principles: Zero dependencies, SPV-first, vendor neutrality
-- Architecture patterns: Modular design, composable components
+### [Transaction Fees](./fees.md)
+How Bitcoin transaction fees work and fee optimization strategies.
 
-### [Understanding Bitcoin Script](./bitcoin-script.md)
-- Script execution model
-- Standard script patterns (P2PKH, P2SH, etc.)
-- Custom script development philosophy
-- Security considerations in script design
+## SDK Architecture
 
-### [SPV Architecture Deep Dive](./spv-architecture.md)
-- Why SPV matters for scaling
-- Merkle proof verification tools and serialization standards
-- Trade-offs: security vs efficiency
-- Integration with overlay services
-
-## Security Model and Best Practices
-
-### [Cryptographic Foundations](./cryptographic-foundations.md)
-- Sound cryptographic primitives
-- Why secp256k1 for Bitcoin
-- Random number generation security
-- Side-channel attack prevention
-
-### [Key Management Philosophy](./key-management.md)
-- Hot vs cold storage considerations
-- Key derivation strategies
-- Backup and recovery approaches
-- Multi-signature security models
-
-### [Transaction Security](./transaction-security.md)
-- Input validation principles
-- Double-spend prevention
-- Replay attack protection
-- Fee manipulation defenses
-
-## Performance and Scalability
-
-### [Transaction Construction Efficiency](./transaction-efficiency.md)
-- Memory usage optimization
-- Batch processing strategies
-- Large transaction handling
-- UTXO selection algorithms
-
-### [Network Performance](./network-performance.md)
-- ARC integration patterns
-- Connection management
-- Retry and failover strategies
-- Monitoring and alerting
-
-## Integration Patterns
+### [SDK Design Philosophy](./sdk-philosophy.md)
+Core principles: zero dependencies, SPV-first approach, and vendor neutrality.
 
 ### [Wallet Integration](./wallet-integration.md)
-- BRC-100 compliance considerations
-- Vendor-neutral design principles
-- Migration strategies from legacy systems
+How the SDK connects with Bitcoin wallets and manages authentication.
 
-### [Application Architecture](./application-architecture.md)
-- Event-driven transaction processing
-- State management patterns
-- Error boundary implementation
-- Testing strategies
+### [Chain Tracking](./chain-tracking.md)
+Understanding how the SDK interacts with the Bitcoin network for transaction data.
 
-### [Ecosystem Integration](./ecosystem-integration.md)
-- Template system integration
-- Wallet-toolbox integration
-- Overlay services integration
-- Identity and authentication systems
+## Data Formats
+
+### [BEEF Format](./beef.md)
+Bitcoin Extras Extension Format for efficient transaction data exchange.
+
+### [Transaction Encoding](./transaction-encoding.md)
+How transactions are serialized and deserialized in the SDK.
+
+## Identity and Certificates
+
+### [Decentralized Identity](./decentralized-identity.md)
+Understanding BSV's decentralized identity system and certificate-based verification.
+
+### [Identity Certificates](./identity-certificates.md)
+How cryptographic certificates work for identity claims and verification.
+
+## Security Model
+
+### [Key Management](./key-management.md)
+How private keys, public keys, and cryptographic operations work in the SDK.
+
+### [Trust Model](./trust-model.md)
+Understanding the security assumptions and trust relationships in SDK applications.
+
+---
+
+These concepts provide the foundational knowledge needed to build Bitcoin applications with the BSV TypeScript SDK. For deeper protocol details, refer to the [BSV Skills Center](https://docs.bsvblockchain.org/).
