@@ -57,6 +57,7 @@ The SDK provides methods to:
 
 ## Next Steps
 
+- Learn about [BEEF Format](./beef.md) for efficient transaction representation with validation data
 - Learn about [Script Templates](./script-templates.md) for locking/unlocking scripts
 - Understand [Digital Signatures](./signatures.md) for transaction authorization
 - Explore [Transaction Encoding](./transaction-encoding.md) for serialization formats
