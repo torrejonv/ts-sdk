@@ -24,6 +24,11 @@ Complete technical specifications and API documentation for the BSV TypeScript S
 - Standard script templates
 - Custom script patterns
 
+### [OP Codes Reference](./op-codes.md)
+- Complete opcode listing and descriptions
+- Opcode categories and usage patterns
+- Script execution examples
+
 ## Module Reference
 
 ### [Primitives Module](./primitives.md)
@@ -77,18 +82,6 @@ interface SDKConfig {
 - SDK logging configuration
 - Debug mode activation
 - Transaction inspection tools
-
-## Performance Reference
-
-### [Benchmarks and Metrics](./performance.md)
-- Transaction construction speed
-- Memory usage patterns
-- Network performance characteristics
-
-### [Optimization Guidelines](./optimization.md)
-- Best practices for large-scale usage
-- Memory management recommendations
-- Performance monitoring techniques
 
 
 ## Swagger
