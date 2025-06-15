@@ -2,6 +2,10 @@
 
 Welcome to the BSV TypeScript SDK tutorials. These step-by-step lessons will teach you how to use the SDK through practical examples.
 
+## 🚀 Try Examples Interactively
+
+Before diving into the tutorials, you can experiment with many of these concepts in our **[Interactive BSV Coding Environment](https://fast.brc.dev/)**. Run SDK code directly in your browser without any setup required!
+
 ## Getting Started Track
 
 ### [Your First BSV Transaction](./first-transaction.md)
@@ -40,6 +44,42 @@ Welcome to the BSV TypeScript SDK tutorials. These step-by-step lessons will tea
   - Monitor and verify transaction acceptance
 
 ## Intermediate Development Track
+
+### [Working with ProtoWallet for Development](./protowallet-development.md)
+- **Duration**: 45 minutes
+- **Prerequisites**: Basic TypeScript knowledge, understanding of cryptographic concepts
+- **Learning Goals**:
+  - Create and configure ProtoWallet instances
+  - Perform key derivation and management
+  - Implement signing, encryption, and HMAC operations
+  - Build development toolkits and testing environments
+
+### [Authenticated HTTP Requests with AuthFetch](./authfetch-tutorial.md)
+- **Duration**: 60 minutes
+- **Prerequisites**: Understanding of HTTP protocols, basic cryptography knowledge
+- **Learning Goals**:
+  - Implement BRC-103/104 authentication protocols
+  - Set up certificate exchange and peer authentication
+  - Build secure API clients with cryptographic request signing
+  - Handle authentication errors and implement retry logic
+
+### [Decentralized File Storage with UHRP](./uhrp-storage.md)
+- **Duration**: 75 minutes
+- **Prerequisites**: Understanding of content-addressed storage concepts
+- **Learning Goals**:
+  - Upload and download files using UHRP protocol
+  - Implement file integrity verification
+  - Manage file retention and renewal
+  - Build batch file operations and management systems
+
+### [Identity Management and Certificates](./identity-management.md)
+- **Duration**: 90 minutes
+- **Prerequisites**: Understanding of PKI and certificate concepts
+- **Learning Goals**:
+  - Work with decentralized identity systems
+  - Resolve identities by keys and attributes
+  - Manage identity certificates and verification
+  - Build identity-based authentication services
 
 ### [Advanced Transaction Construction](./advanced-transaction.md)
 - **Duration**: 75 minutes

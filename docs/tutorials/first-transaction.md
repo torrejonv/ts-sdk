@@ -12,7 +12,9 @@
 
 ## Introduction
 
-In this tutorial, you'll learn how to create your first Bitcoin SV transaction using the TypeScript SDK's WalletClient interface on the mainnet network. This approach makes it easy to build transactions by abstracting away many of the low-level details. By the end, you'll understand the basic components of a BSV transaction and how to construct, sign, and broadcast one on the BSV blockchain.
+In this tutorial, you'll learn how to create your first Bitcoin SV transactions using the TypeScript SDK's WalletClient interface on the mainnet network. This approach makes it easy to build transactions by abstracting away many of the low-level details. By the end, you'll understand the basic components of a BSV transaction and how to construct, sign, and broadcast one on the BSV blockchain.
+
+> **💡 Try It Interactive**: Want to experiment with the code examples from this tutorial? Check out our [Interactive BSV Coding Environment](https://fast.brc.dev/) where you can run SDK code directly in your browser without any setup!
 
 ## Precondition 
 
@@ -69,186 +71,201 @@ For a deeper understanding of Bitcoin transactions, check out these resources:
 - [WhatsOnChain Explorer](https://whatsonchain.com/) - Standard block explorer for viewing BSV transactions
 - [Bitcoin Developer Reference](https://developer.bitcoin.org/reference/transactions.html) - Comprehensive explanation of transaction structure
 
-## Step 3: Creating Your First Transaction With WalletClient
+## Step 3: Your First Transactions - 3 Simple Steps
 
-Create a new file called `first-transaction.ts`:
+Now let's create your first BSV transactions using three clean, focused steps. Each step builds on the previous one, showing you the core workflow of BSV development.
+
+We'll create three separate files to keep things organized and clear:
+
+### Example 1: Create a Simple Transaction
+
+**What you'll do**: Create your first transaction that stores a simple message on the BSV blockchain. This introduces you to the basic `createAction()` method and shows how data can be permanently stored on-chain.
+
+Create a file called `step1-simple-transaction.ts`:
 
 ```typescript
-import { WalletClient } from '@bsv/sdk'
+import { WalletClient, Script } from '@bsv/sdk'
 
-async function createTransaction() {
-  try {
-    // Initialize the WalletClient, using localhost as wallet substrate
-    const wallet = new WalletClient('auto', 'localhost')
-    
-    // Check if we're authenticated with the wallet
-    const { authenticated } = await wallet.isAuthenticated()
-    if (!authenticated) {
-      console.log('Please authenticate with your wallet')
-      await wallet.waitForAuthentication()
-      console.log('Successfully authenticated!')
-    }
-    
-    // Get wallet version
-    const { version } = await wallet.getVersion()
-    console.log(`Wallet version: ${version}`)
-    
-    // Get our identity public key
-    const { publicKey } = await wallet.getPublicKey({ identityKey: true })
-    console.log(`Your identity public key: ${publicKey}`)
-    
-    // For this tutorial, we'll create a transaction with a simple OP_RETURN data output
-    // The wallet will handle input selection, change outputs and fees
-    const actionResult = await wallet.createAction({
-      description: 'My first BSV transaction', 
-      outputs: [
-        {
-          satoshis: 100, // Amount in satoshis (very small amount)
-          // For this basic example, we'll use a standard P2PKH script template
-          // In a real application, you would create a proper script from the public key
-          // Here we use a pre-defined script for simplicity (OP_RETURN with simple data)
-          lockingScript: '006a0461626364', // OP_RETURN with data 'abcd'
-          outputDescription: 'Simple data output'
-        }
-      ],
-      // You can add options here if needed
-      // options: { ... }
-    })
-    
-    console.log('Transaction created:')
-    
-    let txReference
-    
-    if (actionResult.txid) {
-      // If the wallet auto-signed and broadcast the transaction
-      console.log('Full action result:', JSON.stringify(actionResult, null, 2))
-
-      console.log(`Transaction ID: ${actionResult.txid}`)
-      console.log(`View on explorer: https://whatsonchain.com/tx/${actionResult.txid}`)
-      console.log('Transaction was automatically signed and broadcast!')
-    } 
-    else if (actionResult.signableTransaction) {
-      console.log('Created transaction that needs signing')
-      // Get the reference needed for signing
-      txReference = actionResult.signableTransaction.reference
-      
-      // Now sign the transaction
-      // Note: In a real application, you might prompt the user to sign
-      const signResult = await wallet.signAction({
-        // The wallet knows which inputs need to be spent based on the reference
-        spends: {},
-        // Use the reference from the createAction result
-        reference: txReference,
-        options: {
-          acceptDelayedBroadcast: true
-        }
-      })
-
-      console.log(`Transaction signed and broadcast!`)
-      console.log(`Transaction ID: ${signResult.txid}`)
-      console.log(`View on explorer: https://whatsonchain.com/tx/${signResult.txid}`)
-    }
-    else {
-      console.log('Transaction created but no actionable result returned')
-    }
-    
-    console.log('Transaction successfully created and broadcast to the BSV mainnet!')
-    console.log('**Note**: This transaction uses real BSV, though only a very small amount (100 satoshis + fees)')
-    
-  } catch (error) {
-    console.error('Error:', error)
+async function createSimpleTransaction() {
+  // Connect to user's wallet
+  const wallet = new WalletClient('auto', 'localhost')
+  
+  // Create a simple transaction with a data output
+  const response = await wallet.createAction({
+    description: 'My first BSV transaction',
+    outputs: [{
+      satoshis: 100,
+      lockingScript: Script.fromASM(`OP_RETURN ${Buffer.from('Hello BSV!').toString('hex')}`).toHex(),
+      outputDescription: 'My first data output'
+    }]
+  })
+  
+  console.log('Transaction created:', response)
+  if (response.txid) {
+    console.log(`View on WhatsOnChain: https://whatsonchain.com/tx/${response.txid}`)
   }
+  
+  return response
 }
 
-// Call the function to create the transaction
-createTransaction().catch(console.error)
+// Run the function
+createSimpleTransaction().catch(console.error)
 ```
 
-## Step 4: Run Your Code
-
-Execute your code with the following command:
+Run it as follows:
 
 ```bash
-npx ts-node first-transaction.ts
+# Run the TypeScript file directly
+npx ts-node step1-simple-transaction.ts
 ```
 
-When you run this code:
 
-1. If you don't have a wallet connected, you'll be prompted to authenticate with one
-2. Make sure your wallet is properly connected and authenticated
-3. The wallet will handle input selection, change, and fee calculation
-4. Upon successful completion, you'll see your transaction ID in the console
+**What's happening here:**
+- We connect to your BRC-100 wallet (like MetaNet Desktop)
+- Create a transaction with one output containing "Hello BSV!" data
+- The wallet automatically handles inputs, change, and fees
+- We get a transaction ID to view on the blockchain explorer
 
-### Viewing Your Transaction
+### Example 2: Create and Store a Token
 
-Once your transaction is broadcast, you can view it on the BSV mainnet block explorer:
+**What you'll do**: Create a spendable token and organize it using wallet baskets. This shows you how to create UTXOs that can be spent later and how to use the wallet's organizational features.
 
-1. Copy the transaction ID from your console output
-2. Visit https://whatsonchain.com/
-3. Paste the transaction ID in the search box and click search
-4. You'll see details of your transaction including:
-   - Inputs (where the BSV came from)
-   - Outputs (where the BSV was sent)
-   - Fees paid
-   - Block confirmation status
+Create a file called `step2-create-token.ts`:
 
-## Step 5: Understanding How WalletClient Works
+```typescript
+import { WalletClient, Script } from '@bsv/sdk'
 
-The WalletClient interface simplifies transaction creation by:
+async function createToken() {
+  // Connect to user's wallet
+  const wallet = new WalletClient('auto', 'localhost')
+  
+  // Create a token and store it in a specific basket
+  const response = await wallet.createAction({
+    description: 'Create my first token',
+    outputs: [{
+      satoshis: 1,
+      lockingScript: Script.fromASM('OP_NOP').toHex(),
+      basket: 'my-tokens',
+      outputDescription: 'My first token'
+    }]
+  })
+  
+  console.log('Token created:', response)
+  if (response.txid) {
+    console.log(`Token transaction: https://whatsonchain.com/tx/${response.txid}`)
+  }
+  
+  return response
+}
 
-1. **Abstracting away transaction details**: You don't need to manually construct inputs and outputs
-2. **Managing UTXOs automatically**: The wallet selects appropriate UTXOs for spending
-3. **Calculating fees**: No need to worry about transaction fee calculations
-4. **Handling change**: Automatically creates change outputs when needed
-5. **Taking care of signing**: Manages the cryptographic operations needed to sign transactions
+// Run the function
+createToken().catch(console.error)
+```
 
-### Key Methods for Transaction Management
 
-- `createAction()`: Prepares a transaction with specified outputs
-- `signAction()`: Signs and optionally broadcasts a transaction
-- `listActions()`: Retrieves transaction history
-- `abortAction()`: Cancels an unsigned transaction
+Run it as follows:
 
-## Step 6: Understanding Network Environments
+```bash
+# Run the TypeScript file directly
+npx ts-node step2-create-token.ts
+```
 
-### Mainnet and Testnet
 
-In this tutorial, we used the Bitcoin SV mainnet. For future development, you might also want to use testnet:
+**What's happening here:**
+- We create a minimal token (1 satoshi with OP_NOP script)
+- Store it in a wallet basket called 'my-tokens' for organization
+- This creates a spendable output we can use later
 
-- **Mainnet**: The main Bitcoin SV blockchain where coins have real monetary value
-- **Testnet**: A separate blockchain used for testing where coins have no real value
+### Example 3: List and Spend Your Token
 
-### Working with Testnet
+**What you'll do**: Retrieve your stored token (created in the previous example) and spend it in a new transaction. This demonstrates the complete UTXO lifecycle and shows how to work with transaction inputs using the BEEF format.
 
-*** TODO ***
+Create a file called `step3-spend-token.ts`:
 
-If you want to experiment without using real BSV, you can use testnet:
+```typescript
+import { WalletClient, Script } from '@bsv/sdk'
 
-1. Ensure your wallet is connected to testnet (most wallets have a network selector)
-2. No code changes are needed when using the WalletClient approach - the wallet handles the network selection
-3. You'll need testnet coins, which you can obtain from faucets
-4. Use https://test.whatsonchain.com/ to view your testnet transactions
-5. This is ideal for development and testing before deploying to mainnet
+async function spendToken() {
+  // Connect to user's wallet
+  const wallet = new WalletClient('auto', 'localhost')
+  
+  // First, list our tokens
+  const tokenList = await wallet.listOutputs({
+    basket: 'my-tokens',
+    include: 'entire transactions'
+  })
+  
+  console.log('Available tokens:', tokenList.outputs.length)
+  
+  let response;
+  if (tokenList.outputs.length > 0) {
+    // Spend the first token
+    response = await wallet.createAction({
+      description: 'Spend my first token',
+      inputBEEF: tokenList.BEEF,
+      inputs: [{
+        outpoint: tokenList.outputs[0].outpoint,
+        unlockingScript: Script.fromASM('OP_TRUE').toHex(),
+        inputDescription: 'My token being spent'
+      }]
+    })
+    
+    console.log('Token spent:', response)
+    if (response.txid) {
+      console.log(`Spending transaction: https://whatsonchain.com/tx/${response.txid}`)
+    }
+  } else {
+    console.log('No tokens available to spend. Run step2-create-token.ts first!')
+    response = null;
+  }
+  
+  return response
+}
 
-> **Important:** Always test thoroughly on testnet before working with substantial real funds on mainnet.
+// Run the function
+spendToken().catch(console.error)
+```
 
-### Next Steps
 
-In the next tutorial, "[Transaction Types and Data](./transaction-types.md)", you'll learn how to:
+Run it as follows:
 
-1. Create more complex transaction types
-2. Work with multiple outputs
-3. Add data to transactions
-4. Use advanced WalletClient features
+```bash
+# Run the TypeScript file directly
+npx ts-node step3-spend-token.ts
+```
 
-## Conclusion
 
-Congratulations! You've learned the basics of creating a BSV transaction using the TypeScript SDK's WalletClient. In this tutorial, you've:
+**What's happening here:**
+- We list tokens from our 'my-tokens' basket
+- Spend the first available token by providing its outpoint
+- Create a new output with proof that we spent the token
+- The BEEF (Blockchain Exchange Format) provides the transaction history
 
-- Set up your development environment
-- Learned about transaction components
-- Created a simple transaction using WalletClient
-- Understood how WalletClient simplifies transaction management
+
+
+## What You've Learned
+
+Congratulations! You've successfully created your first BSV transactions. Here's what you accomplished:
+
+### Core Concepts Mastered
+
+1. **WalletClient Usage**: Connected to your BRC-100 wallet and created transactions
+2. **Script Construction**: Used `Script.fromASM()` to create clean, readable Bitcoin scripts
+3. **Transaction Outputs**: Created both data storage and spendable token outputs
+4. **Wallet Baskets**: Organized your tokens using the basket system
+5. **UTXO Management**: Listed and spent existing outputs using BEEF format
+
+### Key WalletClient Methods
+
+- `createAction()`: Creates transactions with specified outputs and inputs
+- `listOutputs()`: Retrieves spendable outputs from wallet baskets
+- The wallet automatically handles signing, fees, and broadcasting
+
+### Script Types You Used
+
+- `OP_RETURN "data"`: Store arbitrary data on the blockchain
+- `OP_NOP`: Create simple tokens that can be spent later  
+- `OP_TRUE`: Unlock scripts that always validate (for simple spending)
 
 ## Next Steps
 
