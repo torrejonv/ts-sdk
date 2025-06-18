@@ -10,9 +10,13 @@
 - Apply secure key management practices
 - Use WalletClient for advanced key operations
 
+> **📚 Related Concepts**: Review [Key Management](../concepts/key-management.md), [Digital Signatures](../concepts/signatures.md), and [Trust Model](../concepts/trust-model.md) for essential background.
+
 ## Introduction
 
 Bitcoin is built on cryptographic principles, with keys and signatures forming the foundation of its security model. In this tutorial, you'll learn how to generate, manage, and use cryptographic keys with the BSV TypeScript SDK. You'll also learn how to create and verify digital signatures, which are essential for authorizing transactions and proving ownership.
+
+> **💡 Try It Interactive**: Experiment with key generation and cryptographic operations in our [Interactive BSV Coding Environment](https://fast.brc.dev/) - perfect for testing the concepts covered in this tutorial!
 
 ## Step 1: Setting Up Your Environment
 
@@ -248,7 +252,7 @@ async function signatureWalletExamples() {
     console.log(`\nSignature created with WalletClient: ${Buffer.from(sigResult.signature).toString('hex').substring(0, 64)}...`)
     
     // 5. Verify the signature using WalletClient
-    // Note: WalletClient throws an error when verification fails instead of returning { valid: false }
+    // Note: WalletClient throws an error when verification fails
     try {
       console.log('\nVerifying signature with parameters:')
       console.log('- Protocol ID:', JSON.stringify(protocolID))

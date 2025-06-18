@@ -33,6 +33,19 @@ Practical, problem-oriented guides to help you accomplish specific tasks with th
 
 ## Cryptographic Operations
 
+### [Security Best Practices](./security-best-practices.md)
+- Private key management and protection
+- Secure transaction construction
+- Cryptographic operation security
+- Wallet integration security patterns
+- Production security checklist
+
+### [Setting up Development Wallets](./development-wallet-setup.md)
+- ProtoWallet configuration for development and testing
+- Mock transaction creation and testing workflows
+- Multi-wallet development environments
+- Key management for development scenarios
+
 ### [Implementing Custom Key Derivation](./custom-key-derivation.md)
 - BIP32-style hierarchical keys
 - Custom derivation paths
@@ -44,16 +57,26 @@ Practical, problem-oriented guides to help you accomplish specific tasks with th
 - Key exchange protocols
 
 ### [Verifying Complex Signatures](./complex-signatures.md)
-- Multi-party signatures
-- Threshold signatures
-- Time-based signatures
+- Batch signature verification with performance optimization
+- Threshold signature validation using polynomial interpolation
+- Multi-context signature validation workflows
+- Time-locked and conditional signature scenarios
+- Comprehensive error handling and recovery strategies
+- Security considerations for complex verification patterns
 
 ## Network Integration
 
-### [Configuring Custom ARC Endpoints](./custom-arc-endpoints.md)
-- ARC service configuration
-- Load balancing across miners
-- Failover and retry logic
+### [Setting up Authenticated API Communication](./authenticated-api-communication.md)
+- BRC-103/104 authentication implementation
+- Certificate-based API security
+- Session management and retry logic
+- Secure peer-to-peer communication
+
+### [Setting Up Chain Tracking](./chain-tracking.md)
+- Configuring chain trackers for blockchain data access
+- Using WhatsOnChain and other providers
+- SPV verification with chain trackers
+- Error handling and fallback strategies
 
 ### [Configuring HTTP Clients](./http-client-configuration.md)
 - Axios integration and setup
@@ -61,15 +84,32 @@ Practical, problem-oriented guides to help you accomplish specific tasks with th
 - Error handling and retries
 - Alternative HTTP client options
 
+### [Creating Custom Broadcasters](./custom-broadcasters.md)
+- Implementing custom broadcaster interfaces
+- HTTP-based broadcaster patterns
+- Retry logic and error handling
+- Multi-service failover strategies
+
 ### [Implementing Transaction Monitoring](./transaction-monitoring.md)
 - Real-time transaction tracking
 - Confirmation monitoring
 - Double-spend detection
 
-### [Optimizing Network Performance](./network-performance.md)
-- Connection pooling
-- Request batching
-- Caching strategies
+## File and Data Management
+
+### [Implementing File Upload/Download Features](./file-upload-download.md)
+- UHRP-based decentralized file storage
+- File integrity verification and validation
+- Batch file operations and management
+- File retention and renewal strategies
+
+## Identity and Access Management
+
+### [Building Identity Verification Systems](./identity-verification-systems.md)
+- Decentralized identity verification workflows
+- Trust scoring and certificate validation
+- Identity-based access control systems
+- Verification history and audit trails
 
 ## Cross-Platform Integration
 
@@ -78,34 +118,3 @@ Practical, problem-oriented guides to help you accomplish specific tasks with th
 - State management for keys and transactions
 - React component patterns for BSV applications
 - React Native considerations
-
-## Alternative Programming Languages 
-
-### [Working with Go SDK](./go-sdk-integration.md)
-- TypeScript to Go SDK interoperability
-- Cross-language data format handling
-- Building hybrid TypeScript/Go applications
-- Migration strategies between SDKs
-
-### [Working with Python SDK](./python-sdk-integration.md)
-- TypeScript to Python SDK interoperability
-- Data science and analytics integration
-- Cross-language API design patterns
-- Python-specific use cases and optimizations
-
-## Development Workflows
-
-### [Debugging Transaction Construction](./debugging-transactions.md)
-- Transaction visualization tools
-- Script debugging techniques
-- Common error patterns
-
-### [Testing SDK Integrations](./testing-integrations.md)
-- Unit testing patterns
-- Integration test setup
-- Mock ARC services
-
-### [Migrating from Legacy BSV Libraries](./migration-guide.md)
-- Migration from bsv-js
-- API mapping guide
-- Breaking changes handling

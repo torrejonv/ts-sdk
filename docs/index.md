@@ -48,6 +48,19 @@ Understanding the architecture and design principles:
 
 If you're new to the BSV TypeScript SDK, we recommend starting with our [Getting Started Tutorial](./tutorials/first-transaction.md).
 
+## Try It Interactive
+
+🚀 **[Interactive BSV Coding Environment](https://fast.brc.dev/)**
+
+Experience the BSV TypeScript SDK directly in your browser! Our interactive coding environment lets you:
+
+- Run SDK code examples without any setup
+- Experiment with transactions, keys, and scripts in real-time  
+- Learn by doing with immediate feedback
+- Test concepts from our tutorials interactively
+
+Perfect for getting started quickly or experimenting with new ideas.
+
 ## Installation
 
 To install the SDK, run:
@@ -55,4 +68,3 @@ To install the SDK, run:
 ```bash
 npm install @bsv/sdk
 ```
-
