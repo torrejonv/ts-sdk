@@ -7,11 +7,11 @@
 - Create transactions with multiple outputs
 - Add data to transactions
 - Work with different output types
-- Use advanced WalletClient features
+- Use advanced `WalletClient` features
 
 ## Introduction
 
-In the previous tutorial, you created a simple transaction that sent BSV to a single address. In this tutorial, you'll expand your knowledge by learning how to create more complex transactions using the WalletClient interface. You'll learn how to send to multiple recipients, include data in transactions, and explore more advanced WalletClient features.
+In the previous tutorial, you created a simple transaction that sent BSV to a single address. In this tutorial, you'll expand your knowledge by learning how to create more complex transactions using the `WalletClient` interface. You'll learn how to send to multiple recipients, include data in transactions, and explore more advanced `WalletClient` features.
 
 ## Prerequisites
 
@@ -263,7 +263,7 @@ This pattern of combining payments with data is very powerful for business appli
 
 ## Working with Transaction History
 
-The WalletClient also allows you to retrieve your transaction history:
+The `WalletClient` also allows you to retrieve your transaction history:
 
 ```typescript
 import { WalletClient } from '@bsv/sdk'
@@ -319,7 +319,7 @@ Baskets help with:
 * **Privacy enhancement**: Segregate UTXOs from different sources or uses
 * **Application-specific management**: Maintain dedicated UTXOs for particular applications
 
-The WalletClient provides methods for working with baskets to give you fine-grained control over your UTXO management:
+The `WalletClient` provides methods for working with baskets to give you fine-grained control over your UTXO management:
 
 ```typescript
 import { WalletClient } from '@bsv/sdk'
@@ -396,7 +396,7 @@ workWithBaskets().catch(console.error)
 
 ## Conclusion
 
-Congratulations! You've now learned how to create more complex transactions using the WalletClient interface. You can:
+Congratulations! You've now learned how to create more complex transactions using the `WalletClient` interface. You can:
 
 - Send to multiple recipients in a single transaction
 - Store data on the blockchain using OP_RETURN outputs
@@ -404,7 +404,7 @@ Congratulations! You've now learned how to create more complex transactions usin
 - Retrieve and view your transaction history
 - Work with baskets to organize your UTXOs
 
-These capabilities form the foundation for building sophisticated applications on Bitcoin SV. With the WalletClient interface, you can focus on your application logic rather than the low-level details of transaction construction.
+These capabilities form the foundation for building sophisticated applications on Bitcoin SV. With the `WalletClient` interface, you can focus on your application logic rather than the low-level details of transaction construction.
 
 ## Next Steps
 

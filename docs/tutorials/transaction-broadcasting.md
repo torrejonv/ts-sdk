@@ -5,7 +5,7 @@
 
 ## Learning Goals
 - Understand how transaction broadcasting works in BSV
-- Learn the difference between WalletClient and direct broadcasting approaches
+- Learn the difference between `WalletClient` and direct broadcasting approaches
 - Configure broadcasting for testnet vs mainnet
 - Implement custom broadcasters for different services (ARC, WhatsOnChain)
 - Handle broadcasting errors and responses
@@ -56,7 +56,7 @@ Due to its complexity and need to handle the low-level details of the broadcasti
 
 ## Step 1: WalletClient Broadcasting
 
-Let's start with the WalletClient approach, which is the simplest for most applications.
+Let's start with the `WalletClient` approach, which is the simplest for most applications. This is the same approach we have seen in the previous tutorials, where we used the `WalletClient` to create and broadcast transactions. 
 
 ### Basic WalletClient Setup
 
@@ -98,7 +98,7 @@ import { WalletClient } from '@bsv/sdk'
 
 async function walletClientBroadcasting() {
   try {
-    // Initialize the WalletClient, using localhost as wallet substrate
+    // Initialize the `WalletClient`, using localhost as wallet substrate
     const wallet = new WalletClient('auto', 'localhost')
     
     // Check if we're authenticated with the wallet
@@ -173,7 +173,7 @@ async function walletClientBroadcasting() {
 walletClientBroadcasting()
 ```
 
-### How WalletClient Broadcasting Works
+### How `WalletClient` Broadcasting Works
 
 When you use `WalletClient`:
 
@@ -192,7 +192,7 @@ The key advantage is that **you don't control the broadcasting directly** - the 
 
 ## Step 2: Direct Broadcasting with Custom Broadcasters
 
-The WalletClient approach in step 1 is the recommended approach. However, if you need more control, you can broadcast transactions directly using custom broadcaster implementations. We will demonstrate the main broadcaster implementations in the SDK: ARC and WhatsOnChain.
+The `WalletClient` approach in step 1 is the recommended approach. However, if you need more control, you can broadcast transactions directly using custom broadcaster implementations. We will demonstrate the main broadcaster implementations in the SDK: ARC and WhatsOnChain.
 
 ### Automatic vs Manual Broadcasting
 
@@ -510,7 +510,7 @@ monitoringExample('your-transaction-id-here')
 
 In this tutorial, you learned about the two main approaches to transaction broadcasting in BSV:
 
-### WalletClient Approach
+### `WalletClient` Approach
 - ✅ **Simple**: Easy to use with BRC-100 wallets
 - ✅ **Managed**: Wallet handles service selection and fallbacks
 - ✅ **User Control**: Users can configure preferred services

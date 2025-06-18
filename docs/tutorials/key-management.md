@@ -8,7 +8,7 @@
 - Understand ECDSA signatures
 - Create and verify digital signatures
 - Apply secure key management practices
-- Use WalletClient for advanced key operations
+- Use `WalletClient` for advanced key operations
 
 > **📚 Related Concepts**: Review [Key Management](../concepts/key-management.md), [Digital Signatures](../concepts/signatures.md), and [Trust Model](../concepts/trust-model.md) for essential background.
 
@@ -196,7 +196,7 @@ You should see output showing the generated keys, addresses, and verification re
 
 Digital signatures are fundamental to Bitcoin. They prove that the owner of a private key has authorized a specific action, like spending coins in a transaction.
 
-### Approach 1: Using WalletClient
+### Approach 1: Using `WalletClient`
 
 `WalletClient` is the recommended interface for these actions, providing enhanced security as private keys remain isolated within the wallet environment. Let's create a file called `signatures-wallet.ts`:
 
@@ -374,16 +374,16 @@ npx ts-node signatures-low-level.ts
 ```
 
 
-### Key Benefits of WalletClient for Signatures
+### Key Benefits of `WalletClient` for Signatures
 
 1. **Enhanced Security**: Private keys never leave the wallet environment
 2. **Key Management**: No need to handle raw private keys in your code
 3. **Standardized API**: Consistent interface for all cryptographic operations
 4. **Protocol-based**: Keys are managed within specific protocol contexts
 
-## Step 5: Practical Application: Signing Transactions with WalletClient
+## Step 5: Practical Application: Signing Transactions with `WalletClient`
 
-Let's put our knowledge to practical use by creating and signing a Bitcoin transaction using the WalletClient. 
+Let's put our knowledge to practical use by creating and signing a Bitcoin transaction using the `WalletClient`. 
 
 Create a file called `wallet-transaction-signing.ts`:
 
@@ -504,11 +504,11 @@ npx ts-node wallet-transaction-signing.ts
 This example demonstrates:
 1. Creating a transaction with inputs and outputs
 2. Getting the transaction hash that needs to be signed
-3. How the WalletClient would sign this hash securely
+3. How the `WalletClient` would sign this hash securely
 4. Verifying the transaction signature
-5. The complete WalletClient workflow for real applications
+5. The complete `WalletClient` workflow for real applications
 
-For a detailed comparison between WalletClient transaction signing and low-level transaction signing approaches, see the [Transaction Signing Methods guide](../guides/transaction-signing-methods.md).
+For a detailed comparison between `WalletClient` transaction signing and low-level transaction signing approaches, see the [Transaction Signing Methods guide](../guides/transaction-signing-methods.md).
 
 ### Advanced Transaction Signing
 
@@ -519,8 +519,8 @@ For more advanced transaction signing techniques like using different SIGHASH fl
 Congratulations! You've learned the fundamentals of key management and cryptography with the BSV TypeScript SDK. In this tutorial, you've:
 
 - Generated and managed private/public keys
-- Created and verified digital signatures using both direct cryptography APIs and WalletClient
-- Applied signatures in a Bitcoin transaction context using WalletClient
+- Created and verified digital signatures using both direct cryptography APIs and `WalletClient`
+- Applied signatures in a Bitcoin transaction context using `WalletClient`
 - Learned best practices for secure key management
 
 These cryptographic concepts form the foundation of Bitcoin and blockchain technology. By understanding how keys and signatures work, you're well-equipped to build secure and robust applications using the BSV TypeScript SDK.

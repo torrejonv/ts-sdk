@@ -23,7 +23,7 @@ Before diving into the tutorials, you can experiment with many of these concepts
   - Create transactions with multiple outputs
   - Add data to transactions
   - Work with different output types
-  - Use advanced WalletClient features
+  - Use advanced `WalletClient` features
 
 ### [Key Management and Cryptography](./key-management.md)
 - **Duration**: 45 minutes
@@ -37,7 +37,7 @@ Before diving into the tutorials, you can experiment with many of these concepts
 - **Duration**: 25 minutes
 - **Prerequisites**: Completed "Your First BSV Transaction" tutorial, Node.js, basic TypeScript knowledge
 - **Learning Goals**:
-  - Understand WalletClient vs direct broadcasting approaches
+  - Understand `WalletClient` vs direct broadcasting approaches
   - Configure broadcasting for testnet vs mainnet
   - Implement custom broadcasters (ARC, WhatsOnChain)
   - Handle broadcasting errors and implement retry logic

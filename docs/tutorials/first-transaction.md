@@ -5,14 +5,13 @@
 
 ## Learning Goals
 - Install and configure the BSV TypeScript SDK
-- Create a simple transaction using WalletClient
-- Understand BSV transaction anatomy
+- Create a simple transaction using `WalletClient` interface on the mainnet network. This approach makes it easy to build transactions by abstracting away many of the low-level details. By the end, you'll understand the basic components of a BSV transaction and how to construct, sign, and broadcast one on the BSV blockchain.
 
 > **📚 Related Concepts**: Before starting, you may want to review [Transaction Structure](../concepts/transaction-structure.md) and [Wallet Integration](../concepts/wallet-integration.md) to understand the fundamentals.
 
 ## Introduction
 
-In this tutorial, you'll learn how to create your first Bitcoin SV transactions using the TypeScript SDK's WalletClient interface on the mainnet network. This approach makes it easy to build transactions by abstracting away many of the low-level details. By the end, you'll understand the basic components of a BSV transaction and how to construct, sign, and broadcast one on the BSV blockchain.
+In this tutorial, you'll learn how to create your first Bitcoin SV transactions using the TypeScript SDK's `WalletClient` interface on the mainnet network. This approach makes it easy to build transactions by abstracting away many of the low-level details. By the end, you'll understand the basic components of a BSV transaction and how to construct, sign, and broadcast one on the BSV blockchain.
 
 > **💡 Try It Interactive**: Want to experiment with the code examples from this tutorial? Check out our [Interactive BSV Coding Environment](https://fast.brc.dev/) where you can run SDK code directly in your browser without any setup!
 
@@ -275,6 +274,6 @@ Congratulations! You've successfully created your first BSV transactions. Here's
 
 ## Additional Resources
 
-- [WalletClient API Reference](../reference/wallet.md#class-walletclient)
+- [WalletClient API Reference](../reference/wallet.md#class-WalletClient)
 - [BSV Wallet Protocols](https://projectbabbage.com/docs/guides/wallet/transactions)
 - [Transaction Broadcasting](https://projectbabbage.com/docs/guides/wallet/signing)
