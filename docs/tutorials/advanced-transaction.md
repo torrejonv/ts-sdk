@@ -5,13 +5,13 @@
 - Master multi-input/multi-output transaction construction
 - Implement advanced fee calculation and optimization strategies
 - Handle change outputs efficiently
-- Use advanced WalletClient options for transaction control
+- Use advanced `WalletClient` options for transaction control
 - Implement UTXO selection and management strategies
 - Handle complex transaction scenarios and error recovery
 
 ## Introduction
 
-This tutorial builds on your knowledge of basic WalletClient usage to explore advanced transaction construction patterns. You'll learn how to create sophisticated transactions that handle multiple inputs and outputs, optimize fees, and manage UTXOs effectively for production applications.
+This tutorial builds on your knowledge of basic `WalletClient` usage to explore advanced transaction construction patterns. You'll learn how to create sophisticated transactions that handle multiple inputs and outputs, optimize fees, and manage UTXOs effectively for production applications.
 
 ## Prerequisites
 
@@ -20,7 +20,7 @@ This tutorial builds on your knowledge of basic WalletClient usage to explore ad
 - Some BSV in your wallet
 - Understanding of Bitcoin transaction fundamentals
 
-## Advanced WalletClient Options
+## Advanced `WalletClient` Options
 
 The `createAction` method supports many advanced options through the `options` parameter. Let's explore these capabilities:
 
@@ -550,12 +550,12 @@ optimizedTransactionPatterns().catch(console.error)
 
 ## Conclusion
 
-You've now mastered advanced transaction construction with the BSV TypeScript SDK's WalletClient. You can:
+You've now mastered advanced transaction construction with the BSV TypeScript SDK's `WalletClient`. You can:
 
 - Create sophisticated multi-input/multi-output transactions
 - Implement robust error handling and retry strategies
 - Optimize transaction patterns for performance
-- Use advanced WalletClient features like baskets, tags, and options
+- Use advanced `WalletClient` features like baskets, tags, and options
 - Handle complex scenarios like transaction chaining and batch processing
 
 These techniques enable you to build production-ready applications that efficiently manage Bitcoin transactions while maintaining reliability and performance.
