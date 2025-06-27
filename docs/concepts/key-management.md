@@ -98,22 +98,24 @@ const childPubKey = childKey.toPublicKey()
 
 ### Best Practices
 ```typescript
-// ✅ Good: Generate securely
+// Good: Generate securely
 const key = PrivateKey.fromRandom()
 
-// ❌ Bad: Predictable generation
+// Bad: Predictable generation
 const badKey = PrivateKey.fromString('1234567890abcdef...')
 
-// ✅ Good: Derive public key when needed
+// Good: Derive public key when needed
 const pubKey = key.toPublicKey()
 
-// ❌ Bad: Store private key unnecessarily
+// Bad: Store private key unnecessarily
 localStorage.setItem('privateKey', key.toString())
 ```
 
 ## Wallet Integration
 
 In most applications, wallets handle key management:
+
+The `WalletClient` provides high-level key management through wallet integration:
 
 ```typescript
 // Wallet manages keys securely
@@ -124,6 +126,10 @@ const action = await wallet.createAction({
   outputs: [/* transaction outputs */]
 })
 ```
+
+When using the `WalletClient`, keys are managed by the connected wallet service:
+
+The `WalletClient` approach is recommended for production applications as it provides:
 
 ## Key Recovery
 
