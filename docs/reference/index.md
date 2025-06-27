@@ -2,6 +2,13 @@
 
 Complete technical specifications and API documentation for the BSV TypeScript SDK.
 
+## Standards and Interfaces
+
+### [BRC-100 Wallet Interface](./brc-100.md)
+- Unified wallet-to-application interface standard
+- WalletClient implementation details
+- JSON API specifications
+
 ## Core Classes
 
 ### [Transaction Class](./transaction.md)

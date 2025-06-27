@@ -30,10 +30,13 @@ Problem-oriented guides for specific tasks:
 
 Complete technical specifications and API documentation:
 
+- [BRC-100 Wallet Interface (Swagger)](./reference/brc-100.md)
 - [Primitives](./reference/primitives.md)
 - [Script](./reference/script.md)
 - [Transaction](./reference/transaction.md)
 - [View all references →](./reference/index.md)
+
+
 
 ### [🏗️ Concepts & Explanations](./concepts/index.md)
 
