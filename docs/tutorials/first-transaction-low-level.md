@@ -130,7 +130,7 @@ You should see output showing your private key, address, and transaction details
 
 The transaction we created in the previous step doesn't have any inputs, so it can't be broadcast to the network. It serves as a conceptual introduction to transaction structure.
 
-In the next tutorial, "[Working with Testnet Transactions](./testnet-transactions.md)", you'll learn how to:
+In the next tutorial, "[Working with Testnet Transactions (Low-Level)](./testnet-transactions-low-level.md)", you'll learn how to:
 
 1. Create a wallet specifically for the BSV testnet
 2. Obtain free testnet coins from a faucet
@@ -200,5 +200,5 @@ Congratulations! You've learned the basics of creating a BSV transaction using t
 ## Additional Resources
 
 - [BSV Transaction Reference](../reference/transaction.md)
-- [P2PKH Script Reference](../reference/script.md#p2pkh)
+- [Script Reference](../reference/script.md)
 - [Bitcoin Transaction Explorer](https://whatsonchain.com) - To view your transactions on the blockchain

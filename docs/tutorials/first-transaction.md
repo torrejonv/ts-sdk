@@ -268,12 +268,11 @@ Congratulations! You've successfully created your first BSV transactions. Here's
 
 ## Next Steps
 
-- Ready to try test transactions? Continue with [Working with Testnet Transactions](./testnet-transactions.md)
 - Learn about [Key Management and Cryptography](./key-management.md)
 - Prefer lower-level control? Check out [First Transaction (Low-level API)](./first-transaction-low-level.md)
 
 ## Additional Resources
 
-- [WalletClient API Reference](../reference/wallet.md#class-WalletClient)
+- [Wallet API Reference](../reference/wallet.md)
 - [BSV Wallet Protocols](https://projectbabbage.com/docs/guides/wallet/transactions)
 - [Transaction Broadcasting](https://projectbabbage.com/docs/guides/wallet/signing)

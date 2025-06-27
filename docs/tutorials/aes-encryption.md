@@ -936,7 +936,7 @@ The BSV TypeScript SDK's `SymmetricKey` class provides a robust, secure implemen
 ## Next Steps
 
 - Explore the [ECDH Key Exchange](./ecdh-key-exchange.md) tutorial for asymmetric encryption
-- Learn about [Message Signing](./message-signing.md) for authentication
+- Learn about [Messages Reference](../reference/messages.md) for authentication
 - Study [Advanced Transaction Construction](./advanced-transaction.md) for complex applications
 - Review the [Security Best Practices](../guides/security-best-practices.md) guide
 
@@ -944,4 +944,4 @@ The BSV TypeScript SDK's `SymmetricKey` class provides a robust, secure implemen
 
 - [AES Wikipedia](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)
 - [GCM Mode Wikipedia](https://en.wikipedia.org/wiki/Galois/Counter_Mode)
-- [BSV SDK Reference Documentation](../reference/primitives/SymmetricKey.md)
+- [BSV SDK Primitives Reference](../reference/primitives.md)
