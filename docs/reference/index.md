@@ -16,7 +16,7 @@ Complete technical specifications and API documentation for the BSV TypeScript S
 - Input/output management
 - Serialization formats
 
-### [PrivateKey/PublicKey Classes](./primitives.md#keys)
+### [PrivateKey/PublicKey Classes](./primitives.md)
 - Key generation methods
 - Import/export formats
 - Cryptographic operations

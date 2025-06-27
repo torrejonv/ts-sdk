@@ -42,9 +42,10 @@ Complete technical specifications and API documentation:
 
 Understanding the architecture and design principles:
 
-- [BSV SDK Philosophy](./concepts/sdk-philosophy.md)
-- [Understanding Bitcoin Script](./concepts/bitcoin-script.md)
-- [SPV Architecture Deep Dive](./concepts/spv-architecture.md)
+- [SDK Design Philosophy](./concepts/sdk-philosophy.md)
+- [Transaction Structure](./concepts/transaction-structure.md)
+- [SPV Verification](./concepts/spv-verification.md)
+- [BEEF Format](./concepts/beef.md)
 - [View all concepts →](./concepts/index.md)
 
 ## Getting Started
