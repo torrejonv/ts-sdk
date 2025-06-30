@@ -138,7 +138,7 @@ All notable changes to this project will be documented in this file. The format 
 
 ---
 
-## [1.6.8] - 2025-06-30
+## [1.6.9] - 2025-06-30
 
 ### Added
 - Comprehensive documentation overhaul with new tutorials, guides, and reference materials
