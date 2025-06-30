@@ -379,21 +379,20 @@ export const fromBase58Check = (
 
 export class Writer {
   public bufs: number[][]
+  private length: number
 
   constructor (bufs?: number[][]) {
     this.bufs = bufs !== undefined ? bufs : []
+    this.length = 0
+    for (const b of this.bufs) this.length += b.length
   }
 
   getLength (): number {
-    let len = 0
-    for (const buf of this.bufs) {
-      len = len + buf.length
-    }
-    return len
+    return this.length
   }
 
   toArray (): number[] {
-    const totalLength = this.getLength()
+    const totalLength = this.length
     const ret = new Array(totalLength)
     let offset = 0
     for (const buf of this.bufs) {
@@ -406,6 +405,7 @@ export class Writer {
 
   write (buf: number[]): this {
     this.bufs.push(buf)
+    this.length += buf.length
     return this
   }
 
@@ -415,6 +415,7 @@ export class Writer {
       buf2[i] = buf[buf.length - 1 - i]
     }
     this.bufs.push(buf2)
+    this.length += buf2.length
     return this
   }
 
@@ -433,10 +434,12 @@ export class Writer {
   }
 
   writeUInt16BE (n: number): this {
-    this.bufs.push([
+    const buf = [
       (n >> 8) & 0xff, // shift right 8 bits to get the high byte
       n & 0xff // low byte is just the last 8 bits
-    ])
+    ]
+    this.bufs.push(buf)
+    this.length += 2
     return this
   }
 
@@ -445,10 +448,12 @@ export class Writer {
   }
 
   writeUInt16LE (n: number): this {
-    this.bufs.push([
+    const buf = [
       n & 0xff, // low byte is just the last 8 bits
       (n >> 8) & 0xff // shift right 8 bits to get the high byte
-    ])
+    ]
+    this.bufs.push(buf)
+    this.length += 2
     return this
   }
 
@@ -457,12 +462,14 @@ export class Writer {
   }
 
   writeUInt32BE (n: number): this {
-    this.bufs.push([
+    const buf = [
       (n >> 24) & 0xff, // highest byte
       (n >> 16) & 0xff,
       (n >> 8) & 0xff,
       n & 0xff // lowest byte
-    ])
+    ]
+    this.bufs.push(buf)
+    this.length += 4
     return this
   }
 
@@ -471,12 +478,14 @@ export class Writer {
   }
 
   writeUInt32LE (n: number): this {
-    this.bufs.push([
+    const buf = [
       n & 0xff, // lowest byte
       (n >> 8) & 0xff,
       (n >> 16) & 0xff,
       (n >> 24) & 0xff // highest byte
-    ])
+    ]
+    this.bufs.push(buf)
+    this.length += 4
     return this
   }
 
@@ -516,6 +525,9 @@ export class Writer {
 
   static varIntNum (n: number): number[] {
     let buf: number[]
+    if (n < 0) {
+      return this.varIntBn(new BigNumber(n))
+    }
     if (n < 253) {
       buf = [n] // 1 byte
     } else if (n < 0x10000) {
@@ -556,6 +568,9 @@ export class Writer {
 
   static varIntBn (bn: BigNumber): number[] {
     let buf: number[]
+    if (bn.isNeg()) {
+      bn = bn.add(OverflowUint64) // Adjust for negative numbers
+    }
     if (bn.ltn(253)) {
       const n = bn.toNumber()
       // No need for bitwise operation as the value is within a byte's range
@@ -587,24 +602,26 @@ export class Writer {
 export class Reader {
   public bin: number[]
   public pos: number
+  private readonly length: number
 
   constructor (bin: number[] = [], pos: number = 0) {
     this.bin = bin
     this.pos = pos
+    this.length = bin.length
   }
 
   public eof (): boolean {
-    return this.pos >= this.bin.length
+    return this.pos >= this.length
   }
 
-  public read (len = this.bin.length): number[] {
+  public read (len = this.length): number[] {
     const start = this.pos
     const end = this.pos + len
     this.pos = end
     return this.bin.slice(start, end)
   }
 
-  public readReverse (len = this.bin.length): number[] {
+  public readReverse (len = this.length): number[] {
     const buf2 = new Array(len)
     for (let i = 0; i < len; i++) {
       buf2[i] = this.bin[this.pos + len - 1 - i]
@@ -697,7 +714,16 @@ export class Reader {
     return bn
   }
 
-  public readVarIntNum (): number {
+  public readInt64LEBn (): BigNumber {
+    const bin = this.readReverse(8)
+    let bn = new BigNumber(bin)
+    if (bn.gte(OverflowInt64)) {
+      bn = bn.sub(OverflowUint64) // Adjust for negative numbers
+    }
+    return bn
+  }
+
+  public readVarIntNum (signed: boolean = true): number {
     const first = this.readUInt8()
     let bn: BigNumber
     switch (first) {
@@ -706,7 +732,7 @@ export class Reader {
       case 0xfe:
         return this.readUInt32LE()
       case 0xff:
-        bn = this.readUInt64LEBn()
+        bn = signed ? this.readInt64LEBn() : this.readUInt64LEBn()
         if (bn.lte(new BigNumber(2).pow(new BigNumber(53)))) {
           return bn.toNumber()
         } else {
@@ -790,3 +816,6 @@ export const minimallyEncode = (buf: number[]): number[] => {
   // If we found the whole thing is zeros, then we have a zero.
   return []
 }
+
+const OverflowInt64 = new BigNumber(2).pow(new BigNumber(63))
+const OverflowUint64 = new BigNumber(2).pow(new BigNumber(64))
