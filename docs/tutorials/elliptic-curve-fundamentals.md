@@ -591,8 +591,8 @@ In this tutorial, you've learned:
 
 Now that you understand elliptic curve fundamentals, you can explore:
 - **[ECDH Key Exchange](./ecdh-key-exchange.md)**: Implementing secure communication protocols
-- **[Digital Signatures](./digital-signatures.md)**: Creating and verifying ECDSA signatures
-- **[Key Derivation](./key-derivation.md)**: Generating multiple keys from a master key
+- **[Signature Concepts](../concepts/signatures.md)**: Creating and verifying ECDSA signatures
+- **[Key Management](./key-management.md)**: Generating multiple keys from a master key
 
 The mathematical concepts you've learned here form the foundation for all advanced cryptographic operations in Bitcoin applications.
 

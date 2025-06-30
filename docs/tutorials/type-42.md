@@ -565,7 +565,7 @@ Type-42 enables sophisticated cryptographic protocols while maintaining the secu
 - [ECDH Key Exchange Tutorial](./ecdh-key-exchange.md)
 - [Elliptic Curve Fundamentals Tutorial](./elliptic-curve-fundamentals.md)
 - [BSV Type-42 Documentation](https://docs.bsvblockchain.org/guides/sdks/ts/low-level/type_42)
-- [Message Signing and Verification](./message-signing.md)
+- [Messages Reference](../reference/messages.md)
 
 ## Integration with `WalletClient`
 

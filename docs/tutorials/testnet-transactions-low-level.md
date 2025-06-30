@@ -8,7 +8,7 @@
 - Obtain and manage testnet coins
 - Create and broadcast real transactions on the testnet
 - Track and verify transaction confirmations
-- Configure WalletClient for different environments
+- Configure `WalletClient` for different environments
 
 ## Introduction
 
@@ -330,3 +330,23 @@ This practical experience with testnet transactions provides a solid foundation 
 - [BSV Testnet Faucet List](https://wiki.bitcoinsv.io/index.php/Testnet)
 - [WhatsOnChain Testnet API Documentation](https://developers.whatsonchain.com/#introduction)
 - [BSV Transaction Reference](../reference/transaction.md)
+
+## Low-Level vs `WalletClient` Approach
+
+| Feature | Low-Level | `WalletClient` |
+|---------|---------|--------|
+| Control | Full control over transaction structure | Simplified, high-level interface |
+| Complexity | Requires manual UTXO management and fee calculation | Handles UTXO management and fee calculation automatically |
+| Use Cases | Advanced applications, custom transaction logic | Most production applications, simple transaction workflows |
+
+The `WalletClient` approach is generally recommended for production applications, while the low-level approach is valuable for:
+
+- Advanced applications requiring custom transaction logic
+- Educational purposes, to understand the underlying mechanics of Bitcoin transactions
+- Specialized use cases where fine-grained control is necessary
+
+Understanding both approaches will help you choose the best method for your specific use case and provide a deeper understanding of the Bitcoin SV ecosystem.
+
+This tutorial focuses on low-level transaction construction, which gives you complete control over every aspect of the transaction. For simpler applications, consider using the `WalletClient` approach covered in other tutorials.
+
+> **Alternative Approach**: For most applications, the `WalletClient` interface provides a simpler way to create transactions. This tutorial focuses on the low-level approach for educational purposes and specialized use cases.

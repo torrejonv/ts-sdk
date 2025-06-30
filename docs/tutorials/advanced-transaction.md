@@ -570,6 +570,6 @@ These techniques enable you to build production-ready applications that efficien
 
 ## Additional Resources
 
-- [WalletClient API Reference](../api/wallet-client.md)
+- [Wallet Reference](../reference/wallet.md)
 - [BSV Blockchain Documentation](https://docs.bsvblockchain.org/)
 - [MetaNet Desktop Wallet](https://metanet.bsvb.tech/)

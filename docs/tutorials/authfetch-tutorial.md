@@ -8,6 +8,22 @@
 - Handle peer-to-peer authentication and certificate exchange
 - Build secure API communication systems
 
+## When to Use AuthFetch
+
+**Use AuthFetch when you need:**
+- BRC-103/104 cryptographic authentication
+- Wallet-signed HTTP requests for identity verification
+- Certificate-based peer authentication
+- Secure peer-to-peer communication between BSV applications
+- APIs that require cryptographic proof of identity
+
+**For general HTTP client configuration, use [HTTP Client Configuration Guide](../guides/http-client-configuration.md) instead:**
+- Custom HTTP client setup (Axios, fetch, etc.)
+- Transaction broadcasting via ARC endpoints
+- Environment-specific configuration (timeouts, retries)
+- Testing and mocking HTTP clients
+- Integration with existing HTTP infrastructure
+
 ## Introduction
 
 AuthFetch is a specialized HTTP client that implements BRC-103 and BRC-104 authentication protocols for secure peer-to-peer communication in the BSV ecosystem. Unlike traditional API authentication (like JWT tokens), AuthFetch uses cryptographic signatures and certificate-based authentication.
