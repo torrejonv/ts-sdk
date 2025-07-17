@@ -57,6 +57,20 @@ const broadcastTransaction = async (tx) => {
       lockingScript
     })
     
+    // Create a simple transaction with P2PKH output
+    const tx = new Transaction()
+    const privateKey = PrivateKey.fromRandom()
+    const publicKey = privateKey.toPublicKey()
+    const address = publicKey.toAddress()
+    
+    // Add an output using P2PKH (instantiate the class first)
+    const p2pkh = new P2PKH()
+    const lockingScript = p2pkh.lock(address)
+    tx.addOutput({
+      satoshis: 100,
+      lockingScript
+    })
+    
     // Convert the transaction to hex format
     const txHex = tx.toHex()
     
@@ -105,7 +119,26 @@ class AxiosAdapter {
   }
 }
 
+// Create an adapter to make Axios compatible with HttpClient interface
+class AxiosAdapter {
+  constructor(private axiosInstance: any) {}
+  
+  async request(url: string, options: any = {}) {
+    const response = await this.axiosInstance({
+      url,
+      method: options.method || 'GET',
+      data: options.body,
+      headers: options.headers
+    })
+    return response.data
+  }
+}
+
 // Create an ARC instance with custom HTTP client
+const httpClient = new AxiosAdapter(customAxios)
+const arc = new ARC('https://api.taal.com/arc', {
+  apiKey: 'YOUR_API_KEY',
+  httpClient
 const httpClient = new AxiosAdapter(customAxios)
 const arc = new ARC('https://api.taal.com/arc', {
   apiKey: 'YOUR_API_KEY',
@@ -143,6 +176,7 @@ axiosRetry(client, {
   retries: 3,
   retryDelay: axiosRetry.exponentialDelay,
   retryCondition: (error: any) => {
+  retryCondition: (error: any) => {
     // Retry on network errors or 5xx responses
     return axiosRetry.isNetworkOrIdempotentRequestError(error) || 
            (error.response && error.response.status >= 500)
@@ -150,6 +184,7 @@ axiosRetry(client, {
 })
 
 // Add request interceptor for logging
+client.interceptors.request.use((request: any) => {
 client.interceptors.request.use((request: any) => {
   console.log('Starting request:', request.url)
   return request
@@ -178,11 +213,14 @@ import axios from 'axios'
 
 const getConfiguredClient = (environment: 'production' | 'staging' | 'development' = 'production') => {
   const baseURLs: Record<string, string> = {
+const getConfiguredClient = (environment: 'production' | 'staging' | 'development' = 'production') => {
+  const baseURLs: Record<string, string> = {
     production: 'https://api.taal.com',
     staging: 'https://api-staging.taal.com',
     development: 'http://localhost:3000'
   }
 
+  const timeouts: Record<string, number> = {
   const timeouts: Record<string, number> = {
     production: 10000,
     staging: 15000,
@@ -282,12 +320,18 @@ import { ARC } from '@bsv/sdk'
 // Create a fetch-based HTTP client that implements HttpClient interface
 class CustomFetchClient {
   async request(url: string, options: any = {}) {
+// Create a fetch-based HTTP client that implements HttpClient interface
+class CustomFetchClient {
+  async request(url: string, options: any = {}) {
     const response = await fetch(url, {
+      method: options.method || 'GET',
       method: options.method || 'GET',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         ...options.headers
+      },
+      body: options.body ? JSON.stringify(options.body) : undefined
       },
       body: options.body ? JSON.stringify(options.body) : undefined
     })
@@ -302,6 +346,9 @@ class CustomFetchClient {
 }
 
 // Use with ARC
+const fetchClient = new CustomFetchClient()
+const arc = new ARC('https://api.taal.com/arc', {
+  apiKey: 'your-api-key',
 const fetchClient = new CustomFetchClient()
 const arc = new ARC('https://api.taal.com/arc', {
   apiKey: 'your-api-key',
@@ -324,9 +371,21 @@ class MockHttpClient {
     }
     return { status: 'confirmed' }
   })
+// Create a mock HTTP client for testing that implements HttpClient interface
+class MockHttpClient {
+  request = jest.fn().mockImplementation(async (url: string, options: any = {}) => {
+    if (options.method === 'POST' && url.includes('/tx')) {
+      return { txid: '1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef' }
+    }
+    return { status: 'confirmed' }
+  })
 }
 
 // Create an ARC instance with the mock client
+const mockClient = new MockHttpClient()
+const arc = new ARC('https://api.example.com/arc', {
+  apiKey: 'test-api-key',
+  httpClient: mockClient
 const mockClient = new MockHttpClient()
 const arc = new ARC('https://api.example.com/arc', {
   apiKey: 'test-api-key',
@@ -345,6 +404,12 @@ const testBroadcast = async () => {
       method: 'POST',
       body: expect.objectContaining({ rawTx: mockTxHex })
     })
+  expect(mockClient.request).toHaveBeenCalledWith(
+    expect.stringContaining('/tx'),
+    expect.objectContaining({
+      method: 'POST',
+      body: expect.objectContaining({ rawTx: mockTxHex })
+    })
   )
   
   return result
@@ -356,6 +421,7 @@ const testBroadcast = async () => {
 You can create your own HTTP client implementation by implementing the `HttpClient` interface from the SDK. This gives you complete control over how HTTP requests are handled:
 
 ```typescript
+import { HttpClient, HttpClientResponse, HttpClientRequestOptions, ARC, Transaction, PrivateKey, P2PKH } from '@bsv/sdk'
 import { HttpClient, HttpClientResponse, HttpClientRequestOptions, ARC, Transaction, PrivateKey, P2PKH } from '@bsv/sdk'
 
 // Implement the HttpClient interface
@@ -423,7 +489,23 @@ const arc = new ARC('https://api.taal.com/arc', {
 
 // Example broadcasting a transaction with the custom client
 const broadcastTx = async () => {
+const broadcastTx = async () => {
   try {
+    // Create a simple transaction with P2PKH output
+    const tx = new Transaction()
+    const privateKey = PrivateKey.fromRandom()
+    const publicKey = privateKey.toPublicKey()
+    const address = publicKey.toAddress()
+    
+    // Add an output using P2PKH (instantiate the class first)
+    const p2pkh = new P2PKH()
+    const lockingScript = p2pkh.lock(address)
+    tx.addOutput({
+      satoshis: 100,
+      lockingScript
+    })
+    
+    // Broadcast the transaction
     // Create a simple transaction with P2PKH output
     const tx = new Transaction()
     const privateKey = PrivateKey.fromRandom()
