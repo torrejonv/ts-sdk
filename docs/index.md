@@ -23,7 +23,6 @@ Problem-oriented guides for specific tasks:
 
 - [Creating Multi-signature Transactions](./guides/multisig-transactions.md)
 - [Implementing Transaction Batching](./guides/transaction-batching.md)
-- [Configuring Custom ARC Endpoints](./guides/custom-arc-endpoints.md)
 - [View all guides →](./guides/index.md)
 
 ### [📚 Reference](./reference/index.md)
