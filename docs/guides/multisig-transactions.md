@@ -6,12 +6,13 @@ Multi-signature (multisig) transactions require multiple signatures to spend fun
 
 1. [Multi-Signature Fundamentals](#multi-signature-fundamentals)
 2. [Basic 2-of-3 Implementation](#basic-2-of-3-implementation)
-3. [Funding and Spending](#funding-and-spending)
-4. [Advanced Patterns](#advanced-patterns)
-5. [Error Handling and Validation](#error-handling-and-validation)
-6. [Best Practices](#best-practices)
-7. [Testing](#testing)
-8. [Troubleshooting](#troubleshooting)
+3. [Funding the Multisig Address](#funding-the-multisig-address)
+4. [Spending from Multisig](#spending-from-multisig)
+5. [Advanced Multisig Patterns](#advanced-multisig-patterns)
+6. [Error Handling and Validation](#error-handling-and-validation)
+7. [Best Practices](#best-practices)
+8. [Testing Multisig Implementation](#testing-multisig-implementation)
+9. [Troubleshooting Common Issues](#troubleshooting-common-issues)
 
 ## Multi-Signature Fundamentals
 

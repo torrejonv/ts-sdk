@@ -9,11 +9,6 @@ This guide provides authoritative patterns and best practices for constructing, 
 3. [Efficient Transaction Construction](#efficient-transaction-construction)
 4. [Batch Processing with `WalletClient`](#batch-processing-with-walletclient)
 5. [Fee Calculation for Large Transactions](#fee-calculation-for-large-transactions)
-6. [Signing Optimization](#signing-optimization)
-7. [Broadcasting Strategies](#broadcasting-strategies)
-8. [Error Handling and Recovery](#error-handling-and-recovery)
-9. [Performance Monitoring](#performance-monitoring)
-10. [Complete Example](#complete-example)
 
 ## Understanding Large Transactions
 
@@ -440,8 +435,8 @@ To implement large transaction handling in your application:
 For additional context and complementary patterns, see:
 
 - [Transaction Batching](./transaction-batching.md) - Efficient multi-output transaction patterns
-- [Error Handling](./error-handling.md) - Comprehensive error management strategies
-- [Performance Optimization](./performance-optimization.md) - General SDK performance patterns
+- [Error Handling](../tutorials/error-handling.md) - Comprehensive error management strategies
+- [Performance Optimization](../performance.md) - General SDK performance patterns
 - [Advanced Transaction Signing](./advanced-transaction-signing.md) - Signing optimization for large transactions
 - [Transaction Monitoring](./transaction-monitoring.md) - Monitoring and alerting for transaction operations
 
