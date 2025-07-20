@@ -1,6 +1,7 @@
 # ECDH Key Exchange
 
 **Duration**: 75 minutes
+
 **Prerequisites**: Basic TypeScript knowledge, [Elliptic Curve Fundamentals](./elliptic-curve-fundamentals.md) tutorial completed
 
 ## Learning Goals
