@@ -78,6 +78,8 @@ nav:
       - UHRP Storage: tutorials/uhrp-storage.md
   - How-to Guides:
     - guides/index.md
+    - Token and Asset Management:
+      - Token Creation and Management: guides/token-creation-management.md
     - Transaction Management:
       - Advanced Transaction Signing: guides/advanced-transaction-signing.md
       - Direct Transaction Creation: guides/direct-transaction-creation.md
@@ -94,14 +96,19 @@ nav:
     - Network and Broadcasting:
       - Chain Tracking: guides/chain-tracking.md
       - Custom Broadcasters: guides/custom-broadcasters.md
+      - Overlay Networks and Topic Broadcasting: guides/overlay-networks-broadcasting.md
+    - Communication and Messaging:
+      - Message Box Integration: guides/message-box-integration.md
     - Authentication and Communication:
       - Authenticated API Communication: guides/authenticated-api-communication.md
       - HTTP Client Configuration: guides/http-client-configuration.md
+    - File and Data Management:
+      - StorageUploader Patterns: guides/storage-uploader-patterns.md
+      - File Upload/Download: guides/file-upload-download.md
     - Development and Integration:
       - Development Wallet Setup: guides/development-wallet-setup.md
       - React Integration: guides/react-integration.md
       - Identity Verification Systems: guides/identity-verification-systems.md
-      - File Upload/Download: guides/file-upload-download.md
   - Reference:
     - reference/index.md
     - Standards and Interfaces:
