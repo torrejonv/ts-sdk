@@ -551,7 +551,7 @@ const broadcastTx = async () => {
 
 ### For Advanced HTTP Scenarios
 
-- **[Error Handling Guide](error-handling.md)** - Comprehensive error handling patterns for HTTP operations
+- **[Error Handling Guide](../tutorials/error-handling.md)** - Comprehensive error handling patterns for HTTP operations
 - **[Chain Tracking](../concepts/chain-tracking.md)** - Understanding network interaction patterns
 - **[SDK Design Philosophy](../concepts/sdk-philosophy.md)** - Core principles behind SDK HTTP client design
 
@@ -566,5 +566,4 @@ const broadcastTx = async () => {
 ## Related Resources
 
 - [Axios Documentation](https://axios-http.com/docs/intro)
-- [ARC API Reference](../reference/arc.md)
 - [Transaction Broadcasting Guide](./transaction-monitoring.md)
