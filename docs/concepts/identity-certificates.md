@@ -297,7 +297,6 @@ Understanding these concepts helps developers and users participate in building 
 
 - [Decentralized Identity](./decentralized-identity.md) - Overall identity system architecture
 - [Digital Signatures](./signatures.md) - Cryptographic foundations of certificates
-- [Trust Model](./trust-model.md) - Security assumptions and trust relationships
 - [Key Management](./key-management.md) - Managing cryptographic keys for certificates
 
 ## Further Reading

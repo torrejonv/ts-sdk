@@ -6,7 +6,7 @@ Understanding Simplified Payment Verification and how it enables lightweight Bit
 
 SPV allows verification of Bitcoin transactions without downloading the entire blockchain:
 
-- **Lightweight**: Only requires block headers and merkle proofs
+- **Lightweight**: Only requires block headers and merkle paths
 - **Secure**: Cryptographically verifiable using merkle trees
 - **Efficient**: Scales to millions of transactions
 - **Practical**: Enables mobile and web applications
@@ -22,9 +22,9 @@ Download only block headers (80 bytes each) instead of full blocks:
 const header = await chainTracker.getBlockHeader(blockHash)
 ```
 
-### 2. Merkle Proofs
+### 2. Merkle Paths
 
-Verify transaction inclusion using merkle proofs:
+Verify transaction inclusion using merkle paths:
 
 ```typescript
 import { MerklePath } from '@bsv/sdk'
@@ -36,7 +36,7 @@ const isValid = proof.verify(txid, merkleRoot)
 
 ### 3. Transaction Verification
 
-Combine proofs with block headers for full verification:
+Combine merkle paths with block headers for full verification:
 
 ```typescript
 import { Transaction } from '@bsv/sdk'
@@ -45,7 +45,7 @@ import { Transaction } from '@bsv/sdk'
 const isValid = await Transaction.verify(
   transaction,
   chainTracker,
-  { merkleProof: proof }
+  { merklePath: proof }
 )
 ```
 
@@ -56,16 +56,16 @@ Bitcoin uses merkle trees to efficiently prove transaction inclusion:
 - **Binary Tree**: Each leaf is a transaction ID
 - **Hash Pairs**: Parent nodes are hashes of child pairs
 - **Root Hash**: Single hash representing all transactions
-- **Proof Path**: Minimal data needed to verify inclusion
+- **Merkle Path**: Minimal data needed to verify inclusion
 
 ## Security Model
 
 SPV provides strong security guarantees:
 
 - **Proof of Work**: Block headers contain proof of work
-- **Cryptographic Hashes**: Merkle proofs use SHA-256
+- **Cryptographic Hashes**: Merkle paths use SHA-256
 - **Chain Validation**: Verify header chain integrity
-- **Fraud Detection**: Invalid proofs are cryptographically detectable
+- **Fraud Detection**: Invalid paths are cryptographically detectable
 
 ## Trade-offs
 
@@ -98,7 +98,7 @@ const config = {
 
 // Verify transaction with SPV
 const result = await transaction.verify(chainTracker, {
-  merkleProof: proof,
+  merklePath: proof,
   blockHeader: header
 })
 ```
@@ -107,7 +107,7 @@ const result = await transaction.verify(chainTracker, {
 
 SPV works seamlessly with BEEF format:
 
-- **Efficient Encoding**: BEEF includes merkle proofs
+- **Efficient Encoding**: BEEF includes merkle paths
 - **Batch Verification**: Verify multiple transactions together
 - **Standardized Format**: Consistent across applications
 
@@ -115,4 +115,3 @@ SPV works seamlessly with BEEF format:
 
 - Learn about [BEEF Format](./beef.md) for efficient data exchange
 - Understand [Transaction Encoding](./transaction-encoding.md) formats
-- Explore [Trust Model](./trust-model.md) considerations

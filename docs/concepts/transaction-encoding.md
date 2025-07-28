@@ -79,7 +79,7 @@ Locking Script (variable)
 
 BEEF format adds:
 
-- **Merkle Proofs**: SPV verification data
+- **Merkle Paths**: Data structure for SPV verification
 - **Block Headers**: Chain validation information
 - **Metadata**: Additional transaction context
 - **Compression**: Efficient encoding for large datasets

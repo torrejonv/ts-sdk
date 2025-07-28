@@ -11,7 +11,7 @@
 - Apply secure key management practices
 - Use `WalletClient` for advanced key operations
 
-> **📚 Related Concepts**: Review [Key Management](../concepts/key-management.md), [Digital Signatures](../concepts/signatures.md), and [Trust Model](../concepts/trust-model.md) for essential background.
+> **📚 Related Concepts**: Review [Key Management](../concepts/key-management.md) and [Digital Signatures](../concepts/signatures.md) for essential background.
 
 ## Introduction
 

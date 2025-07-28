@@ -1,134 +1,237 @@
 # Chain Tracking
 
-How the BSV TypeScript SDK interacts with the Bitcoin network to retrieve transaction and blockchain data.
+Understanding how the BSV TypeScript SDK verifies blockchain integrity through merkle root validation.
 
-## Chain Tracker Concept
+## What is a Chain Tracker?
 
-A chain tracker provides access to Bitcoin blockchain data without running a full node:
+A Chain Tracker in the BSV SDK serves a specific and crucial purpose: **verifying that merkle roots belong to legitimate blocks at specific heights**. This is the foundation of Simplified Payment Verification (SPV).
+
+The Chain Tracker interface is intentionally minimal, providing only two essential functions:
 
 ```typescript
-import { WhatsOnChain } from '@bsv/sdk'
-
-// Create a chain tracker
-const chainTracker = new WhatsOnChain('mainnet')
-
-// Get transaction data
-const txData = await chainTracker.getTransaction('txid')
+interface ChainTracker {
+  // Verify a merkle root is valid for a specific block height
+  isValidRootForHeight(root: string, height: number): Promise<boolean>
+  
+  // Get the current blockchain height
+  currentHeight(): Promise<number>
+}
 ```
 
-## Key Functions
+## Why These Two Functions?
 
-### Transaction Lookup
+### Merkle Root Verification
 
-- Retrieve transaction details by ID
-- Get transaction status and confirmations
-- Access transaction inputs and outputs
+The merkle root is a cryptographic fingerprint of all transactions in a block. By verifying that a merkle root belongs to a specific block height, we can:
 
-### UTXO Queries
+- **Prove Transaction Inclusion**: Verify that a transaction exists in the blockchain without downloading full blocks
+- **Prevent Fraud**: Ensure merkle proofs point to legitimate blocks, not fabricated ones
+- **Enable SPV**: Allow lightweight clients to verify transactions trustlessly
 
-- Find unspent transaction outputs
-- Check UTXO availability and value
-- Retrieve UTXO locking scripts
+### Current Height
 
-### Block Information
+Knowing the current blockchain height allows applications to:
 
-- Get block headers and merkle proofs
-- Verify transaction inclusion in blocks
-- Access block timestamps and difficulty
+- **Assess Confirmation Depth**: Calculate how many blocks have been mined after a transaction
+- **Verify Recency**: Ensure proofs reference recent, not outdated, blocks
+- **Track Progress**: Monitor blockchain growth and synchronization status
 
-### Network Status
+## The SPV Connection
 
-- Check network connectivity
-- Monitor chain tip and height
-- Get fee rate recommendations
+Chain Trackers are the cornerstone of SPV (Simplified Payment Verification). When verifying a transaction:
 
-## SPV Integration
+1. **Transaction provides a Merkle path** linking it to a merkle root
+2. **Chain Tracker verifies the merkle root** belongs to a legitimate block
+3. **Height information confirms** the block's position in the chain
 
-Chain trackers enable SPV (Simplified Payment Verification):
+This creates a chain of trust from transaction to blockchain without downloading full blocks.
 
-- **Merkle Proofs**: Verify transaction inclusion without full blocks
-- **Header Chain**: Maintain block headers for proof verification
-- **Lightweight**: Minimal data requirements compared to full nodes
-
-## Multiple Providers
-
-The SDK supports multiple chain tracking services:
+## Implementation Example
 
 ```typescript
-// Primary and fallback providers
-const config = {
-  chainTracker: {
-    provider: 'WhatsOnChain',
-    network: 'mainnet',
-    fallbacks: ['GorillaPool', 'TAAL']
+import { WhatsOnChain, MerklePath } from '@bsv/sdk'
+
+// Create a chain tracker
+const chainTracker = new WhatsOnChain('main')
+
+// Verify a merkle proof
+async function verifyTransaction(txid: string, merklePath: MerklePath) {
+  // Extract the merkle root from the proof
+  const merkleRoot = merklePath.computeRoot(txid)
+  
+  // Verify this root exists at the claimed height
+  const isValid = await chainTracker.isValidRootForHeight(
+    merkleRoot,
+    merklePath.blockHeight
+  )
+  
+  if (isValid) {
+    // Transaction is provably in the blockchain
+    const currentHeight = await chainTracker.currentHeight()
+    const confirmations = currentHeight - merklePath.blockHeight + 1
+    console.log(`Transaction confirmed with ${confirmations} blocks`)
   }
 }
 ```
 
-## Benefits
+## Trust Model
 
-### Scalability
+Chain Trackers implement different trust models:
 
-- No need to store the entire blockchain
-- Fast startup and synchronization
-- Minimal storage requirements
+### Service-Based (WhatsOnChain)
 
-### Reliability
-
-- Multiple provider support
-- Automatic failover capabilities
-- Redundant data sources
-
-### Performance
-
-- Targeted data queries
-- Caching of frequently accessed data
-- Optimized for application needs
-
-## Common Patterns
-
-### Transaction Verification
+Trusts a specific service provider to accurately report merkle roots and heights:
 
 ```typescript
-// Verify a transaction exists
-const exists = await chainTracker.getTransaction(txid)
-if (exists) {
-  // Transaction is confirmed on-chain
+const tracker = new WhatsOnChain('main')
+// Trusts WhatsOnChain API for merkle root verification
+```
+
+### Headers-Based
+
+Maintains and verifies a chain of block headers locally:
+
+```typescript
+// Theoretical implementation that verifies headers
+class HeadersChainTracker implements ChainTracker {
+  private headers: Map<number, BlockHeader>
+  
+  async isValidRootForHeight(root: string, height: number) {
+    const header = this.headers.get(height)
+    return header?.merkleRoot === root
+  }
 }
 ```
 
-### UTXO Validation
+### Consensus-Based
+
+Could query multiple sources and require agreement:
 
 ```typescript
-// Check if UTXO is still unspent
-const utxo = await chainTracker.getUTXO(txid, outputIndex)
-if (utxo) {
-  // UTXO is available for spending
+// Theoretical implementation using multiple sources
+class ConsensusChainTracker implements ChainTracker {
+  async isValidRootForHeight(root: string, height: number) {
+    const results = await Promise.all([
+      tracker1.isValidRootForHeight(root, height),
+      tracker2.isValidRootForHeight(root, height),
+      tracker3.isValidRootForHeight(root, height)
+    ])
+    // Require majority agreement
+    return results.filter(r => r).length >= 2
+  }
 }
 ```
 
-## Error Handling
+## Common Misconceptions
 
-Chain tracker operations can fail due to:
+### What Chain Trackers DON'T Do
 
-- Network connectivity issues
-- Service provider downtime
-- Invalid transaction IDs
-- Rate limiting
+Chain Trackers in the BSV SDK do **not**:
 
-The SDK provides automatic retry and failover mechanisms.
+- Retrieve transaction data
+- Query UTXOs (unspent transaction outputs)
+- Submit transactions to the network
+- Provide fee estimates
+- Store blockchain data
 
-## Configuration
+These functions may be provided by other services or implementations, but they are **not** part of the Chain Tracker interface.
 
-Chain trackers can be configured for:
+### Separation of Concerns
 
-- **Network**: Mainnet, testnet, or regtest
-- **Endpoints**: Custom service URLs
-- **Timeouts**: Request timeout settings
-- **Retry Logic**: Failure handling behavior
+The minimal Chain Tracker interface follows the principle of separation of concerns:
 
-## Next Steps
+- **Chain Tracker**: Verifies merkle roots and tracks height
+- **Transaction Service**: Retrieves and submits transactions
+- **UTXO Service**: Manages unspent outputs
+- **Fee Service**: Estimates appropriate fees
 
-- Understand [SPV Verification](./spv-verification.md) concepts
-- Learn about [BEEF Format](./beef.md) for efficient data exchange
-- Explore [Trust Model](./trust-model.md) considerations
+This separation allows for flexible, composable architectures.
+
+## Security Implications
+
+### Critical for SPV Security
+
+Merkle root verification is the linchpin of SPV security. Without it:
+
+- Anyone could create fake merkle proofs
+- Transactions could be falsely claimed as confirmed
+- The trustless nature of SPV would be compromised
+
+### Trust Requirements
+
+Using a Chain Tracker requires trusting that it:
+
+1. **Accurately reports merkle roots** from the legitimate chain
+2. **Follows the chain with most proof-of-work**
+3. **Provides current height** information reliably
+
+Different implementations offer different trust trade-offs.
+
+## Best Practices
+
+### Use Multiple Sources
+
+For critical applications, consider verifying against multiple chain trackers:
+
+```typescript
+async function verifyWithMultipleSources(root: string, height: number) {
+  const trackers = [
+    new WhatsOnChain('main'),
+    // Add other implementations
+  ]
+  
+  const results = await Promise.all(
+    trackers.map(t => t.isValidRootForHeight(root, height))
+  )
+  
+  // All must agree
+  return results.every(r => r === true)
+}
+```
+
+### Handle Failures Gracefully
+
+Chain tracker queries can fail due to network issues:
+
+```typescript
+try {
+  const isValid = await chainTracker.isValidRootForHeight(root, height)
+} catch (error) {
+  // Handle network errors, retry logic, fallback to other trackers
+  console.error('Chain tracker unavailable:', error)
+}
+```
+
+### Cache Results
+
+Merkle roots for historical blocks don't change:
+
+```typescript
+class CachedChainTracker implements ChainTracker {
+  private cache = new Map<string, boolean>()
+  
+  async isValidRootForHeight(root: string, height: number) {
+    const key = `${height}:${root}`
+    
+    if (this.cache.has(key)) {
+      return this.cache.get(key)!
+    }
+    
+    const result = await this.baseTracker.isValidRootForHeight(root, height)
+    this.cache.set(key, result)
+    return result
+  }
+}
+```
+
+## Conclusion
+
+Chain Trackers provide the essential link between merkle proofs and the blockchain. By verifying merkle roots and tracking blockchain height, they enable SPV - allowing lightweight clients to verify transactions without downloading the entire blockchain.
+
+The intentionally minimal interface (just two methods) reflects the focused purpose: enabling trustless transaction verification through merkle root validation. This is the foundation upon which all SPV-based applications are built.
+
+## Related Concepts
+
+- [SPV and Merkle Proofs](./spv.md) - How merkle proof verification enables lightweight validation
+- [Verification](./verification.md) - The broader concept of trustless validation
+- [Transaction Structure](./transactions.md) - How transactions connect to merkle trees

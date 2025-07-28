@@ -7,7 +7,7 @@ Bitcoin Extras Extension Format (BEEF) - an efficient way to package Bitcoin tra
 BEEF is a standardized format that combines:
 
 - **Transaction Data**: The actual Bitcoin transaction
-- **Merkle Proofs**: SPV verification data
+- **Merkle Paths**: Data structures for SPV verification
 - **Block Headers**: Chain validation information
 - **Metadata**: Additional context and references
 
@@ -22,7 +22,7 @@ const tx = Transaction.fromHexBEEF(beefHex)
 // Serialize transaction to BEEF
 const beefData = transaction.toBEEF()
 
-// Verify transaction using included proofs
+// Verify transaction using included merkle paths
 const isValid = await tx.verify(chainTracker)
 ```
 
@@ -36,7 +36,7 @@ const isValid = await tx.verify(chainTracker)
 
 ### SPV Integration
 
-- **Merkle Proofs**: Verify transaction inclusion
+- **Merkle Paths**: Data for verifying transaction inclusion
 - **Block Headers**: Validate proof of work
 - **Chain Context**: Understand transaction position
 
@@ -51,7 +51,7 @@ const isValid = await tx.verify(chainTracker)
 ### Transaction Broadcasting
 
 ```typescript
-// Broadcast transaction with proof
+// Broadcast transaction with merkle path
 const beefTx = Transaction.fromHexBEEF(beefData)
 await beefTx.broadcast(arcConfig)
 ```
@@ -60,7 +60,7 @@ await beefTx.broadcast(arcConfig)
 
 - Share transactions between applications
 - Provide verification data to SPV clients
-- Archive transactions with proofs
+- Archive transactions with merkle paths
 
 ### Wallet Integration
 
@@ -74,14 +74,14 @@ The format includes:
 
 1. **Version**: BEEF format version
 2. **Transactions**: One or more Bitcoin transactions
-3. **Proofs**: Merkle proofs for each transaction
+3. **Merkle Paths**: Merkle paths for each transaction
 4. **Headers**: Relevant block headers
 5. **Metadata**: Additional application data
 
 ## Best Practices
 
 - Use BEEF for transactions that need verification
-- Include minimal necessary proof data
+- Include minimal necessary merkle path data
 - Validate BEEF structure before processing
 - Cache parsed BEEF data for performance
 

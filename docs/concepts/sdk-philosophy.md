@@ -16,7 +16,7 @@ The SDK is built without external dependencies to:
 The SDK prioritizes Simplified Payment Verification:
 
 - **Lightweight**: No need to download the full blockchain
-- **Efficient**: Verify transactions using merkle proofs
+- **Efficient**: Verify transactions using merkle paths
 - **Scalable**: Works with millions of transactions
 - **Secure**: Cryptographically verifiable without full nodes
 

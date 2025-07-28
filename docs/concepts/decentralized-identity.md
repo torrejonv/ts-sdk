@@ -211,7 +211,6 @@ By understanding these concepts, developers can build applications that respect 
 
 - [Identity Certificates](./identity-certificates.md) - How cryptographic certificates enable trust
 - [Digital Signatures](./signatures.md) - Cryptographic foundations of identity verification
-- [Trust Model](./trust-model.md) - Security assumptions in decentralized systems
 - [Key Management](./key-management.md) - Managing cryptographic keys securely
 
 ## Further Reading

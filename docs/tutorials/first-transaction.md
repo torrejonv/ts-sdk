@@ -263,10 +263,92 @@ Congratulations! You've successfully created your first BSV transactions. Here's
 - `OP_NOP`: Create simple tokens that can be spent later  
 - `OP_TRUE`: Unlock scripts that always validate (for simple spending)
 
+## Quick Reference: Common Patterns
+
+Once you're comfortable with the basics above, here are some ultra-quick patterns you can use:
+
+### Send Money
+
+```typescript
+const wallet = new WalletClient('auto', 'localhost')
+const payment = await wallet.createAction({
+  description: 'send payment',
+  outputs: [{
+    satoshis: 50000, // 0.0005 BSV
+    lockingScript: recipientScript
+  }]
+})
+```
+
+### Store a Message
+
+```typescript
+const wallet = new WalletClient('auto', 'localhost')
+const message = await wallet.createAction({
+  description: 'store message',
+  outputs: [{
+    satoshis: 1,
+    lockingScript: Script.fromASM(`OP_RETURN ${Buffer.from('Hello BSV!').toString('hex')}`).toHex()
+  }]
+})
+```
+
+### Batch Create Tokens
+
+```typescript
+const wallet = new WalletClient('auto', 'localhost')
+const batch = await wallet.createAction({
+  description: 'batch create tokens',
+  outputs: Array.from({ length: 10 }, (_, i) => ({
+    satoshis: 1,
+    lockingScript: Script.fromASM('OP_NOP').toHex(),
+    basket: 'batch_tokens',
+    outputDescription: `token ${i + 1}`
+  }))
+})
+```
+
+### Check Balance
+
+```typescript
+const wallet = new WalletClient('auto', 'localhost')
+const outputs = await wallet.listOutputs()
+const totalSatoshis = outputs.outputs.reduce((sum, output) => sum + output.satoshis, 0)
+console.log(`Balance: ${totalSatoshis} satoshis`)
+```
+
+### Basic Error Handling
+
+```typescript
+async function safeTransaction() {
+  try {
+    const wallet = new WalletClient('auto', 'localhost')
+    const result = await wallet.createAction({
+      description: 'safe transaction',
+      outputs: [{
+        satoshis: 1000,
+        lockingScript: recipientScript
+      }]
+    })
+    return result
+  } catch (error) {
+    if (error.message.includes('insufficient funds')) {
+      console.error('Not enough balance')
+    } else if (error.message.includes('network')) {
+      console.error('Network connection issue')
+    } else {
+      console.error('Transaction failed:', error.message)
+    }
+    throw error
+  }
+}
+```
+
 ## Next Steps
 
 - Learn about [Key Management and Cryptography](./key-management.md)
 - Prefer lower-level control? Check out [First Transaction (Low-level API)](./first-transaction-low-level.md)
+- Explore more patterns in [Token Creation and Management](../guides/token-creation-management.md)
 
 ## Additional Resources
 

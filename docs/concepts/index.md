@@ -22,7 +22,7 @@ Understanding how to verify Bitcoin transactions using the SDK.
 
 ### [SPV Verification](./spv-verification.md)
 
-Simplified Payment Verification and merkle proof concepts for lightweight clients.
+Simplified Payment Verification and merkle path concepts for lightweight clients.
 
 ### [Transaction Fees](./fees.md)
 
@@ -67,10 +67,6 @@ How cryptographic certificates work for identity claims and verification.
 ### [Key Management](./key-management.md)
 
 How private keys, public keys, and cryptographic operations work in the SDK.
-
-### [Trust Model](./trust-model.md)
-
-Understanding the security assumptions and trust relationships in SDK applications.
 
 ---
 

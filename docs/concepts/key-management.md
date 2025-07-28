@@ -181,5 +181,4 @@ For development and testing:
 ## Next Steps
 
 - Understand [Digital Signatures](./signatures.md) in detail
-- Learn about [Trust Model](./trust-model.md) considerations
 - Explore [Wallet Integration](./wallet-integration.md) patterns

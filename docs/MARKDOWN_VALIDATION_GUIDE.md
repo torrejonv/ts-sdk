@@ -1,4 +1,4 @@
-# Markdown Validation Guide for Teranode Documentation
+# Markdown Validation Guide for ts-sdk Documentation
 
 This guide provides comprehensive solutions to prevent and catch markdown formatting issues that cause problems in Material MkDocs rendering.
 

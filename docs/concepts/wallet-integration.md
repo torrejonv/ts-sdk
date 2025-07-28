@@ -98,4 +98,3 @@ Common wallet integration scenarios:
 
 - Learn about [Chain Tracking](./chain-tracking.md) for network data
 - Understand [Key Management](./key-management.md) concepts
-- Explore [Trust Model](./trust-model.md) considerations
