@@ -23,7 +23,8 @@ import {
   PubKeyHex,
   AuthenticatedResult,
   GetNetworkResult,
-  GetVersionResult
+  GetVersionResult,
+  CachedKeyDeriver
 } from '../../../wallet/index.js'
 
 // Test Mock wallet which extends ProtoWallet but still implements Wallet interface
@@ -41,7 +42,7 @@ export class CompletedProtoWallet
       typeof rootKeyOrKeyDeriver === 'string' ||
       rootKeyOrKeyDeriver instanceof PrivateKey
     ) {
-      this.keyDeriver = new KeyDeriver(rootKeyOrKeyDeriver)
+      this.keyDeriver = new CachedKeyDeriver(rootKeyOrKeyDeriver)
     } else {
       throw new Error('Invalid key deriver provided')
     }

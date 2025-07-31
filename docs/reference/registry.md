@@ -41,14 +41,12 @@ See also: [PubKeyHex](./wallet.md#type-pubkeyhex)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: BasketQuery
 
 When searching for basket definitions, we can filter by:
-
-- basketID
-- registryOperators
-- name
+ - basketID
+ - registryOperators
+ - name
 
 ```ts
 export interface BasketQuery {
@@ -61,7 +59,6 @@ export interface BasketQuery {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: CertificateDefinitionData
 
 Registry data for a Certificate-style record.
@@ -84,7 +81,6 @@ See also: [CertificateFieldDescriptor](./registry.md#interface-certificatefieldd
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: CertificateFieldDescriptor
 
 Describes a re-usable structure for certificate fields (used by CertMap).
@@ -101,14 +97,12 @@ export interface CertificateFieldDescriptor {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: CertificateQuery
 
 When searching for certificate definitions, we can filter by:
-
-- type
-- name
-- registryOperators
+ - type
+ - name
+ - registryOperators
 
 ```ts
 export interface CertificateQuery {
@@ -121,7 +115,6 @@ export interface CertificateQuery {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: ProtocolDefinitionData
 
 Registry data for a Protocol-style record.
@@ -143,14 +136,12 @@ See also: [PubKeyHex](./wallet.md#type-pubkeyhex), [WalletProtocol](./wallet.md#
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: ProtocolQuery
 
 When searching for protocol definitions, we can filter by:
-
-- name
-- registryOperators
-- protocolID
+ - name
+ - registryOperators
+ - protocolID
 
 ```ts
 export interface ProtocolQuery {
@@ -165,7 +156,6 @@ See also: [WalletProtocol](./wallet.md#type-walletprotocol)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: RegistryQueryMapping
 
 A lookup-service mapping of queries by each definition type.
@@ -183,7 +173,6 @@ See also: [BasketQuery](./registry.md#interface-basketquery), [CertificateQuery]
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: TokenData
 
 Common info for the on-chain token/UTXO that points to a registry entry.
@@ -203,19 +192,16 @@ See also: [BEEF](./wallet.md#type-beef)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Classes
 
 ### Class: RegistryClient
 
 RegistryClient manages on-chain registry definitions for three types:
-
 - basket (basket-based items)
 - protocol (protocol-based items)
 - certificate (certificate-based items)
 
 It provides methods to:
-
 - Register new definitions using pushdrop-based UTXOs.
 - Resolve existing definitions using a lookup service.
 - List registry entries associated with the operator's wallet.
@@ -245,7 +231,6 @@ Returns parsed registry records including transaction details such as txid, outp
 ```ts
 async listOwnRegistryEntries(definitionType: DefinitionType): Promise<RegistryRecord[]> 
 ```
-
 See also: [DefinitionType](./registry.md#type-definitiontype), [RegistryRecord](./registry.md#type-registryrecord)
 
 Returns
@@ -254,8 +239,8 @@ A promise that resolves to an array of RegistryRecord objects.
 
 Argument Details
 
-- **definitionType**
-    - The type of registry definition to list ('basket', 'protocol', or 'certificate').
++ **definitionType**
+  + The type of registry definition to list ('basket', 'protocol', or 'certificate').
 
 #### Method registerDefinition
 
@@ -268,7 +253,6 @@ to establish canonical references for basket IDs, protocol specs, or certificate
 ```ts
 async registerDefinition(data: DefinitionData): Promise<BroadcastResponse | BroadcastFailure> 
 ```
-
 See also: [BroadcastFailure](./transaction.md#interface-broadcastfailure), [BroadcastResponse](./transaction.md#interface-broadcastresponse), [DefinitionData](./registry.md#type-definitiondata)
 
 Returns
@@ -277,15 +261,14 @@ A promise with the broadcast result or failure.
 
 Argument Details
 
-- **data**
-    - Structured information about a 'basket', 'protocol', or 'certificate'.
++ **data**
+  + Structured information about a 'basket', 'protocol', or 'certificate'.
 
 #### Method resolve
 
 Resolves registrant tokens of a particular type using a lookup service.
 
 The query object shape depends on the registry type:
-
 - For "basket", the query is of type BasketMapQuery:
   { basketID?: string; name?: string; registryOperators?: string[]; }
 - For "protocol", the query is of type ProtoMapQuery:
@@ -296,7 +279,6 @@ The query object shape depends on the registry type:
 ```ts
 async resolve<T extends DefinitionType>(definitionType: T, query: RegistryQueryMapping[T]): Promise<DefinitionData[]> 
 ```
-
 See also: [DefinitionData](./registry.md#type-definitiondata), [DefinitionType](./registry.md#type-definitiontype), [RegistryQueryMapping](./registry.md#interface-registryquerymapping)
 
 Returns
@@ -305,10 +287,10 @@ A promise that resolves to an array of matching registry records.
 
 Argument Details
 
-- **definitionType**
-    - The registry type, which can be 'basket', 'protocol', or 'certificate'.
-- **query**
-    - The query object used to filter registry records, whose shape is determined by the registry type.
++ **definitionType**
+  + The registry type, which can be 'basket', 'protocol', or 'certificate'.
++ **query**
+  + The query object used to filter registry records, whose shape is determined by the registry type.
 
 #### Method revokeOwnRegistryEntry
 
@@ -317,7 +299,6 @@ Revokes a registry record by spending its associated UTXO.
 ```ts
 async revokeOwnRegistryEntry(registryRecord: RegistryRecord): Promise<BroadcastResponse | BroadcastFailure> 
 ```
-
 See also: [BroadcastFailure](./transaction.md#interface-broadcastfailure), [BroadcastResponse](./transaction.md#interface-broadcastresponse), [RegistryRecord](./registry.md#type-registryrecord)
 
 Returns
@@ -326,13 +307,12 @@ Broadcast success/failure.
 
 Argument Details
 
-- **registryRecord**
-    - Must have valid txid, outputIndex, and lockingScript.
++ **registryRecord**
+  + Must have valid txid, outputIndex, and lockingScript.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Functions
 
 ### Function: deserializeWalletProtocol
@@ -346,7 +326,6 @@ See also: [WalletProtocol](./wallet.md#type-walletprotocol)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Types
 
 | |
@@ -372,7 +351,6 @@ See also: [BasketDefinitionData](./registry.md#interface-basketdefinitiondata), 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: DefinitionType
 
 We unify the registry “type” to these three strings everywhere:
@@ -385,7 +363,6 @@ export type DefinitionType = "basket" | "protocol" | "certificate"
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: RegistryRecord
 
 A registry record is a combination of the typed definition data
@@ -400,7 +377,7 @@ See also: [DefinitionData](./registry.md#type-definitiondata), [TokenData](./reg
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Enums
 
 ## Variables
+

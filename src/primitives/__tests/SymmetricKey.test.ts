@@ -1,4 +1,5 @@
 import SymmetricKey from '../../primitives/SymmetricKey'
+import PrivateKey from '../../primitives/PrivateKey'
 import vectors from './SymmetricKey.vectors'
 
 const KEYS: SymmetricKey[] = [
@@ -56,6 +57,50 @@ describe('SymmetricKey', () => {
         'hex'
       )
       expect(result).toEqual(Buffer.from(vector.plaintext).toString('hex'))
+    })
+  })
+
+  describe('31-byte and 32-byte key encryption', () => {
+    it('encrypts and decrypts with 31-byte key', () => {
+      // Use a private key that generates a 31-byte X coordinate
+      const privKey = PrivateKey.fromWif('L4B2postXdaP7TiUrUBYs53Fqzheu7WhSoQVPuY8qBdoBeEwbmZx')
+      const pubKey = privKey.toPublicKey()
+
+      expect(pubKey.x).toBeTruthy()
+      const keyArray = pubKey.x!.toArray()
+
+      // Verify this is indeed a 31-byte key
+      expect(keyArray.length).toBe(31)
+
+      const symKey = new SymmetricKey(keyArray)
+      const plaintext = 'test message'
+
+      // Test encryption and decryption
+      const ciphertext = symKey.encrypt(plaintext)
+      const decrypted = symKey.decrypt(ciphertext, 'utf8')
+
+      expect(decrypted).toBe(plaintext)
+    })
+
+    it('encrypts and decrypts with 32-byte key', () => {
+      // Use a private key that generates a 32-byte X coordinate
+      const privKey = PrivateKey.fromWif('KyLGEhYicSoGchHKmVC2fUx2MRrHzWqvwBFLLT4DZB93Nv5DxVR9')
+      const pubKey = privKey.toPublicKey()
+
+      expect(pubKey.x).toBeTruthy()
+      const keyArray = pubKey.x!.toArray()
+
+      // Verify this is indeed a 32-byte key
+      expect(keyArray.length).toBe(32)
+
+      const symKey = new SymmetricKey(keyArray)
+      const plaintext = 'test message'
+
+      // Test encryption and decryption
+      const ciphertext = symKey.encrypt(plaintext)
+      const decrypted = symKey.decrypt(ciphertext, 'utf8')
+
+      expect(decrypted).toBe(plaintext)
     })
   })
 })

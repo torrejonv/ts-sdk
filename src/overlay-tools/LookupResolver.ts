@@ -33,6 +33,11 @@ export type LookupAnswer =
 
 /** Default SLAP trackers */
 export const DEFAULT_SLAP_TRACKERS: string[] = [
+  // BSVA clusters
+  'https://overlay-us-1.bsvb.tech',
+  'https://overlay-eu-1.bsvb.tech',
+  'https://overlay-ap-1.bsvb.tech',
+
   // Babbage primary overlay service
   'https://users.bapp.dev'
 

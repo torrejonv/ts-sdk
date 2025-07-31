@@ -10,7 +10,11 @@ export default {
   testPathIgnorePatterns: ['dist/'],
   transform: {
       '^.+\\.test.ts?$': ['ts-jest', { 
-        useESM: true
+        useESM: true,
+        tsconfig: {
+          // Explicitly enable ES2020 to support BigInt literals
+          target: "ES2020" 
+        }
       }],
   },
 

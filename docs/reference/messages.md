@@ -52,7 +52,6 @@ See also: [PrivateKey](./primitives.md#class-privatekey), [PublicKey](./primitiv
 Links: [API](#api), [Classes](#classes), [Functions](#functions), [Variables](#variables)
 
 ---
-
 ### Variable: encrypt
 
 ```ts
@@ -82,7 +81,6 @@ See also: [PrivateKey](./primitives.md#class-privatekey), [PublicKey](./primitiv
 Links: [API](#api), [Classes](#classes), [Functions](#functions), [Variables](#variables)
 
 ---
-
 ### Variable: sign
 
 ```ts
@@ -116,7 +114,6 @@ See also: [Curve](./primitives.md#class-curve), [PrivateKey](./primitives.md#cla
 Links: [API](#api), [Classes](#classes), [Functions](#functions), [Variables](#variables)
 
 ---
-
 ### Variable: verify
 
 ```ts

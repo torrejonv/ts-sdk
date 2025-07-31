@@ -1,5 +1,6 @@
 import ProtoWallet from '../../wallet/ProtoWallet'
-import { Utils, PrivateKey, Hash } from '../../primitives/index'
+import { Utils, PrivateKey, Hash, Random } from '../../primitives/index'
+import { createNonce, verifyNonce } from '../../auth/utils'
 
 const sampleData = [3, 1, 4, 1, 5, 9]
 
@@ -424,6 +425,50 @@ describe('ProtoWallet', () => {
     })
     expect(plaintext).toEqual(explicitSelfPlaintext)
     expect(plaintext).toEqual(sampleData)
+  })
+  it('Efficiently executes hot code paths', async () => {
+    const alicePriv = PrivateKey.fromRandom()
+    const alice = new ProtoWallet(alicePriv)
+
+    const bobPriv = PrivateKey.fromRandom()
+    const bob = new ProtoWallet(bobPriv)
+
+    const ad1 = Random(200)
+    const bd1 = Random(100)
+
+    const an1 = await createNonce((alice as any), bobPriv.toPublicKey().toString())
+    const { signature: as1 } = await alice.createSignature({
+      data: ad1,
+      protocolID: [0, 'tests'],
+      keyID: '1',
+      counterparty: bobPriv.toPublicKey().toString()
+    })
+
+    await verifyNonce(an1, (bob as any), alicePriv.toPublicKey().toString())
+    await bob.verifySignature({
+      signature: as1,
+      data: ad1,
+      protocolID: [0, 'tests'],
+      keyID: '1',
+      counterparty: alicePriv.toPublicKey().toString()
+    })
+
+    const bn1 = await createNonce((bob as any), alicePriv.toPublicKey().toString())
+    const { signature: bs1 } = await bob.createSignature({
+      data: bd1,
+      protocolID: [0, 'tests'],
+      keyID: '1',
+      counterparty: alicePriv.toPublicKey().toString()
+    })
+
+    await verifyNonce(bn1, (alice as any), bobPriv.toPublicKey().toString())
+    await alice.verifySignature({
+      signature: bs1,
+      data: bd1,
+      protocolID: [0, 'tests'],
+      keyID: '1',
+      counterparty: bobPriv.toPublicKey().toString()
+    })
   })
   describe('ProtoWallet Key Linkage Revelation', () => {
     it('Validates the revealCounterpartyKeyLinkage function', async () => {

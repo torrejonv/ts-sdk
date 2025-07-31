@@ -31,19 +31,18 @@ Creates an instance of the localKVStore.
 ```ts
 constructor(wallet: WalletInterface = new WalletClient(), context = "kvstore default", encrypt = true, originator?: string, acceptDelayedBroadcast = false) 
 ```
-
 See also: [WalletClient](./wallet.md#class-walletclient), [WalletInterface](./wallet.md#interface-walletinterface), [encrypt](./messages.md#variable-encrypt)
 
 Argument Details
 
-- **wallet**
-    - The wallet interface to use. Defaults to a new WalletClient instance.
-- **context**
-    - The context (basket) for namespacing keys. Defaults to 'kvstore default'.
-- **encrypt**
-    - Whether to encrypt values. Defaults to true.
-- **originator**
-    - — An originator to use with PushDrop and the wallet, if provided.
++ **wallet**
+  + The wallet interface to use. Defaults to a new WalletClient instance.
++ **context**
+  + The context (basket) for namespacing keys. Defaults to 'kvstore default'.
++ **encrypt**
+  + Whether to encrypt values. Defaults to true.
++ **originator**
+  + — An originator to use with PushDrop and the wallet, if provided.
 
 Throws
 
@@ -64,10 +63,10 @@ the defaultValue if the key is not found, or undefined if no defaultValue is pro
 
 Argument Details
 
-- **key**
-    - The key to retrieve the value for.
-- **defaultValue**
-    - The value to return if the key is not found.
++ **key**
+  + The key to retrieve the value for.
++ **defaultValue**
+  + The value to return if the key is not found.
 
 Throws
 
@@ -93,8 +92,8 @@ A promise that resolves to the txids of the removal transactions if successful.
 
 Argument Details
 
-- **key**
-    - The key to remove.
++ **key**
+  + The key to remove.
 
 #### Method set
 
@@ -111,7 +110,6 @@ to the same key from missing earlier changes.
 ```ts
 async set(key: string, value: string): Promise<OutpointString> 
 ```
-
 See also: [OutpointString](./wallet.md#type-outpointstring)
 
 Returns
@@ -120,15 +118,14 @@ A promise that resolves to the outpoint string (txid.vout) of the new or updated
 
 Argument Details
 
-- **key**
-    - The key to set or update.
-- **value**
-    - The value to associate with the key.
++ **key**
+  + The key to set or update.
++ **value**
+  + The value to associate with the key.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Functions
 
 ## Types
@@ -136,3 +133,4 @@ Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](
 ## Enums
 
 ## Variables
+

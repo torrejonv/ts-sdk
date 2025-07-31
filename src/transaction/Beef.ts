@@ -21,18 +21,18 @@ export enum TX_DATA_FORMAT {
 
 /*
  * BEEF standard: BRC-62: Background Evaluation Extended Format (BEEF) Transactions
- * https://github.com/bitcoin-sv/BRCs/blob/master/transactions/0062.md
+ * https://github.com/bsv-blockchain/BRCs/blob/master/transactions/0062.md
  *
  * BUMP standard: BRC-74: BSV Unified Merkle Path (BUMP) Format
- * https://github.com/bitcoin-sv/BRCs/blob/master/transactions/0074.md
+ * https://github.com/bsv-blockchain/BRCs/blob/master/transactions/0074.md
  *
  * BRC-95: Atomic BEEF Transactions
- * https://github.com/bitcoin-sv/BRCs/blob/master/transactions/0095.md
+ * https://github.com/bsv-blockchain/BRCs/blob/master/transactions/0095.md
  *
  * The Atomic BEEF format is supported by the binary deserialization static method `fromBinary`.
  *
  * BRC-96: BEEF V2, Txid Only Extension
- * https://github.com/bitcoin-sv/BRCs/blob/master/transactions/0096.md
+ * https://github.com/bsv-blockchain/BRCs/blob/master/transactions/0096.md
  *
  * A valid serialized BEEF is the cornerstone of Simplified Payment Validation (SPV)
  * where they are exchanged between two non-trusting parties to establish the

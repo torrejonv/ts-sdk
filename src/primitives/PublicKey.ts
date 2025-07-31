@@ -202,10 +202,30 @@ export default class PublicKey extends Point {
    * Derives a child key with BRC-42.
    * @param privateKey The private key of the other party
    * @param invoiceNumber The invoice number used to derive the child key
+   * @param cacheSharedSecret Optional function to cache shared secrets
+   * @param retrieveCachedSharedSecret Optional function to retrieve shared secrets from the cache
    * @returns The derived child key.
    */
-  deriveChild (privateKey: PrivateKey, invoiceNumber: string): PublicKey {
-    const sharedSecret = this.deriveSharedSecret(privateKey)
+  deriveChild (
+    privateKey: PrivateKey,
+    invoiceNumber: string,
+    cacheSharedSecret?: ((priv: PrivateKey, pub: Point, point: Point) => void),
+    retrieveCachedSharedSecret?: ((priv: PrivateKey, pub: Point) => (Point | undefined))
+  ): PublicKey {
+    let sharedSecret: Point
+    if (typeof retrieveCachedSharedSecret === 'function') {
+      const retrieved = retrieveCachedSharedSecret(privateKey, this)
+      if (typeof retrieved !== 'undefined') {
+        sharedSecret = retrieved
+      } else {
+        sharedSecret = this.deriveSharedSecret(privateKey)
+        if (typeof cacheSharedSecret === 'function') {
+          cacheSharedSecret(privateKey, this, sharedSecret)
+        }
+      }
+    } else {
+      sharedSecret = this.deriveSharedSecret(privateKey)
+    }
     const invoiceNumberBin = toArray(invoiceNumber, 'utf8')
     const hmac = sha256hmac(sharedSecret.encode(true), invoiceNumberBin)
     const curve = new Curve()

@@ -38,7 +38,6 @@ See also: [RequestedCertificateSet](./auth.md#interface-requestedcertificateset)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: PeerSession
 
 ```ts
@@ -54,7 +53,6 @@ export interface PeerSession {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: RequestedCertificateSet
 
 ```ts
@@ -69,7 +67,6 @@ See also: [RequestedCertificateTypeIDAndFieldList](./auth.md#interface-requested
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: RequestedCertificateTypeIDAndFieldList
 
 ```ts
@@ -81,7 +78,6 @@ export interface RequestedCertificateTypeIDAndFieldList {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: Transport
 
 ```ts
@@ -96,7 +92,6 @@ See also: [AuthMessage](./auth.md#interface-authmessage)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Classes
 
 | |
@@ -142,15 +137,14 @@ Constructs a new AuthFetch instance.
 ```ts
 constructor(wallet: WalletInterface, requestedCertificates?: RequestedCertificateSet, sessionManager?: SessionManager) 
 ```
-
 See also: [RequestedCertificateSet](./auth.md#interface-requestedcertificateset), [SessionManager](./auth.md#class-sessionmanager), [WalletInterface](./wallet.md#interface-walletinterface)
 
 Argument Details
 
-- **wallet**
-    - The wallet instance for signing and authentication.
-- **requestedCertificates**
-    - Optional set of certificates to request from peers.
++ **wallet**
+  + The wallet instance for signing and authentication.
++ **requestedCertificates**
+  + Optional set of certificates to request from peers.
 
 #### Method consumeReceivedCertificates
 
@@ -159,7 +153,6 @@ Return any certificates we've collected thus far, then clear them out.
 ```ts
 public consumeReceivedCertificates(): VerifiableCertificate[] 
 ```
-
 See also: [VerifiableCertificate](./auth.md#class-verifiablecertificate)
 
 #### Method fetch
@@ -180,10 +173,10 @@ A promise that resolves with the server's response, structured as a Response-lik
 
 Argument Details
 
-- **url**
-    - The URL to send the request to.
-- **config**
-    - Configuration options for the request, including method, headers, and body.
++ **url**
+  + The URL to send the request to.
++ **config**
+  + Configuration options for the request, including method, headers, and body.
 
 Throws
 
@@ -196,13 +189,11 @@ Request Certificates from a Peer
 ```ts
 async sendCertificateRequest(baseUrl: string, certificatesToRequest: RequestedCertificateSet): Promise<VerifiableCertificate[]> 
 ```
-
 See also: [RequestedCertificateSet](./auth.md#interface-requestedcertificateset), [VerifiableCertificate](./auth.md#class-verifiablecertificate)
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: Certificate
 
 Represents an Identity Certificate as per the Wallet interface specifications.
@@ -239,25 +230,24 @@ Constructs a new Certificate.
 ```ts
 constructor(type: Base64String, serialNumber: Base64String, subject: PubKeyHex, certifier: PubKeyHex, revocationOutpoint: OutpointString, fields: Record<CertificateFieldNameUnder50Bytes, string>, signature?: HexString) 
 ```
-
 See also: [Base64String](./wallet.md#type-base64string), [CertificateFieldNameUnder50Bytes](./wallet.md#type-certificatefieldnameunder50bytes), [HexString](./wallet.md#type-hexstring), [OutpointString](./wallet.md#type-outpointstring), [PubKeyHex](./wallet.md#type-pubkeyhex)
 
 Argument Details
 
-- **type**
-    - Type identifier for the certificate, base64 encoded string, 32 bytes.
-- **serialNumber**
-    - Unique serial number of the certificate, base64 encoded string, 32 bytes.
-- **subject**
-    - The public key belonging to the certificate's subject, compressed public key hex string.
-- **certifier**
-    - Public key of the certifier who issued the certificate, compressed public key hex string.
-- **revocationOutpoint**
-    - The outpoint used to confirm that the certificate has not been revoked (TXID.OutputIndex), as a string.
-- **fields**
-    - All the fields present in the certificate.
-- **signature**
-    - Certificate signature by the certifier's private key, DER encoded hex string.
++ **type**
+  + Type identifier for the certificate, base64 encoded string, 32 bytes.
++ **serialNumber**
+  + Unique serial number of the certificate, base64 encoded string, 32 bytes.
++ **subject**
+  + The public key belonging to the certificate's subject, compressed public key hex string.
++ **certifier**
+  + Public key of the certifier who issued the certificate, compressed public key hex string.
++ **revocationOutpoint**
+  + The outpoint used to confirm that the certificate has not been revoked (TXID.OutputIndex), as a string.
++ **fields**
+  + All the fields present in the certificate.
++ **signature**
+  + Certificate signature by the certifier's private key, DER encoded hex string.
 
 #### Property certifier
 
@@ -266,7 +256,6 @@ Public key of the certifier who issued the certificate, compressed public key he
 ```ts
 certifier: PubKeyHex
 ```
-
 See also: [PubKeyHex](./wallet.md#type-pubkeyhex)
 
 #### Property fields
@@ -276,7 +265,6 @@ All the fields present in the certificate, with field names as keys and encrypte
 ```ts
 fields: Record<CertificateFieldNameUnder50Bytes, Base64String>
 ```
-
 See also: [Base64String](./wallet.md#type-base64string), [CertificateFieldNameUnder50Bytes](./wallet.md#type-certificatefieldnameunder50bytes)
 
 #### Property revocationOutpoint
@@ -286,7 +274,6 @@ The outpoint used to confirm that the certificate has not been revoked (TXID.Out
 ```ts
 revocationOutpoint: OutpointString
 ```
-
 See also: [OutpointString](./wallet.md#type-outpointstring)
 
 #### Property serialNumber
@@ -296,7 +283,6 @@ Unique serial number of the certificate, base64 encoded string, 32 bytes.
 ```ts
 serialNumber: Base64String
 ```
-
 See also: [Base64String](./wallet.md#type-base64string)
 
 #### Property signature
@@ -306,7 +292,6 @@ Certificate signature by the certifier's private key, DER encoded hex string.
 ```ts
 signature?: HexString
 ```
-
 See also: [HexString](./wallet.md#type-hexstring)
 
 #### Property subject
@@ -316,7 +301,6 @@ The public key belonging to the certificate's subject, compressed public key hex
 ```ts
 subject: PubKeyHex
 ```
-
 See also: [PubKeyHex](./wallet.md#type-pubkeyhex)
 
 #### Property type
@@ -326,7 +310,6 @@ Type identifier for the certificate, base64 encoded string, 32 bytes.
 ```ts
 type: Base64String
 ```
-
 See also: [Base64String](./wallet.md#type-base64string)
 
 #### Method fromBinary
@@ -336,7 +319,6 @@ Deserializes a certificate from binary format.
 ```ts
 static fromBinary(bin: number[]): Certificate 
 ```
-
 See also: [Certificate](./auth.md#class-certificate)
 
 Returns
@@ -345,8 +327,8 @@ Returns
 
 Argument Details
 
-- **bin**
-    - The binary data representing the certificate.
++ **bin**
+  + The binary data representing the certificate.
 
 #### Method getCertificateFieldEncryptionDetails
 
@@ -364,23 +346,21 @@ static getCertificateFieldEncryptionDetails(fieldName: string, serialNumber?: st
     keyID: string;
 } 
 ```
-
 See also: [WalletProtocol](./wallet.md#type-walletprotocol)
 
 Returns
 
 An object containing:
-
 - `protocolID` (WalletProtocol): The protocol ID for certificate field encryption.
 - `keyID` (string): A unique key identifier. It is the `fieldName` if `serialNumber` is undefined,
 otherwise it is a combination of `serialNumber` and `fieldName`.
 
 Argument Details
 
-- **fieldName**
-    - The name of the field within the certificate to be encrypted.
-- **serialNumber**
-    - (Optional) The serial number of the certificate.
++ **fieldName**
+  + The name of the field within the certificate to be encrypted.
++ **serialNumber**
+  + (Optional) The serial number of the certificate.
 
 #### Method sign
 
@@ -389,13 +369,12 @@ Signs the certificate using the provided certifier wallet.
 ```ts
 async sign(certifierWallet: ProtoWallet): Promise<void> 
 ```
-
 See also: [ProtoWallet](./wallet.md#class-protowallet)
 
 Argument Details
 
-- **certifierWallet**
-    - The wallet representing the certifier.
++ **certifierWallet**
+  + The wallet representing the certifier.
 
 #### Method toBinary
 
@@ -411,8 +390,8 @@ Returns
 
 Argument Details
 
-- **includeSignature**
-    - Whether to include the signature in the serialization.
++ **includeSignature**
+  + Whether to include the signature in the serialization.
 
 #### Method verify
 
@@ -429,7 +408,6 @@ Returns
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: CompletedProtoWallet
 
 ```ts
@@ -466,7 +444,6 @@ See also: [AbortActionResult](./wallet.md#interface-abortactionresult), [Acquire
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: MasterCertificate
 
 MasterCertificate extends the base Certificate class to manage a master keyring, enabling the creation of verifiable certificates.
@@ -511,13 +488,11 @@ and sign off on the fields, along with the encrypted certificate fields.
 ```ts
 static async createCertificateFields(creatorWallet: ProtoWallet, certifierOrSubject: WalletCounterparty, fields: Record<CertificateFieldNameUnder50Bytes, string>, privileged?: boolean, privilegedReason?: string): Promise<CreateCertificateFieldsResult> 
 ```
-
 See also: [CertificateFieldNameUnder50Bytes](./wallet.md#type-certificatefieldnameunder50bytes), [ProtoWallet](./wallet.md#class-protowallet), [WalletCounterparty](./wallet.md#type-walletcounterparty)
 
 Returns
 
 A promise resolving to an object containing:
-
 - `certificateFields` {Record<CertificateFieldNameUnder50Bytes, Base64String>}:
 The encrypted certificate fields.
 - `masterKeyring` {Record<CertificateFieldNameUnder50Bytes, Base64String>}:
@@ -525,16 +500,16 @@ The master keyring containing encrypted revelation keys for each field.
 
 Argument Details
 
-- **creatorWallet**
-    - The wallet of the creator responsible for encrypting the fields.
-- **certifierOrSubject**
-    - The certifier or subject who will validate the certificate fields.
-- **fields**
-    - A record of certificate field names (under 50 bytes) mapped to their values.
-- **privileged**
-    - Whether this is a privileged request.
-- **privilegedReason**
-    - Reason provided for privileged access, required if this is a privileged operation.   *
++ **creatorWallet**
+  + The wallet of the creator responsible for encrypting the fields.
++ **certifierOrSubject**
+  + The certifier or subject who will validate the certificate fields.
++ **fields**
+  + A record of certificate field names (under 50 bytes) mapped to their values.
++ **privileged**
+  + Whether this is a privileged request.
++ **privilegedReason**
+  + Reason provided for privileged access, required if this is a privileged operation.   *
 
 #### Method createKeyringForVerifier
 
@@ -546,7 +521,6 @@ for the verifier to access the designated fields.
 ```ts
 static async createKeyringForVerifier(subjectWallet: ProtoWallet, certifier: WalletCounterparty, verifier: WalletCounterparty, fields: Record<CertificateFieldNameUnder50Bytes, Base64String>, fieldsToReveal: string[], masterKeyring: Record<CertificateFieldNameUnder50Bytes, Base64String>, serialNumber: Base64String, privileged?: boolean, privilegedReason?: string): Promise<Record<CertificateFieldNameUnder50Bytes, string>> 
 ```
-
 See also: [Base64String](./wallet.md#type-base64string), [CertificateFieldNameUnder50Bytes](./wallet.md#type-certificatefieldnameunder50bytes), [ProtoWallet](./wallet.md#class-protowallet), [WalletCounterparty](./wallet.md#type-walletcounterparty)
 
 Returns
@@ -555,23 +529,22 @@ Returns
 
 Argument Details
 
-- **subjectWallet**
-    - The wallet instance of the subject, used to decrypt and re-encrypt field keys.
-- **verifier**
-    - The verifier who will receive access to the selectively revealed fields. Can be an identity key as hex, 'anyone', or 'self'.
-- **fieldsToReveal**
-    - An array of field names to be revealed to the verifier. Must be a subset of the certificate's fields.
-- **originator**
-    - Optional originator identifier, used if additional context is needed for decryption and encryption operations.
-- **privileged**
-    - Whether this is a privileged request.
-- **privilegedReason**
-    - Reason provided for privileged access, required if this is a privileged operation.   *
++ **subjectWallet**
+  + The wallet instance of the subject, used to decrypt and re-encrypt field keys.
++ **verifier**
+  + The verifier who will receive access to the selectively revealed fields. Can be an identity key as hex, 'anyone', or 'self'.
++ **fieldsToReveal**
+  + An array of field names to be revealed to the verifier. Must be a subset of the certificate's fields.
++ **originator**
+  + Optional originator identifier, used if additional context is needed for decryption and encryption operations.
++ **privileged**
+  + Whether this is a privileged request.
++ **privilegedReason**
+  + Reason provided for privileged access, required if this is a privileged operation.   *
 
 Throws
 
 Throws an error if:
-
 - fieldsToReveal is not an array of strings.
 - A field in `fieldsToReveal` does not exist in the certificate.
 - The decrypted master field key fails to decrypt the corresponding field (indicating an invalid key).
@@ -583,14 +556,12 @@ Decrypts all fields in the MasterCertificate using the subject's or certifier's 
 This method allows the subject or certifier to decrypt the `masterKeyring` and retrieve
 the encryption keys for each field, which are then used to decrypt the corresponding field values.
 The counterparty used for decryption depends on how the certificate fields were created:
-
 - If the certificate is self-signed, the counterparty should be set to 'self'.
 - Otherwise, the counterparty should always be the other party involved in the certificate issuance process (the subject or certifier).
 
 ```ts
 static async decryptFields(subjectOrCertifierWallet: ProtoWallet, masterKeyring: Record<CertificateFieldNameUnder50Bytes, Base64String>, fields: Record<CertificateFieldNameUnder50Bytes, Base64String>, counterparty: WalletCounterparty, privileged?: boolean, privilegedReason?: string): Promise<Record<CertificateFieldNameUnder50Bytes, string>> 
 ```
-
 See also: [Base64String](./wallet.md#type-base64string), [CertificateFieldNameUnder50Bytes](./wallet.md#type-certificatefieldnameunder50bytes), [ProtoWallet](./wallet.md#class-protowallet), [WalletCounterparty](./wallet.md#type-walletcounterparty)
 
 Returns
@@ -599,18 +570,18 @@ A promise resolving to a record of field names and their decrypted values in pla
 
 Argument Details
 
-- **subjectOrCertifierWallet**
-    - The wallet of the subject or certifier, used to decrypt the master keyring and field values.
-- **masterKeyring**
-    - A record containing encrypted keys for each field.
-- **fields**
-    - A record of encrypted field names and their values.
-- **counterparty**
-    - The counterparty responsible for creating or signing the certificate. For self-signed certificates, use 'self'.
-- **privileged**
-    - Whether this is a privileged request.
-- **privilegedReason**
-    - Reason provided for privileged access, required if this is a privileged operation.
++ **subjectOrCertifierWallet**
+  + The wallet of the subject or certifier, used to decrypt the master keyring and field values.
++ **masterKeyring**
+  + A record containing encrypted keys for each field.
++ **fields**
+  + A record of encrypted field names and their values.
++ **counterparty**
+  + The counterparty responsible for creating or signing the certificate. For self-signed certificates, use 'self'.
++ **privileged**
+  + Whether this is a privileged request.
++ **privilegedReason**
+  + Reason provided for privileged access, required if this is a privileged operation.
 
 Throws
 
@@ -631,7 +602,6 @@ static async issueCertificateForSubject(certifierWallet: ProtoWallet, subject: W
     return "Certificate revocation not tracked.";
 }, serialNumber?: string): Promise<MasterCertificate> 
 ```
-
 See also: [CertificateFieldNameUnder50Bytes](./wallet.md#type-certificatefieldnameunder50bytes), [MasterCertificate](./auth.md#class-mastercertificate), [ProtoWallet](./wallet.md#class-protowallet), [WalletCounterparty](./wallet.md#type-walletcounterparty)
 
 Returns
@@ -640,19 +610,19 @@ Returns
 
 Argument Details
 
-- **certifierWallet**
-    - The wallet of the certifier, used to sign the certificate and encrypt field keys.
-- **subject**
-    - The subject for whom the certificate is issued.
-- **fields**
-    - Unencrypted certificate fields to include, with their names and values.
-- **certificateType**
-    - The type of certificate being issued.
-- **getRevocationOutpoint**
-        - -
++ **certifierWallet**
+  + The wallet of the certifier, used to sign the certificate and encrypt field keys.
++ **subject**
+  + The subject for whom the certificate is issued.
++ **fields**
+  + Unencrypted certificate fields to include, with their names and values.
++ **certificateType**
+  + The type of certificate being issued.
++ **getRevocationOutpoint**
+  + -
 Optional function to obtain a revocation outpoint for the certificate. Defaults to a placeholder.
-- **updateProgress**
-    - Optional callback for reporting progress updates during the operation. Defaults to a no-op.
++ **updateProgress**
+  + Optional callback for reporting progress updates during the operation. Defaults to a no-op.
 
 Throws
 
@@ -661,7 +631,6 @@ Throws an error if any operation (e.g., encryption, signing) fails during certif
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: Peer
 
 Represents a peer capable of performing mutual authentication.
@@ -697,21 +666,20 @@ Creates a new Peer instance
 ```ts
 constructor(wallet: WalletInterface, transport: Transport, certificatesToRequest?: RequestedCertificateSet, sessionManager?: SessionManager, autoPersistLastSession?: boolean) 
 ```
-
 See also: [RequestedCertificateSet](./auth.md#interface-requestedcertificateset), [SessionManager](./auth.md#class-sessionmanager), [Transport](./auth.md#interface-transport), [WalletInterface](./wallet.md#interface-walletinterface)
 
 Argument Details
 
-- **wallet**
-    - The wallet instance used for cryptographic operations.
-- **transport**
-    - The transport mechanism used for sending and receiving messages.
-- **certificatesToRequest**
-    - Optional set of certificates to request from a peer during the initial handshake.
-- **sessionManager**
-    - Optional SessionManager to be used for managing peer sessions.
-- **autoPersistLastSession**
-    - Whether to auto-persist the session with the last-interacted-with peer. Defaults to true.
++ **wallet**
+  + The wallet instance used for cryptographic operations.
++ **transport**
+  + The transport mechanism used for sending and receiving messages.
++ **certificatesToRequest**
+  + Optional set of certificates to request from a peer during the initial handshake.
++ **sessionManager**
+  + Optional SessionManager to be used for managing peer sessions.
++ **autoPersistLastSession**
+  + Whether to auto-persist the session with the last-interacted-with peer. Defaults to true.
 
 #### Method getAuthenticatedSession
 
@@ -725,7 +693,6 @@ or the session is not authenticated, initiates a handshake to create or authenti
 ```ts
 async getAuthenticatedSession(identityKey?: string, maxWaitTime?: number): Promise<PeerSession> 
 ```
-
 See also: [PeerSession](./auth.md#interface-peersession)
 
 Returns
@@ -734,10 +701,10 @@ Returns
 
 Argument Details
 
-- **identityKey**
-    - The identity public key of the peer.
-- **maxWaitTime**
-    - The maximum time in milliseconds to wait for the handshake.
++ **identityKey**
+  + The identity public key of the peer.
++ **maxWaitTime**
+  + The maximum time in milliseconds to wait for the handshake.
 
 #### Method listenForCertificatesReceived
 
@@ -746,7 +713,6 @@ Registers a callback to listen for certificates received from peers.
 ```ts
 listenForCertificatesReceived(callback: (senderPublicKey: string, certs: VerifiableCertificate[]) => void): number 
 ```
-
 See also: [VerifiableCertificate](./auth.md#class-verifiablecertificate)
 
 Returns
@@ -755,8 +721,8 @@ The ID of the callback listener.
 
 Argument Details
 
-- **callback**
-    - The function to call when certificates are received.
++ **callback**
+  + The function to call when certificates are received.
 
 #### Method listenForCertificatesRequested
 
@@ -765,7 +731,6 @@ Registers a callback to listen for certificates requested from peers.
 ```ts
 listenForCertificatesRequested(callback: (senderPublicKey: string, requestedCertificates: RequestedCertificateSet) => void): number 
 ```
-
 See also: [RequestedCertificateSet](./auth.md#interface-requestedcertificateset)
 
 Returns
@@ -774,8 +739,8 @@ The ID of the callback listener.
 
 Argument Details
 
-- **callback**
-    - The function to call when a certificate request is received
++ **callback**
+  + The function to call when a certificate request is received
 
 #### Method listenForGeneralMessages
 
@@ -791,8 +756,8 @@ The ID of the callback listener.
 
 Argument Details
 
-- **callback**
-    - The function to call when a general message is received.
++ **callback**
+  + The function to call when a general message is received.
 
 #### Method requestCertificates
 
@@ -803,7 +768,6 @@ an initial handshake or message has been exchanged.
 ```ts
 async requestCertificates(certificatesToRequest: RequestedCertificateSet, identityKey?: string, maxWaitTime = 10000): Promise<void> 
 ```
-
 See also: [RequestedCertificateSet](./auth.md#interface-requestedcertificateset)
 
 Returns
@@ -812,12 +776,12 @@ Resolves if the certificate request message is successfully sent.
 
 Argument Details
 
-- **certificatesToRequest**
-    - Specifies the certifiers and types of certificates required from the peer.
-- **identityKey**
-    - The identity public key of the peer. If not provided, the current or last session identity is used.
-- **maxWaitTime**
-    - Maximum time in milliseconds to wait for the peer session to be authenticated.
++ **certificatesToRequest**
+  + Specifies the certifiers and types of certificates required from the peer.
++ **identityKey**
+  + The identity public key of the peer. If not provided, the current or last session identity is used.
++ **maxWaitTime**
+  + Maximum time in milliseconds to wait for the peer session to be authenticated.
 
 Throws
 
@@ -830,15 +794,14 @@ Sends a certificate response message containing the specified certificates to a 
 ```ts
 async sendCertificateResponse(verifierIdentityKey: string, certificates: VerifiableCertificate[]): Promise<void> 
 ```
-
 See also: [VerifiableCertificate](./auth.md#class-verifiablecertificate)
 
 Argument Details
 
-- **verifierIdentityKey**
-    - The identity key of the peer requesting the certificates.
-- **certificates**
-    - The list of certificates to include in the response.
++ **verifierIdentityKey**
+  + The identity key of the peer requesting the certificates.
++ **certificates**
+  + The list of certificates to include in the response.
 
 Throws
 
@@ -854,8 +817,8 @@ stopListeningForCertificatesReceived(callbackID: number): void
 
 Argument Details
 
-- **callbackID**
-    - The ID of the certificates received callback to cancel.
++ **callbackID**
+  + The ID of the certificates received callback to cancel.
 
 #### Method stopListeningForCertificatesRequested
 
@@ -867,8 +830,8 @@ stopListeningForCertificatesRequested(callbackID: number): void
 
 Argument Details
 
-- **callbackID**
-    - The ID of the requested certificates callback to cancel.
++ **callbackID**
+  + The ID of the requested certificates callback to cancel.
 
 #### Method stopListeningForGeneralMessages
 
@@ -880,8 +843,8 @@ stopListeningForGeneralMessages(callbackID: number): void
 
 Argument Details
 
-- **callbackID**
-    - The ID of the callback to remove.
++ **callbackID**
+  + The ID of the callback to remove.
 
 #### Method toPeer
 
@@ -893,12 +856,12 @@ async toPeer(message: number[], identityKey?: string, maxWaitTime?: number): Pro
 
 Argument Details
 
-- **message**
-    - The message payload to send.
-- **identityKey**
-    - The identity public key of the peer. If not provided, uses lastInteractedWithPeer (if any).
-- **maxWaitTime**
-    - optional max wait time in ms
++ **message**
+  + The message payload to send.
++ **identityKey**
+  + The identity public key of the peer. If not provided, uses lastInteractedWithPeer (if any).
++ **maxWaitTime**
+  + optional max wait time in ms
 
 Throws
 
@@ -907,7 +870,6 @@ Will throw an error if the message fails to send.
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: SessionManager
 
 Manages sessions for peers, allowing multiple concurrent sessions
@@ -937,20 +899,18 @@ allowing multiple concurrent sessions for the same peer.
 ```ts
 addSession(session: PeerSession): void 
 ```
-
 See also: [PeerSession](./auth.md#interface-peersession)
 
 Argument Details
 
-- **session**
-    - The peer session to add.
++ **session**
+  + The peer session to add.
 
 #### Method getSession
 
 Retrieves a session based on a given identifier, which can be:
-
-- A sessionNonce, or
-- A peerIdentityKey.
+ - A sessionNonce, or
+ - A peerIdentityKey.
 
 If it is a `sessionNonce`, returns that exact session.
 If it is a `peerIdentityKey`, returns the "best" (e.g. most recently updated,
@@ -959,7 +919,6 @@ authenticated) session associated with that peer, if any.
 ```ts
 getSession(identifier: string): PeerSession | undefined 
 ```
-
 See also: [PeerSession](./auth.md#interface-peersession)
 
 Returns
@@ -968,8 +927,8 @@ Returns
 
 Argument Details
 
-- **identifier**
-    - The identifier for the session (sessionNonce or peerIdentityKey).
++ **identifier**
+  + The identifier for the session (sessionNonce or peerIdentityKey).
 
 #### Method hasSession
 
@@ -985,8 +944,8 @@ Returns
 
 Argument Details
 
-- **identifier**
-    - The identifier to check.
++ **identifier**
+  + The identifier to check.
 
 #### Method removeSession
 
@@ -995,13 +954,12 @@ Removes a session from the manager by clearing all associated identifiers.
 ```ts
 removeSession(session: PeerSession): void 
 ```
-
 See also: [PeerSession](./auth.md#interface-peersession)
 
 Argument Details
 
-- **session**
-    - The peer session to remove.
++ **session**
+  + The peer session to remove.
 
 #### Method updateSession
 
@@ -1011,18 +969,16 @@ ensuring we record the latest data (e.g., isAuthenticated, lastUpdate, etc.).
 ```ts
 updateSession(session: PeerSession): void 
 ```
-
 See also: [PeerSession](./auth.md#interface-peersession)
 
 Argument Details
 
-- **session**
-    - The peer session to update.
++ **session**
+  + The peer session to update.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: SimplifiedFetchTransport
 
 Implements an HTTP-specific transport for handling Peer mutual authentication messages.
@@ -1057,10 +1013,10 @@ constructor(baseUrl: string, fetchClient = defaultFetch)
 
 Argument Details
 
-- **baseUrl**
-    - The base URL for all HTTP requests made by this transport.
-- **fetchClient**
-    - A fetch implementation to use for HTTP requests (default: global fetch).
++ **baseUrl**
+  + The base URL for all HTTP requests made by this transport.
++ **fetchClient**
+  + A fetch implementation to use for HTTP requests (default: global fetch).
 
 #### Method deserializeRequestPayload
 
@@ -1083,18 +1039,17 @@ URL postfix (path and query string), headers, body, and request ID.
 
 Argument Details
 
-- **payload**
-    - The serialized payload to deserialize.
++ **payload**
+  + The serialized payload to deserialize.
 
 #### Method onData
 
-Registers a callback to handle incoming messages.
+Registers a callback to handle incoming messages. 
 This must be called before sending any messages to ensure responses can be processed.
 
 ```ts
 async onData(callback: (message: AuthMessage) => Promise<void>): Promise<void> 
 ```
-
 See also: [AuthMessage](./auth.md#interface-authmessage)
 
 Returns
@@ -1103,8 +1058,8 @@ A promise that resolves once the callback is set.
 
 Argument Details
 
-- **callback**
-    - A function to invoke when an incoming AuthMessage is received.
++ **callback**
+  + A function to invoke when an incoming AuthMessage is received.
 
 #### Method send
 
@@ -1116,7 +1071,6 @@ the message is sent as a POST request to the `/auth` endpoint.
 ```ts
 async send(message: AuthMessage): Promise<void> 
 ```
-
 See also: [AuthMessage](./auth.md#interface-authmessage)
 
 Returns
@@ -1125,8 +1079,8 @@ A promise that resolves when the message is successfully sent.
 
 Argument Details
 
-- **message**
-    - The AuthMessage to send.
++ **message**
+  + The AuthMessage to send.
 
 Throws
 
@@ -1135,7 +1089,6 @@ Will throw an error if no listener has been registered via `onData`.
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: VerifiableCertificate
 
 VerifiableCertificate extends the Certificate class, adding functionality to manage a verifier-specific keyring.
@@ -1167,7 +1120,6 @@ Decrypts selectively revealed certificate fields using the provided keyring and 
 ```ts
 async decryptFields(verifierWallet: ProtoWallet, privileged?: boolean, privilegedReason?: string): Promise<Record<CertificateFieldNameUnder50Bytes, string>> 
 ```
-
 See also: [CertificateFieldNameUnder50Bytes](./wallet.md#type-certificatefieldnameunder50bytes), [ProtoWallet](./wallet.md#class-protowallet)
 
 Returns
@@ -1176,12 +1128,12 @@ Returns
 
 Argument Details
 
-- **verifierWallet**
-    - The wallet instance of the certificate's verifier, used to decrypt field keys.
-- **privileged**
-    - Whether this is a privileged request.
-- **privilegedReason**
-    - Reason provided for privileged access, required if this is a privileged operation.
++ **verifierWallet**
+  + The wallet instance of the certificate's verifier, used to decrypt field keys.
++ **privileged**
+  + Whether this is a privileged request.
++ **privilegedReason**
+  + Reason provided for privileged access, required if this is a privileged operation.
 
 Throws
 
@@ -1192,7 +1144,6 @@ Throws an error if any of the decryption operations fail, with a message indicat
 ```ts
 static fromCertificate(certificate: WalletCertificate, keyring: Record<CertificateFieldNameUnder50Bytes, string>): VerifiableCertificate 
 ```
-
 See also: [CertificateFieldNameUnder50Bytes](./wallet.md#type-certificatefieldnameunder50bytes), [VerifiableCertificate](./auth.md#class-verifiablecertificate), [WalletCertificate](./wallet.md#interface-walletcertificate)
 
 Returns
@@ -1202,15 +1153,14 @@ original certificate data plus the supplied keyring.
 
 Argument Details
 
-- **certificate**
-    - – The source certificate that was issued and signed by the certifier.
-- **keyring**
-    - – A allows the verifier to decrypt selected certificate fields.
++ **certificate**
+  + – The source certificate that was issued and signed by the certifier.
++ **keyring**
+  + – A allows the verifier to decrypt selected certificate fields.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Functions
 
 | |
@@ -1238,13 +1188,12 @@ A random nonce derived with a wallet
 
 Argument Details
 
-- **counterparty**
-    - The counterparty to the nonce creation. Defaults to 'self'.
++ **counterparty**
+  + The counterparty to the nonce creation. Defaults to 'self'.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Function: verifyNonce
 
 Verifies a nonce derived from a wallet
@@ -1261,15 +1210,14 @@ The status of the validation
 
 Argument Details
 
-- **nonce**
-    - A nonce to verify as a base64 string.
-- **counterparty**
-    - The counterparty to the nonce creation. Defaults to 'self'.
++ **nonce**
+  + A nonce to verify as a base64 string.
++ **counterparty**
+  + The counterparty to the nonce creation. Defaults to 'self'.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Types
 
 ## Enums
@@ -1309,7 +1257,6 @@ See also: [RequestedCertificateSet](./auth.md#interface-requestedcertificateset)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Variable: validateCertificates
 
 ```ts

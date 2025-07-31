@@ -23,6 +23,8 @@ export interface HttpClientRequestOptions<Data = any> {
   headers?: Record<string, string>
   /** An object or null to set request's body. */
   data?: Data
+  /** An optional AbortSignal to cancel the request, including by explicit timeout. */
+  signal?: AbortSignal
 }
 
 /**

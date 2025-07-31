@@ -359,10 +359,30 @@ export default class PrivateKey extends BigNumber {
    * Derives a child key with BRC-42.
    * @param publicKey The public key of the other party
    * @param invoiceNumber The invoice number used to derive the child key
+   * @param cacheSharedSecret Optional function to cache shared secrets
+   * @param retrieveCachedSharedSecret Optional function to retrieve shared secrets from the cache
    * @returns The derived child key.
    */
-  deriveChild (publicKey: PublicKey, invoiceNumber: string): PrivateKey {
-    const sharedSecret = this.deriveSharedSecret(publicKey)
+  deriveChild (
+    publicKey: PublicKey,
+    invoiceNumber: string,
+    cacheSharedSecret?: ((priv: PrivateKey, pub: Point, point: Point) => void),
+    retrieveCachedSharedSecret?: ((priv: PrivateKey, pub: Point) => (Point | undefined))
+  ): PrivateKey {
+    let sharedSecret: Point
+    if (typeof retrieveCachedSharedSecret === 'function') {
+      const retrieved = retrieveCachedSharedSecret(this, publicKey)
+      if (typeof retrieved !== 'undefined') {
+        sharedSecret = retrieved
+      } else {
+        sharedSecret = this.deriveSharedSecret(publicKey)
+        if (typeof cacheSharedSecret === 'function') {
+          cacheSharedSecret(this, publicKey, sharedSecret)
+        }
+      }
+    } else {
+      sharedSecret = this.deriveSharedSecret(publicKey)
+    }
     const invoiceNumberBin = toArray(invoiceNumber, 'utf8')
     const hmac = sha256hmac(sharedSecret.encode(true), invoiceNumberBin)
     const curve = new Curve()

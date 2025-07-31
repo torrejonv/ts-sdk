@@ -49,7 +49,6 @@ See also: [Base64String](./wallet.md#type-base64string)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: AbortActionResult
 
 ```ts
@@ -61,7 +60,6 @@ export interface AbortActionResult {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: AcquireCertificateArgs
 
 ```ts
@@ -86,7 +84,6 @@ See also: [AcquisitionProtocol](./wallet.md#type-acquisitionprotocol), [Base64St
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: AuthenticatedResult
 
 ```ts
@@ -98,7 +95,6 @@ export interface AuthenticatedResult {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: BasketInsertion
 
 ```ts
@@ -114,7 +110,6 @@ See also: [BasketStringUnder300Bytes](./wallet.md#type-basketstringunder300bytes
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: CertificateResult
 
 ```ts
@@ -129,7 +124,6 @@ See also: [Base64String](./wallet.md#type-base64string), [CertificateFieldNameUn
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: CreateActionArgs
 
 ```ts
@@ -150,7 +144,6 @@ See also: [BEEF](./wallet.md#type-beef), [CreateActionInput](./wallet.md#interfa
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: CreateActionInput
 
 ```ts
@@ -168,7 +161,6 @@ See also: [DescriptionString5to50Bytes](./wallet.md#type-descriptionstring5to50b
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: CreateActionOptions
 
 ```ts
@@ -190,7 +182,6 @@ See also: [BooleanDefaultFalse](./wallet.md#type-booleandefaultfalse), [BooleanD
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: CreateActionOutput
 
 ```ts
@@ -209,7 +200,6 @@ See also: [BasketStringUnder300Bytes](./wallet.md#type-basketstringunder300bytes
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: CreateActionResult
 
 ```ts
@@ -227,7 +217,6 @@ See also: [AtomicBEEF](./wallet.md#type-atomicbeef), [OutpointString](./wallet.m
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: CreateHmacArgs
 
 ```ts
@@ -241,7 +230,6 @@ See also: [Byte](./wallet.md#type-byte), [WalletEncryptionArgs](./wallet.md#inte
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: CreateHmacResult
 
 ```ts
@@ -255,7 +243,6 @@ See also: [Byte](./wallet.md#type-byte)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: CreateSignatureArgs
 
 ```ts
@@ -270,7 +257,6 @@ See also: [Byte](./wallet.md#type-byte), [WalletEncryptionArgs](./wallet.md#inte
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: CreateSignatureResult
 
 ```ts
@@ -284,7 +270,6 @@ See also: [Byte](./wallet.md#type-byte)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: DiscoverByAttributesArgs
 
 ```ts
@@ -301,7 +286,6 @@ See also: [BooleanDefaultTrue](./wallet.md#type-booleandefaulttrue), [Certificat
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: DiscoverByIdentityKeyArgs
 
 ```ts
@@ -318,7 +302,6 @@ See also: [BooleanDefaultTrue](./wallet.md#type-booleandefaulttrue), [PositiveIn
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: DiscoverCertificatesResult
 
 ```ts
@@ -333,7 +316,6 @@ See also: [IdentityCertificate](./wallet.md#interface-identitycertificate), [Pos
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: GetHeaderArgs
 
 ```ts
@@ -347,7 +329,6 @@ See also: [PositiveInteger](./wallet.md#type-positiveinteger)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: GetHeaderResult
 
 ```ts
@@ -361,7 +342,6 @@ See also: [HexString](./wallet.md#type-hexstring)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: GetHeightResult
 
 ```ts
@@ -375,7 +355,6 @@ See also: [PositiveInteger](./wallet.md#type-positiveinteger)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: GetNetworkResult
 
 ```ts
@@ -389,7 +368,6 @@ See also: [WalletNetwork](./wallet.md#type-walletnetwork)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: GetPublicKeyArgs
 
 When `identityKey` is true, `WalletEncryptionArgs` are not used.
@@ -408,7 +386,6 @@ See also: [BooleanDefaultFalse](./wallet.md#type-booleandefaultfalse), [WalletEn
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: GetPublicKeyResult
 
 ```ts
@@ -422,7 +399,6 @@ See also: [PubKeyHex](./wallet.md#type-pubkeyhex)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: GetVersionResult
 
 ```ts
@@ -436,7 +412,6 @@ See also: [VersionString7To30Bytes](./wallet.md#type-versionstring7to30bytes)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: IdentityCertificate
 
 ```ts
@@ -452,7 +427,6 @@ See also: [Base64String](./wallet.md#type-base64string), [CertificateFieldNameUn
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: IdentityCertifier
 
 ```ts
@@ -469,7 +443,6 @@ See also: [DescriptionString5to50Bytes](./wallet.md#type-descriptionstring5to50b
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: InternalizeActionArgs
 
 ```ts
@@ -487,7 +460,6 @@ See also: [AtomicBEEF](./wallet.md#type-atomicbeef), [BooleanDefaultTrue](./wall
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: InternalizeActionResult
 
 ```ts
@@ -499,7 +471,6 @@ export interface InternalizeActionResult {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: InternalizeOutput
 
 ```ts
@@ -516,7 +487,6 @@ See also: [BasketInsertion](./wallet.md#interface-basketinsertion), [PositiveInt
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: KeyDeriverApi
 
 ```ts
@@ -540,7 +510,6 @@ Derives a private key based on protocol ID, key ID, and counterparty.
 ```ts
 derivePrivateKey: (protocolID: WalletProtocol, keyID: string, counterparty: Counterparty) => PrivateKey
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty), [PrivateKey](./primitives.md#class-privatekey), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 #### Property derivePublicKey
@@ -550,7 +519,6 @@ Derives a public key based on protocol ID, key ID, and counterparty.
 ```ts
 derivePublicKey: (protocolID: WalletProtocol, keyID: string, counterparty: Counterparty, forSelf?: boolean) => PublicKey
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty), [PublicKey](./primitives.md#class-publickey), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 #### Property deriveSymmetricKey
@@ -561,7 +529,6 @@ Note: Symmetric keys should not be derivable by everyone due to security risks.
 ```ts
 deriveSymmetricKey: (protocolID: WalletProtocol, keyID: string, counterparty: Counterparty) => SymmetricKey
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty), [SymmetricKey](./primitives.md#class-symmetrickey), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 #### Property identityKey
@@ -580,7 +547,6 @@ Note: This should not be used for 'self'.
 ```ts
 revealCounterpartySecret: (counterparty: Counterparty) => number[]
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty)
 
 #### Property revealSpecificSecret
@@ -590,7 +556,6 @@ Reveals the specific key association for a given protocol ID, key ID, and counte
 ```ts
 revealSpecificSecret: (counterparty: Counterparty, protocolID: WalletProtocol, keyID: string) => number[]
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 #### Property rootKey
@@ -600,13 +565,11 @@ The root key from which all other keys are derived.
 ```ts
 rootKey: PrivateKey
 ```
-
 See also: [PrivateKey](./primitives.md#class-privatekey)
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: KeyLinkageResult
 
 ```ts
@@ -624,7 +587,6 @@ See also: [Byte](./wallet.md#type-byte), [PubKeyHex](./wallet.md#type-pubkeyhex)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: ListActionsArgs
 
 ```ts
@@ -648,7 +610,6 @@ See also: [BooleanDefaultFalse](./wallet.md#type-booleandefaultfalse), [BooleanD
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: ListActionsResult
 
 ```ts
@@ -663,7 +624,6 @@ See also: [PositiveIntegerOrZero](./wallet.md#type-positiveintegerorzero), [Wall
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: ListCertificatesArgs
 
 ```ts
@@ -682,7 +642,6 @@ See also: [Base64String](./wallet.md#type-base64string), [BooleanDefaultFalse](.
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: ListCertificatesResult
 
 ```ts
@@ -697,7 +656,6 @@ See also: [CertificateResult](./wallet.md#interface-certificateresult), [Positiv
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: ListOutputsArgs
 
 ```ts
@@ -720,7 +678,6 @@ See also: [BasketStringUnder300Bytes](./wallet.md#type-basketstringunder300bytes
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: ListOutputsResult
 
 ```ts
@@ -736,7 +693,6 @@ See also: [BEEF](./wallet.md#type-beef), [PositiveIntegerOrZero](./wallet.md#typ
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: ProveCertificateArgs
 
 ```ts
@@ -754,7 +710,6 @@ See also: [BooleanDefaultFalse](./wallet.md#type-booleandefaultfalse), [Certific
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: ProveCertificateResult
 
 ```ts
@@ -770,7 +725,6 @@ See also: [Base64String](./wallet.md#type-base64string), [CertificateFieldNameUn
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: RelinquishCertificateArgs
 
 ```ts
@@ -786,7 +740,6 @@ See also: [Base64String](./wallet.md#type-base64string), [PubKeyHex](./wallet.md
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: RelinquishCertificateResult
 
 ```ts
@@ -798,7 +751,6 @@ export interface RelinquishCertificateResult {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: RelinquishOutputArgs
 
 ```ts
@@ -813,7 +765,6 @@ See also: [BasketStringUnder300Bytes](./wallet.md#type-basketstringunder300bytes
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: RelinquishOutputResult
 
 ```ts
@@ -825,7 +776,6 @@ export interface RelinquishOutputResult {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: RevealCounterpartyKeyLinkageArgs
 
 ```ts
@@ -842,7 +792,6 @@ See also: [BooleanDefaultFalse](./wallet.md#type-booleandefaultfalse), [Descript
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: RevealCounterpartyKeyLinkageResult
 
 ```ts
@@ -856,7 +805,6 @@ See also: [ISOTimestampString](./wallet.md#type-isotimestampstring), [KeyLinkage
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: RevealSpecificKeyLinkageArgs
 
 ```ts
@@ -875,7 +823,6 @@ See also: [BooleanDefaultFalse](./wallet.md#type-booleandefaultfalse), [Descript
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: RevealSpecificKeyLinkageResult
 
 ```ts
@@ -891,7 +838,6 @@ See also: [Byte](./wallet.md#type-byte), [KeyIDStringUnder800Bytes](./wallet.md#
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: ReviewActionResult
 
 ```ts
@@ -924,7 +870,6 @@ competingTxs?: string[]
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: SendWithResult
 
 ```ts
@@ -939,7 +884,6 @@ See also: [SendWithResultStatus](./wallet.md#type-sendwithresultstatus), [TXIDHe
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: SignActionArgs
 
 ```ts
@@ -955,7 +899,6 @@ See also: [Base64String](./wallet.md#type-base64string), [PositiveIntegerOrZero]
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: SignActionOptions
 
 ```ts
@@ -972,7 +915,6 @@ See also: [BooleanDefaultFalse](./wallet.md#type-booleandefaultfalse), [BooleanD
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: SignActionResult
 
 ```ts
@@ -988,7 +930,6 @@ See also: [AtomicBEEF](./wallet.md#type-atomicbeef), [SendWithResult](./wallet.m
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: SignActionSpend
 
 ```ts
@@ -1003,7 +944,6 @@ See also: [HexString](./wallet.md#type-hexstring), [PositiveIntegerOrZero](./wal
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: SignableTransaction
 
 ```ts
@@ -1018,7 +958,6 @@ See also: [AtomicBEEF](./wallet.md#type-atomicbeef), [Base64String](./wallet.md#
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: VerifyHmacArgs
 
 ```ts
@@ -1033,7 +972,6 @@ See also: [Byte](./wallet.md#type-byte), [WalletEncryptionArgs](./wallet.md#inte
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: VerifyHmacResult
 
 ```ts
@@ -1045,7 +983,6 @@ export interface VerifyHmacResult {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: VerifySignatureArgs
 
 ```ts
@@ -1062,7 +999,6 @@ See also: [BooleanDefaultFalse](./wallet.md#type-booleandefaultfalse), [Byte](./
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: VerifySignatureResult
 
 ```ts
@@ -1074,7 +1010,6 @@ export interface VerifySignatureResult {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletAction
 
 ```ts
@@ -1097,7 +1032,6 @@ See also: [ActionStatus](./wallet.md#type-actionstatus), [DescriptionString5to50
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletActionInput
 
 ```ts
@@ -1116,7 +1050,6 @@ See also: [DescriptionString5to50Bytes](./wallet.md#type-descriptionstring5to50b
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletActionOutput
 
 ```ts
@@ -1137,7 +1070,6 @@ See also: [BasketStringUnder300Bytes](./wallet.md#type-basketstringunder300bytes
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletCertificate
 
 ```ts
@@ -1157,7 +1089,6 @@ See also: [Base64String](./wallet.md#type-base64string), [CertificateFieldNameUn
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletDecryptArgs
 
 ```ts
@@ -1171,7 +1102,6 @@ See also: [Byte](./wallet.md#type-byte), [WalletEncryptionArgs](./wallet.md#inte
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletDecryptResult
 
 ```ts
@@ -1185,7 +1115,6 @@ See also: [Byte](./wallet.md#type-byte)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletEncryptArgs
 
 ```ts
@@ -1199,7 +1128,6 @@ See also: [Byte](./wallet.md#type-byte), [WalletEncryptionArgs](./wallet.md#inte
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletEncryptResult
 
 ```ts
@@ -1213,7 +1141,6 @@ See also: [Byte](./wallet.md#type-byte)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletEncryptionArgs
 
 ```ts
@@ -1232,7 +1159,6 @@ See also: [BooleanDefaultFalse](./wallet.md#type-booleandefaultfalse), [BooleanD
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletErrorObject
 
 Every method of the `Wallet` interface has a return value of the form `Promise<object>`.
@@ -1249,7 +1175,6 @@ export interface WalletErrorObject extends Error {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletInterface
 
 The Wallet interface defines a wallet capable of various tasks including transaction creation and signing,
@@ -1306,7 +1231,6 @@ Aborts a transaction that is in progress and has not yet been finalized or sent 
 ```ts
 abortAction: (args: AbortActionArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<AbortActionResult>
 ```
-
 See also: [AbortActionArgs](./wallet.md#interface-abortactionargs), [AbortActionResult](./wallet.md#interface-abortactionresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property acquireCertificate
@@ -1316,7 +1240,6 @@ Acquires an identity certificate, whether by acquiring one from the certifier or
 ```ts
 acquireCertificate: (args: AcquireCertificateArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<WalletCertificate>
 ```
-
 See also: [AcquireCertificateArgs](./wallet.md#interface-acquirecertificateargs), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes), [WalletCertificate](./wallet.md#interface-walletcertificate)
 
 #### Property createAction
@@ -1326,7 +1249,6 @@ Creates a new Bitcoin transaction based on the provided inputs, outputs, labels,
 ```ts
 createAction: (args: CreateActionArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<CreateActionResult>
 ```
-
 See also: [CreateActionArgs](./wallet.md#interface-createactionargs), [CreateActionResult](./wallet.md#interface-createactionresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property createHmac
@@ -1336,7 +1258,6 @@ Creates an HMAC (Hash-based Message Authentication Code) based on the provided d
 ```ts
 createHmac: (args: CreateHmacArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<CreateHmacResult>
 ```
-
 See also: [CreateHmacArgs](./wallet.md#interface-createhmacargs), [CreateHmacResult](./wallet.md#interface-createhmacresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property createSignature
@@ -1346,7 +1267,6 @@ Creates a digital signature for the provided data or hash using a specific proto
 ```ts
 createSignature: (args: CreateSignatureArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<CreateSignatureResult>
 ```
-
 See also: [CreateSignatureArgs](./wallet.md#interface-createsignatureargs), [CreateSignatureResult](./wallet.md#interface-createsignatureresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property decrypt
@@ -1356,7 +1276,6 @@ Decrypts the provided ciphertext using derived keys, based on the protocol ID, k
 ```ts
 decrypt: (args: WalletDecryptArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<WalletDecryptResult>
 ```
-
 See also: [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes), [WalletDecryptArgs](./wallet.md#interface-walletdecryptargs), [WalletDecryptResult](./wallet.md#interface-walletdecryptresult)
 
 #### Property discoverByAttributes
@@ -1366,7 +1285,6 @@ Discovers identity certificates belonging to other users, where the documents co
 ```ts
 discoverByAttributes: (args: DiscoverByAttributesArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<DiscoverCertificatesResult>
 ```
-
 See also: [DiscoverByAttributesArgs](./wallet.md#interface-discoverbyattributesargs), [DiscoverCertificatesResult](./wallet.md#interface-discovercertificatesresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property discoverByIdentityKey
@@ -1376,7 +1294,6 @@ Discovers identity certificates, issued to a given identity key by a trusted ent
 ```ts
 discoverByIdentityKey: (args: DiscoverByIdentityKeyArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<DiscoverCertificatesResult>
 ```
-
 See also: [DiscoverByIdentityKeyArgs](./wallet.md#interface-discoverbyidentitykeyargs), [DiscoverCertificatesResult](./wallet.md#interface-discovercertificatesresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property encrypt
@@ -1386,7 +1303,6 @@ Encrypts the provided plaintext data using derived keys, based on the protocol I
 ```ts
 encrypt: (args: WalletEncryptArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<WalletEncryptResult>
 ```
-
 See also: [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes), [WalletEncryptArgs](./wallet.md#interface-walletencryptargs), [WalletEncryptResult](./wallet.md#interface-walletencryptresult)
 
 #### Property getHeaderForHeight
@@ -1396,7 +1312,6 @@ Retrieves the block header of a block at a specified height.
 ```ts
 getHeaderForHeight: (args: GetHeaderArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<GetHeaderResult>
 ```
-
 See also: [GetHeaderArgs](./wallet.md#interface-getheaderargs), [GetHeaderResult](./wallet.md#interface-getheaderresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property getHeight
@@ -1406,7 +1321,6 @@ Retrieves the current height of the blockchain.
 ```ts
 getHeight: (args: object, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<GetHeightResult>
 ```
-
 See also: [GetHeightResult](./wallet.md#interface-getheightresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property getNetwork
@@ -1416,7 +1330,6 @@ Retrieves the Bitcoin network the client is using (mainnet or testnet).
 ```ts
 getNetwork: (args: object, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<GetNetworkResult>
 ```
-
 See also: [GetNetworkResult](./wallet.md#interface-getnetworkresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property getPublicKey
@@ -1426,7 +1339,6 @@ Retrieves a derived or identity public key based on the requested protocol, key 
 ```ts
 getPublicKey: (args: GetPublicKeyArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<GetPublicKeyResult>
 ```
-
 See also: [GetPublicKeyArgs](./wallet.md#interface-getpublickeyargs), [GetPublicKeyResult](./wallet.md#interface-getpublickeyresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property getVersion
@@ -1436,7 +1348,6 @@ Retrieves the current version string of the wallet.
 ```ts
 getVersion: (args: object, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<GetVersionResult>
 ```
-
 See also: [GetVersionResult](./wallet.md#interface-getversionresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property internalizeAction
@@ -1446,7 +1357,6 @@ Submits a transaction to be internalized and optionally labeled, outputs paid to
 ```ts
 internalizeAction: (args: InternalizeActionArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<InternalizeActionResult>
 ```
-
 See also: [InternalizeActionArgs](./wallet.md#interface-internalizeactionargs), [InternalizeActionResult](./wallet.md#interface-internalizeactionresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property isAuthenticated
@@ -1456,7 +1366,6 @@ Checks the authentication status of the user.
 ```ts
 isAuthenticated: (args: object, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<AuthenticatedResult>
 ```
-
 See also: [AuthenticatedResult](./wallet.md#interface-authenticatedresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property listActions
@@ -1466,7 +1375,6 @@ Lists all transactions matching the specified labels.
 ```ts
 listActions: (args: ListActionsArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<ListActionsResult>
 ```
-
 See also: [ListActionsArgs](./wallet.md#interface-listactionsargs), [ListActionsResult](./wallet.md#interface-listactionsresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property listCertificates
@@ -1476,7 +1384,6 @@ Lists identity certificates belonging to the user, filtered by certifier(s) and 
 ```ts
 listCertificates: (args: ListCertificatesArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<ListCertificatesResult>
 ```
-
 See also: [ListCertificatesArgs](./wallet.md#interface-listcertificatesargs), [ListCertificatesResult](./wallet.md#interface-listcertificatesresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property listOutputs
@@ -1486,7 +1393,6 @@ Lists the spendable outputs kept within a specific basket, optionally tagged wit
 ```ts
 listOutputs: (args: ListOutputsArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<ListOutputsResult>
 ```
-
 See also: [ListOutputsArgs](./wallet.md#interface-listoutputsargs), [ListOutputsResult](./wallet.md#interface-listoutputsresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 #### Property proveCertificate
@@ -1496,7 +1402,6 @@ Proves select fields of an identity certificate, as specified, when requested by
 ```ts
 proveCertificate: (args: ProveCertificateArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<ProveCertificateResult>
 ```
-
 See also: [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes), [ProveCertificateArgs](./wallet.md#interface-provecertificateargs), [ProveCertificateResult](./wallet.md#interface-provecertificateresult)
 
 #### Property relinquishCertificate
@@ -1506,7 +1411,6 @@ Relinquishes an identity certificate, removing it from the wallet regardless of 
 ```ts
 relinquishCertificate: (args: RelinquishCertificateArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<RelinquishCertificateResult>
 ```
-
 See also: [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes), [RelinquishCertificateArgs](./wallet.md#interface-relinquishcertificateargs), [RelinquishCertificateResult](./wallet.md#interface-relinquishcertificateresult)
 
 #### Property relinquishOutput
@@ -1516,7 +1420,6 @@ Relinquish an output out of a basket, removing it from tracking without spending
 ```ts
 relinquishOutput: (args: RelinquishOutputArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<RelinquishOutputResult>
 ```
-
 See also: [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes), [RelinquishOutputArgs](./wallet.md#interface-relinquishoutputargs), [RelinquishOutputResult](./wallet.md#interface-relinquishoutputresult)
 
 #### Property revealCounterpartyKeyLinkage
@@ -1526,7 +1429,6 @@ Reveals the key linkage between ourselves and a counterparty, to a particular ve
 ```ts
 revealCounterpartyKeyLinkage: (args: RevealCounterpartyKeyLinkageArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<RevealCounterpartyKeyLinkageResult>
 ```
-
 See also: [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes), [RevealCounterpartyKeyLinkageArgs](./wallet.md#interface-revealcounterpartykeylinkageargs), [RevealCounterpartyKeyLinkageResult](./wallet.md#interface-revealcounterpartykeylinkageresult)
 
 #### Property revealSpecificKeyLinkage
@@ -1536,7 +1438,6 @@ Reveals the key linkage between ourselves and a counterparty, to a particular ve
 ```ts
 revealSpecificKeyLinkage: (args: RevealSpecificKeyLinkageArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<RevealSpecificKeyLinkageResult>
 ```
-
 See also: [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes), [RevealSpecificKeyLinkageArgs](./wallet.md#interface-revealspecifickeylinkageargs), [RevealSpecificKeyLinkageResult](./wallet.md#interface-revealspecifickeylinkageresult)
 
 #### Property signAction
@@ -1546,7 +1447,6 @@ Signs a transaction previously created using `createAction`.
 ```ts
 signAction: (args: SignActionArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<SignActionResult>
 ```
-
 See also: [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes), [SignActionArgs](./wallet.md#interface-signactionargs), [SignActionResult](./wallet.md#interface-signactionresult)
 
 #### Property verifyHmac
@@ -1556,7 +1456,6 @@ Verifies an HMAC (Hash-based Message Authentication Code) based on the provided 
 ```ts
 verifyHmac: (args: VerifyHmacArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<VerifyHmacResult>
 ```
-
 See also: [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes), [VerifyHmacArgs](./wallet.md#interface-verifyhmacargs), [VerifyHmacResult](./wallet.md#interface-verifyhmacresult)
 
 #### Property verifySignature
@@ -1566,7 +1465,6 @@ Verifies a digital signature for the provided data or hash using a specific prot
 ```ts
 verifySignature: (args: VerifySignatureArgs, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<VerifySignatureResult>
 ```
-
 See also: [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes), [VerifySignatureArgs](./wallet.md#interface-verifysignatureargs), [VerifySignatureResult](./wallet.md#interface-verifysignatureresult)
 
 #### Property waitForAuthentication
@@ -1576,13 +1474,11 @@ Continuously waits until the user is authenticated, returning the result once co
 ```ts
 waitForAuthentication: (args: object, originator?: OriginatorDomainNameStringUnder250Bytes) => Promise<AuthenticatedResult>
 ```
-
 See also: [AuthenticatedResult](./wallet.md#interface-authenticatedresult), [OriginatorDomainNameStringUnder250Bytes](./wallet.md#type-originatordomainnamestringunder250bytes)
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletOutput
 
 ```ts
@@ -1602,7 +1498,6 @@ See also: [HexString](./wallet.md#type-hexstring), [LabelStringUnder300Bytes](./
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletPayment
 
 ```ts
@@ -1618,7 +1513,6 @@ See also: [Base64String](./wallet.md#type-base64string), [PubKeyHex](./wallet.md
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Interface: WalletWire
 
 A Wallet Wire is an abstraction over a raw transport medium where binary data can be sent to and subsequently received from a wallet.
@@ -1632,7 +1526,6 @@ export default interface WalletWire {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Classes
 
 | | |
@@ -1656,7 +1549,9 @@ This is useful for optimizing performance when the same keys are derived multipl
 It supports configurable cache size with sane defaults and maintains cache entries using LRU (Least Recently Used) eviction policy.
 
 ```ts
-export default class CachedKeyDeriver {
+export default class CachedKeyDeriver implements KeyDeriverApi {
+    rootKey: PrivateKey;
+    identityKey: string;
     constructor(rootKey: PrivateKey | "anyone", options?: {
         maxCacheSize?: number;
     }) 
@@ -1668,7 +1563,7 @@ export default class CachedKeyDeriver {
 }
 ```
 
-See also: [Counterparty](./wallet.md#type-counterparty), [PrivateKey](./primitives.md#class-privatekey), [PublicKey](./primitives.md#class-publickey), [SymmetricKey](./primitives.md#class-symmetrickey), [WalletProtocol](./wallet.md#type-walletprotocol)
+See also: [Counterparty](./wallet.md#type-counterparty), [KeyDeriverApi](./wallet.md#interface-keyderiverapi), [PrivateKey](./primitives.md#class-privatekey), [PublicKey](./primitives.md#class-publickey), [SymmetricKey](./primitives.md#class-symmetrickey), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 #### Constructor
 
@@ -1679,15 +1574,31 @@ constructor(rootKey: PrivateKey | "anyone", options?: {
     maxCacheSize?: number;
 }) 
 ```
-
 See also: [PrivateKey](./primitives.md#class-privatekey)
 
 Argument Details
 
-- **rootKey**
-    - The root private key or the string 'anyone'.
-- **options**
-    - Optional settings for the cache.
++ **rootKey**
+  + The root private key or the string 'anyone'.
++ **options**
+  + Optional settings for the cache.
+
+#### Property identityKey
+
+The identity of this key deriver which is normally the public key associated with the `rootKey`
+
+```ts
+identityKey: string
+```
+
+#### Property rootKey
+
+The root key from which all other keys are derived.
+
+```ts
+rootKey: PrivateKey
+```
+See also: [PrivateKey](./primitives.md#class-privatekey)
 
 #### Method derivePrivateKey
 
@@ -1697,7 +1608,6 @@ Caches the result for future calls with the same parameters.
 ```ts
 derivePrivateKey(protocolID: WalletProtocol, keyID: string, counterparty: Counterparty): PrivateKey 
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty), [PrivateKey](./primitives.md#class-privatekey), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 Returns
@@ -1706,12 +1616,12 @@ Returns
 
 Argument Details
 
-- **protocolID**
-    - The protocol ID including a security level and protocol name.
-- **keyID**
-    - The key identifier.
-- **counterparty**
-    - The counterparty's public key or a predefined value ('self' or 'anyone').
++ **protocolID**
+  + The protocol ID including a security level and protocol name.
++ **keyID**
+  + The key identifier.
++ **counterparty**
+  + The counterparty's public key or a predefined value ('self' or 'anyone').
 
 #### Method derivePublicKey
 
@@ -1721,7 +1631,6 @@ Caches the result for future calls with the same parameters.
 ```ts
 derivePublicKey(protocolID: WalletProtocol, keyID: string, counterparty: Counterparty, forSelf: boolean = false): PublicKey 
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty), [PublicKey](./primitives.md#class-publickey), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 Returns
@@ -1730,14 +1639,14 @@ Returns
 
 Argument Details
 
-- **protocolID**
-    - The protocol ID including a security level and protocol name.
-- **keyID**
-    - The key identifier.
-- **counterparty**
-    - The counterparty's public key or a predefined value ('self' or 'anyone').
-- **forSelf**
-    - Whether deriving for self.
++ **protocolID**
+  + The protocol ID including a security level and protocol name.
++ **keyID**
+  + The key identifier.
++ **counterparty**
+  + The counterparty's public key or a predefined value ('self' or 'anyone').
++ **forSelf**
+  + Whether deriving for self.
 
 #### Method deriveSymmetricKey
 
@@ -1747,7 +1656,6 @@ Caches the result for future calls with the same parameters.
 ```ts
 deriveSymmetricKey(protocolID: WalletProtocol, keyID: string, counterparty: Counterparty): SymmetricKey 
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty), [SymmetricKey](./primitives.md#class-symmetrickey), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 Returns
@@ -1756,12 +1664,12 @@ Returns
 
 Argument Details
 
-- **protocolID**
-    - The protocol ID including a security level and protocol name.
-- **keyID**
-    - The key identifier.
-- **counterparty**
-    - The counterparty's public key or a predefined value ('self' or 'anyone').
++ **protocolID**
+  + The protocol ID including a security level and protocol name.
++ **keyID**
+  + The key identifier.
++ **counterparty**
+  + The counterparty's public key or a predefined value ('self' or 'anyone').
 
 Throws
 
@@ -1775,7 +1683,6 @@ Caches the result for future calls with the same parameters.
 ```ts
 revealCounterpartySecret(counterparty: Counterparty): number[] 
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty)
 
 Returns
@@ -1784,8 +1691,8 @@ Returns
 
 Argument Details
 
-- **counterparty**
-    - The counterparty's public key or a predefined value ('self' or 'anyone').
++ **counterparty**
+  + The counterparty's public key or a predefined value ('self' or 'anyone').
 
 Throws
 
@@ -1799,7 +1706,6 @@ Caches the result for future calls with the same parameters.
 ```ts
 revealSpecificSecret(counterparty: Counterparty, protocolID: WalletProtocol, keyID: string): number[] 
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 Returns
@@ -1808,17 +1714,16 @@ Returns
 
 Argument Details
 
-- **counterparty**
-    - The counterparty's public key or a predefined value ('self' or 'anyone').
-- **protocolID**
-    - The protocol ID including a security level and protocol name.
-- **keyID**
-    - The key identifier.
++ **counterparty**
+  + The counterparty's public key or a predefined value ('self' or 'anyone').
++ **protocolID**
+  + The protocol ID including a security level and protocol name.
++ **keyID**
+  + The key identifier.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: HTTPWalletJSON
 
 ```ts
@@ -2043,7 +1948,6 @@ See also: [AcquireCertificateArgs](./wallet.md#interface-acquirecertificateargs)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: HTTPWalletWire
 
 ```ts
@@ -2061,7 +1965,6 @@ See also: [WalletWire](./wallet.md#interface-walletwire)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: KeyDeriver
 
 Class responsible for deriving various types of keys using a root private key.
@@ -2071,7 +1974,7 @@ It supports deriving public and private keys, symmetric keys, and revealing key 
 export class KeyDeriver implements KeyDeriverApi {
     rootKey: PrivateKey;
     identityKey: string;
-    constructor(rootKey: PrivateKey | "anyone") 
+    constructor(rootKey: PrivateKey | "anyone", private readonly cacheSharedSecret?: ((priv: PrivateKey, pub: Point, point: Point) => void), private readonly retrieveCachedSharedSecret?: ((priv: PrivateKey, pub: Point) => (Point | undefined))) 
     derivePublicKey(protocolID: WalletProtocol, keyID: string, counterparty: Counterparty, forSelf: boolean = false): PublicKey 
     derivePrivateKey(protocolID: WalletProtocol, keyID: string, counterparty: Counterparty): PrivateKey 
     deriveSymmetricKey(protocolID: WalletProtocol, keyID: string, counterparty: Counterparty): SymmetricKey 
@@ -2080,22 +1983,21 @@ export class KeyDeriver implements KeyDeriverApi {
 }
 ```
 
-See also: [Counterparty](./wallet.md#type-counterparty), [KeyDeriverApi](./wallet.md#interface-keyderiverapi), [PrivateKey](./primitives.md#class-privatekey), [PublicKey](./primitives.md#class-publickey), [SymmetricKey](./primitives.md#class-symmetrickey), [WalletProtocol](./wallet.md#type-walletprotocol)
+See also: [Counterparty](./wallet.md#type-counterparty), [KeyDeriverApi](./wallet.md#interface-keyderiverapi), [Point](./primitives.md#class-point), [PrivateKey](./primitives.md#class-privatekey), [PublicKey](./primitives.md#class-publickey), [SymmetricKey](./primitives.md#class-symmetrickey), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 #### Constructor
 
 Initializes the KeyDeriver instance with a root private key.
 
 ```ts
-constructor(rootKey: PrivateKey | "anyone") 
+constructor(rootKey: PrivateKey | "anyone", private readonly cacheSharedSecret?: ((priv: PrivateKey, pub: Point, point: Point) => void), private readonly retrieveCachedSharedSecret?: ((priv: PrivateKey, pub: Point) => (Point | undefined))) 
 ```
-
-See also: [PrivateKey](./primitives.md#class-privatekey)
+See also: [Point](./primitives.md#class-point), [PrivateKey](./primitives.md#class-privatekey)
 
 Argument Details
 
-- **rootKey**
-    - The root private key or the string 'anyone'.
++ **rootKey**
+  + The root private key or the string 'anyone'.
 
 #### Method derivePrivateKey
 
@@ -2104,7 +2006,6 @@ Derives a private key based on protocol ID, key ID, and counterparty.
 ```ts
 derivePrivateKey(protocolID: WalletProtocol, keyID: string, counterparty: Counterparty): PrivateKey 
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty), [PrivateKey](./primitives.md#class-privatekey), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 Returns
@@ -2113,12 +2014,12 @@ Returns
 
 Argument Details
 
-- **protocolID**
-    - The protocol ID including a security level and protocol name.
-- **keyID**
-    - The key identifier.
-- **counterparty**
-    - The counterparty's public key or a predefined value ('self' or 'anyone').
++ **protocolID**
+  + The protocol ID including a security level and protocol name.
++ **keyID**
+  + The key identifier.
++ **counterparty**
+  + The counterparty's public key or a predefined value ('self' or 'anyone').
 
 #### Method derivePublicKey
 
@@ -2127,7 +2028,6 @@ Derives a public key based on protocol ID, key ID, and counterparty.
 ```ts
 derivePublicKey(protocolID: WalletProtocol, keyID: string, counterparty: Counterparty, forSelf: boolean = false): PublicKey 
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty), [PublicKey](./primitives.md#class-publickey), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 Returns
@@ -2136,14 +2036,14 @@ Returns
 
 Argument Details
 
-- **protocolID**
-    - The protocol ID including a security level and protocol name.
-- **keyID**
-    - The key identifier.
-- **counterparty**
-    - The counterparty's public key or a predefined value ('self' or 'anyone').
-- **forSelf**
-    - Whether deriving for self.
++ **protocolID**
+  + The protocol ID including a security level and protocol name.
++ **keyID**
+  + The key identifier.
++ **counterparty**
+  + The counterparty's public key or a predefined value ('self' or 'anyone').
++ **forSelf**
+  + Whether deriving for self.
 
 #### Method deriveSymmetricKey
 
@@ -2153,7 +2053,6 @@ Note: Symmetric keys should not be derivable by everyone due to security risks.
 ```ts
 deriveSymmetricKey(protocolID: WalletProtocol, keyID: string, counterparty: Counterparty): SymmetricKey 
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty), [SymmetricKey](./primitives.md#class-symmetrickey), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 Returns
@@ -2162,12 +2061,12 @@ Returns
 
 Argument Details
 
-- **protocolID**
-    - The protocol ID including a security level and protocol name.
-- **keyID**
-    - The key identifier.
-- **counterparty**
-    - The counterparty's public key or a predefined value ('self' or 'anyone').
++ **protocolID**
+  + The protocol ID including a security level and protocol name.
++ **keyID**
+  + The key identifier.
++ **counterparty**
+  + The counterparty's public key or a predefined value ('self' or 'anyone').
 
 #### Method revealCounterpartySecret
 
@@ -2177,7 +2076,6 @@ Note: This should not be used for 'self'.
 ```ts
 revealCounterpartySecret(counterparty: Counterparty): number[] 
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty)
 
 Returns
@@ -2186,8 +2084,8 @@ Returns
 
 Argument Details
 
-- **counterparty**
-    - The counterparty's public key or a predefined value ('self' or 'anyone').
++ **counterparty**
+  + The counterparty's public key or a predefined value ('self' or 'anyone').
 
 Throws
 
@@ -2200,7 +2098,6 @@ Reveals the specific key association for a given protocol ID, key ID, and counte
 ```ts
 revealSpecificSecret(counterparty: Counterparty, protocolID: WalletProtocol, keyID: string): number[] 
 ```
-
 See also: [Counterparty](./wallet.md#type-counterparty), [WalletProtocol](./wallet.md#type-walletprotocol)
 
 Returns
@@ -2209,17 +2106,16 @@ Returns
 
 Argument Details
 
-- **counterparty**
-    - The counterparty's public key or a predefined value ('self' or 'anyone').
-- **protocolID**
-    - The protocol ID including a security level and protocol name.
-- **keyID**
-    - The key identifier.
++ **counterparty**
+  + The counterparty's public key or a predefined value ('self' or 'anyone').
++ **protocolID**
+  + The protocol ID including a security level and protocol name.
++ **keyID**
+  + The key identifier.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: ProtoWallet
 
 A ProtoWallet is precursor to a full wallet, capable of performing all foundational cryptographic operations.
@@ -2251,7 +2147,6 @@ See also: [CreateHmacArgs](./wallet.md#interface-createhmacargs), [CreateHmacRes
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: ReactNativeWebView
 
 Facilitates wallet operations over cross-document messaging.
@@ -2696,7 +2591,6 @@ See also: [BEEF](./wallet.md#type-beef), [Base64String](./wallet.md#type-base64s
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: WERR_REVIEW_ACTIONS
 
 When a `createAction` or `signAction` is completed in undelayed mode (`acceptDelayedBroadcast`: false),
@@ -2722,13 +2616,11 @@ which contains more details, particularly for double spend results.
 ```ts
 constructor(public reviewActionResults: ReviewActionResult[], public sendWithResults: SendWithResult[], public txid?: TXIDHexString, public tx?: AtomicBEEF, public noSendChange?: OutpointString[]) 
 ```
-
 See also: [AtomicBEEF](./wallet.md#type-atomicbeef), [OutpointString](./wallet.md#type-outpointstring), [ReviewActionResult](./wallet.md#interface-reviewactionresult), [SendWithResult](./wallet.md#interface-sendwithresult), [TXIDHexString](./wallet.md#type-txidhexstring)
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: WalletClient
 
 The SDK is how applications communicate with wallets over a communications substrate.
@@ -2943,7 +2835,6 @@ See also: [AcquireCertificateArgs](./wallet.md#interface-acquirecertificateargs)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: WalletError
 
 ```ts
@@ -2957,7 +2848,6 @@ export class WalletError extends Error {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: WalletWireProcessor
 
 Processes incoming wallet calls received over a wallet wire, with a given wallet.
@@ -2975,7 +2865,6 @@ See also: [WalletInterface](./wallet.md#interface-walletinterface), [WalletWire]
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: WalletWireTransceiver
 
 A way to make remote calls to a wallet over a wallet wire.
@@ -3199,7 +3088,6 @@ See also: [AcquireCertificateArgs](./wallet.md#interface-acquirecertificateargs)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: WindowCWISubstrate
 
 Facilitates wallet operations over the window.CWI interface.
@@ -3643,7 +3531,6 @@ See also: [BEEF](./wallet.md#type-beef), [Base64String](./wallet.md#type-base64s
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: XDMSubstrate
 
 Facilitates wallet operations over cross-document messaging.
@@ -4088,7 +3975,6 @@ See also: [BEEF](./wallet.md#type-beef), [Base64String](./wallet.md#type-base64s
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Functions
 
 ### Function: toOriginHeader
@@ -4100,7 +3986,6 @@ export function toOriginHeader(originator: string, fallbackScheme = "http"): str
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Types
 
 | | | |
@@ -4136,7 +4021,6 @@ See also: [WalletCertificate](./wallet.md#interface-walletcertificate)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: AcquisitionProtocol
 
 ```ts
@@ -4146,7 +4030,6 @@ export type AcquisitionProtocol = "direct" | "issuance"
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: ActionStatus
 
 ```ts
@@ -4156,7 +4039,6 @@ export type ActionStatus = "completed" | "unprocessed" | "sending" | "unproven" 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: AtomicBEEF
 
 ```ts
@@ -4168,7 +4050,6 @@ See also: [Byte](./wallet.md#type-byte)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: BEEF
 
 ```ts
@@ -4180,7 +4061,6 @@ See also: [Byte](./wallet.md#type-byte)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: Base64String
 
 ```ts
@@ -4190,7 +4070,6 @@ export type Base64String = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: BasketStringUnder300Bytes
 
 ```ts
@@ -4200,7 +4079,6 @@ export type BasketStringUnder300Bytes = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: BooleanDefaultFalse
 
 ```ts
@@ -4210,7 +4088,6 @@ export type BooleanDefaultFalse = boolean
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: BooleanDefaultTrue
 
 ```ts
@@ -4220,7 +4097,6 @@ export type BooleanDefaultTrue = boolean
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: Byte
 
 ```ts
@@ -4230,7 +4106,6 @@ export type Byte = number
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: CallType
 
 ```ts
@@ -4240,7 +4115,6 @@ export type CallType = keyof typeof calls
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: CertificateFieldNameUnder50Bytes
 
 ```ts
@@ -4250,7 +4124,6 @@ export type CertificateFieldNameUnder50Bytes = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: Counterparty
 
 ```ts
@@ -4262,7 +4135,6 @@ See also: [PubKeyHex](./wallet.md#type-pubkeyhex), [PublicKey](./primitives.md#c
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: DescriptionString5to50Bytes
 
 ```ts
@@ -4272,7 +4144,6 @@ export type DescriptionString5to50Bytes = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: EntityIconURLStringMax500Bytes
 
 ```ts
@@ -4282,7 +4153,6 @@ export type EntityIconURLStringMax500Bytes = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: EntityNameStringMax100Bytes
 
 ```ts
@@ -4292,7 +4162,6 @@ export type EntityNameStringMax100Bytes = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: ErrorCodeString10To40Bytes
 
 ```ts
@@ -4302,7 +4171,6 @@ export type ErrorCodeString10To40Bytes = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: ErrorDescriptionString20To200Bytes
 
 ```ts
@@ -4312,7 +4180,6 @@ export type ErrorDescriptionString20To200Bytes = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: HexString
 
 ```ts
@@ -4322,7 +4189,6 @@ export type HexString = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: ISOTimestampString
 
 ```ts
@@ -4332,7 +4198,6 @@ export type ISOTimestampString = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: KeyIDStringUnder800Bytes
 
 ```ts
@@ -4342,7 +4207,6 @@ export type KeyIDStringUnder800Bytes = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: KeyringRevealer
 
 ```ts
@@ -4354,7 +4218,6 @@ See also: [PubKeyHex](./wallet.md#type-pubkeyhex)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: LabelStringUnder300Bytes
 
 ```ts
@@ -4364,7 +4227,6 @@ export type LabelStringUnder300Bytes = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: OriginatorDomainNameStringUnder250Bytes
 
 ```ts
@@ -4374,7 +4236,6 @@ export type OriginatorDomainNameStringUnder250Bytes = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: OutpointString
 
 ```ts
@@ -4384,7 +4245,6 @@ export type OutpointString = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: OutputTagStringUnder300Bytes
 
 ```ts
@@ -4394,7 +4254,6 @@ export type OutputTagStringUnder300Bytes = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: PositiveInteger
 
 ```ts
@@ -4404,7 +4263,6 @@ export type PositiveInteger = number
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: PositiveIntegerDefault10Max10000
 
 ```ts
@@ -4414,7 +4272,6 @@ export type PositiveIntegerDefault10Max10000 = number
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: PositiveIntegerMax10
 
 ```ts
@@ -4424,7 +4281,6 @@ export type PositiveIntegerMax10 = number
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: PositiveIntegerOrZero
 
 ```ts
@@ -4434,7 +4290,6 @@ export type PositiveIntegerOrZero = number
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: ProtocolString5To400Bytes
 
 ```ts
@@ -4444,7 +4299,6 @@ export type ProtocolString5To400Bytes = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: PubKeyHex
 
 ```ts
@@ -4456,7 +4310,6 @@ See also: [HexString](./wallet.md#type-hexstring)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: ReviewActionResultStatus
 
 Indicates status of a new Action following a `createAction` or `signAction` in immediate mode:
@@ -4474,7 +4327,6 @@ export type ReviewActionResultStatus = "success" | "doubleSpend" | "serviceError
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: SatoshiValue
 
 ```ts
@@ -4484,8 +4336,8 @@ export type SatoshiValue = number
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: SecurityLevel
+
 
 SecurityLevel for protocols.
 0 = Silently grants the request with no user interation.
@@ -4499,7 +4351,6 @@ export type SecurityLevel = 0 | 1 | 2
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: SendWithResultStatus
 
 ```ts
@@ -4509,7 +4360,6 @@ export type SendWithResultStatus = "unproven" | "sending" | "failed"
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: TXIDHexString
 
 ```ts
@@ -4521,7 +4371,6 @@ See also: [HexString](./wallet.md#type-hexstring)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: TrustSelf
 
 Controls behavior of input BEEF validation.
@@ -4537,7 +4386,6 @@ export type TrustSelf = "known"
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: VersionString7To30Bytes
 
 ```ts
@@ -4547,7 +4395,6 @@ export type VersionString7To30Bytes = string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: WalletCounterparty
 
 ```ts
@@ -4559,7 +4406,6 @@ See also: [PubKeyHex](./wallet.md#type-pubkeyhex)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: WalletErrorCode
 
 ```ts
@@ -4571,7 +4417,6 @@ See also: [walletErrors](./wallet.md#enum-walleterrors)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: WalletNetwork
 
 ```ts
@@ -4581,7 +4426,6 @@ export type WalletNetwork = "mainnet" | "testnet"
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Type: WalletProtocol
 
 ```ts
@@ -4596,7 +4440,6 @@ See also: [ProtocolString5To400Bytes](./wallet.md#type-protocolstring5to400bytes
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Enums
 
 | |
@@ -4623,7 +4466,6 @@ See also: [Counterparty](./wallet.md#type-counterparty)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Enum: walletErrors
 
 ```ts
@@ -4639,5 +4481,5 @@ export enum walletErrors {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Variables
+

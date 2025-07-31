@@ -4,7 +4,8 @@ import Script from './Script.js'
 import BigNumber from '../primitives/BigNumber.js'
 import OP from './OP.js'
 import ScriptChunk from './ScriptChunk.js'
-import { toHex, minimallyEncode } from '../primitives/utils.js'
+import { minimallyEncode } from '../primitives/utils.js'
+import ScriptEvaluationError from './ScriptEvaluationError.js'
 import * as Hash from '../primitives/Hash.js'
 import TransactionSignature from '../primitives/TransactionSignature.js'
 import PublicKey from '../primitives/PublicKey.js'
@@ -1054,16 +1055,17 @@ export default class Spend {
   }
 
   private scriptEvaluationError (str: string): void {
-    const pcInfo = `Context: ${this.context}, PC: ${this.programCounter}`
-    const stackHex = this.stack.map(s => (s != null && typeof s.length !== 'undefined') ? toHex(s) : (s === null || s === undefined ? 'null/undef' : 'INVALID_STACK_ITEM')).join(', ')
-    const altStackHex = this.altStack.map(s => (s != null && typeof s.length !== 'undefined') ? toHex(s) : (s === null || s === undefined ? 'null/undef' : 'INVALID_STACK_ITEM')).join(', ')
-
-    const stackInfo = `Stack: [${stackHex}] (len: ${this.stack.length}, mem: ${this.stackMem})`
-    const altStackInfo = `AltStack: [${altStackHex}] (len: ${this.altStack.length}, mem: ${this.altStackMem})`
-    const ifStackInfo = `IfStack: [${this.ifStack.join(', ')}]`
-
-    throw new Error(
-      `Script evaluation error: ${str}\nTXID: ${this.sourceTXID}, OutputIdx: ${this.sourceOutputIndex}\n${pcInfo}\n${stackInfo}\n${altStackInfo}\n${ifStackInfo}`
-    )
+    throw new ScriptEvaluationError({
+      message: str,
+      txid: this.sourceTXID,
+      outputIndex: this.sourceOutputIndex,
+      context: this.context,
+      programCounter: this.programCounter,
+      stackState: this.stack,
+      altStackState: this.altStack,
+      ifStackState: this.ifStack,
+      stackMem: this.stackMem,
+      altStackMem: this.altStackMem
+    })
   }
 }

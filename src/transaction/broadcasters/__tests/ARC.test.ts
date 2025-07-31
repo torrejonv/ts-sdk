@@ -222,7 +222,7 @@ describe('ARC Broadcaster', () => {
     })
 
     // Initialize the ARC broadcaster with the mocked fetch client
-    const URL = 'https://arc.taal.com'
+    const URL = 'https://arc.gorillapool.io'
     const apiKey = 'mock_api_key' // Example API key
     const broadcaster = new ARC(URL, {
       apiKey,

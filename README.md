@@ -61,17 +61,17 @@ For a more detailed tutorial and advanced examples, check our [Documentation](#d
 ## Features & Deliverables
 
 - **Sound Cryptographic Primitives**: Secure key management, signature computations, and encryption protocols.
-  
+
 - **Script Level Constructs**: Network-compliant script interpreter with support for custom scripts and serialization formats.
-  
+
 - **Transaction Construction and Signing**: Comprehensive transaction builder API, ensuring versatile and secure transaction creation.
-  
+
 - **Transaction Broadcast Management**: Mechanisms to send transactions to both miners and overlays, ensuring extensibility and future-proofing.
-  
+
 - **Merkle Proof Verification**: Tools for representing and verifying merkle proofs, adhering to various serialization standards.
-  
+
 - **Serializable SPV Structures**: Structures and interfaces for full SPV verification.
-  
+
 - **Secure Encryption and Signed Messages**: Enhanced mechanisms for encryption and digital signatures, replacing outdated methods.
 
 - **P2P Authentication**: Robust peer-to-peer authentication mechanisms to ensure secure connections between parties.
@@ -92,11 +92,11 @@ For a more detailed tutorial and advanced examples, check our [Documentation](#d
 
 Comprehensive documentation is available in several formats:
 
-- **[📚 Online Documentation](https://bitcoin-sv.github.io/ts-sdk)**: Our complete documentation:
-    - **[🚀 Tutorials](https://bitcoin-sv.github.io/ts-sdk/tutorials/)**: Step-by-step lessons to learn by doing
-    - **[🔧 How-To Guides](https://bitcoin-sv.github.io/ts-sdk/guides/)**: Practical solutions to specific problems
-    - **[📚 Reference](https://bitcoin-sv.github.io/ts-sdk/reference/)**: Complete technical specifications and API documentation
-    - **[🏗️ Concepts](https://bitcoin-sv.github.io/ts-sdk/concepts/)**: Architecture and design explanations
+- **[📚 Online Documentation](https://bsv-blockchain.github.io/ts-sdk)**: Our complete documentation:
+    - **[🚀 Tutorials](https://bsv-blockchain.github.io/ts-sdk/tutorials/)**: Step-by-step lessons to learn by doing
+    - **[🔧 How-To Guides](https://bsv-blockchain.github.io/ts-sdk/guides/)**: Practical solutions to specific problems
+    - **[📚 Reference](https://bsv-blockchain.github.io/ts-sdk/reference/)**: Complete technical specifications and API documentation
+    - **[🏗️ Concepts](https://bsv-blockchain.github.io/ts-sdk/concepts/)**: Architecture and design explanations
 - **[⚡ Examples](https://docs.bsvblockchain.org/guides/sdks/ts/examples)**: Practical code examples
 - **Code Annotations**: The SDK is richly documented with code-level annotations that show up in editors like VSCode
 

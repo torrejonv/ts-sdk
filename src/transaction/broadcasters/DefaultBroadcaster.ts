@@ -6,7 +6,7 @@ export function defaultBroadcaster(
   config: ArcConfig = {}
 ): Broadcaster {
   return new ARC(
-    isTestnet ? 'https://arc-test.taal.com' : 'https://arc.taal.com',
+    isTestnet ? 'https://testnet.arc.gorillapool.io' : 'https://arc.gorillapool.io',
     config
   )
 }

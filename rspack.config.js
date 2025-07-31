@@ -1,31 +1,32 @@
 import { fileURLToPath } from 'url'
 import path from 'path'
 
-// Get __dirname equivalent in ES Modules
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 export default {
+  mode: 'production',
   entry: './dist/esm/mod.js',
   output: {
-    filename: 'bundle.js', // Output single bundled file
-    path: path.resolve(__dirname, 'dist', 'umd'), // Output directory
-    library: 'bsv',
-    libraryTarget: 'umd',
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist', 'umd'),
+    library: {
+      name: 'bsv',
+      type: 'umd'
+    },
     globalObject: 'this'
   },
-  resolve: {
-    extensions: ['.ts', '.js'] // Resolve both TypeScript and JavaScript files
-  },
-  mode: 'production',
   module: {
     rules: [
       {
-        test: /\.ts$/, // Use ts-loader to transpile TypeScript files
+        test: /\.ts$/,
         use: 'ts-loader',
         exclude: /node_modules/
       }
     ]
+  },
+  resolve: {
+    extensions: ['.ts', '.js']
   },
   optimization: {
     minimize: true

@@ -1,4 +1,5 @@
 import { KeyDeriver, KeyDeriverApi } from './KeyDeriver.js'
+import CachedKeyDeriver from './CachedKeyDeriver.js'
 import {
   Hash,
   ECDSA,
@@ -42,11 +43,11 @@ export class ProtoWallet {
 
   constructor (rootKeyOrKeyDeriver?: PrivateKey | 'anyone' | KeyDeriverApi) {
     if (typeof (rootKeyOrKeyDeriver as KeyDeriver).identityKey !== 'string') {
-      rootKeyOrKeyDeriver = new KeyDeriver(
+      rootKeyOrKeyDeriver = new CachedKeyDeriver(
         rootKeyOrKeyDeriver as PrivateKey | 'anyone'
       )
     }
-    this.keyDeriver = rootKeyOrKeyDeriver as KeyDeriver
+    this.keyDeriver = rootKeyOrKeyDeriver as KeyDeriverApi
   }
 
   async getPublicKey (

@@ -3,7 +3,6 @@ site_description: TypeScript SDK for Bitcoin SV
 site_url: https://bsv-blockchain.github.io/ts-sdk/
 repo_url: https://github.com/bsv-blockchain/ts-sdk
 repo_name: bsv-blockchain/ts-sdk
-
 docs_dir: docs
 
 theme:

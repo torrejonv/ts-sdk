@@ -22,7 +22,6 @@ See also: [TOTPAlgorithm](./totp.md#type-totpalgorithm)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Variables](#variables)
 
 ---
-
 ## Classes
 
 ### Class: TOTP
@@ -43,7 +42,6 @@ Generates a Time-based One-Time Password (TOTP).
 ```ts
 static generate(secret: number[], options?: TOTPOptions): string 
 ```
-
 See also: [TOTPOptions](./totp.md#interface-totpoptions)
 
 Returns
@@ -52,10 +50,10 @@ The generated TOTP.
 
 Argument Details
 
-- **secret**
-    - The secret key for TOTP.
-- **options**
-    - Optional parameters for TOTP.
++ **secret**
+  + The secret key for TOTP.
++ **options**
+  + Optional parameters for TOTP.
 
 #### Method validate
 
@@ -64,7 +62,6 @@ Validates a Time-based One-Time Password (TOTP).
 ```ts
 static validate(secret: number[], passcode: string, options?: TOTPValidateOptions): boolean 
 ```
-
 See also: [TOTPValidateOptions](./totp.md#type-totpvalidateoptions)
 
 Returns
@@ -73,17 +70,16 @@ A boolean indicating whether the passcode is valid.
 
 Argument Details
 
-- **secret**
-    - The secret key for TOTP.
-- **passcode**
-    - The passcode to validate.
-- **options**
-    - Optional parameters for TOTP validation.
++ **secret**
+  + The secret key for TOTP.
++ **passcode**
+  + The passcode to validate.
++ **options**
+  + Optional parameters for TOTP validation.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Variables](#variables)
 
 ---
-
 ## Functions
 
 ## Types
@@ -106,7 +102,6 @@ export type TOTPAlgorithm = "SHA-1" | "SHA-256" | "SHA-512"
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Variables](#variables)
 
 ---
-
 ### Type: TOTPValidateOptions
 
 Options for TOTP validation.
@@ -122,5 +117,5 @@ See also: [TOTPOptions](./totp.md#interface-totpoptions)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Variables](#variables)
 
 ---
-
 ## Variables
+

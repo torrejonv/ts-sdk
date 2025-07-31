@@ -1,12 +1,10 @@
 // @ts-nocheck
-// @ts-ignore
-import { AuthMessage, RequestedCertificateSet, Transport } from "../types.js"
+// @ts-expect-error
+import { AuthMessage, RequestedCertificateSet, Transport } from '../types.js'
 import * as Utils from '../../primitives/utils.js'
 
-const SUCCESS_STATUS_CODES = [200, 402]
-
 // Only bind window.fetch in the browser
-const defaultFetch = typeof window !== 'undefined' ? fetch.bind(window) : fetch;
+const defaultFetch = typeof window !== 'undefined' ? fetch.bind(window) : fetch
 
 /**
  * Implements an HTTP-specific transport for handling Peer mutual authentication messages.
@@ -17,13 +15,12 @@ export class SimplifiedFetchTransport implements Transport {
   fetchClient: typeof fetch
   baseUrl: string
 
-
   /**
    * Constructs a new instance of SimplifiedFetchTransport.
    * @param baseUrl - The base URL for all HTTP requests made by this transport.
    * @param fetchClient - A fetch implementation to use for HTTP requests (default: global fetch).
    */
-  constructor(baseUrl: string, fetchClient = defaultFetch) {
+  constructor (baseUrl: string, fetchClient = defaultFetch) {
     this.fetchClient = fetchClient
     this.baseUrl = baseUrl
   }
@@ -33,47 +30,48 @@ export class SimplifiedFetchTransport implements Transport {
    * Handles both general and authenticated message types. For general messages,
    * the payload is deserialized and sent as an HTTP request. For other message types,
    * the message is sent as a POST request to the `/auth` endpoint.
-   * 
+   *
    * @param message - The AuthMessage to send.
    * @returns A promise that resolves when the message is successfully sent.
-   * 
+   *
    * @throws Will throw an error if no listener has been registered via `onData`.
    */
-  async send(message: AuthMessage): Promise<void> {
-    if (!this.onDataCallback) {
+  async send (message: AuthMessage): Promise<void> {
+    if (this.onDataCallback == null) {
       throw new Error('Listen before you start speaking. God gave you two ears and one mouth for a reason.')
     }
     if (message.messageType !== 'general') {
-      return new Promise(async (resolve, reject) => {
-        try {
-          const responsePromise = this.fetchClient(`${this.baseUrl}/.well-known/auth`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(message)
-          })
+      return await new Promise((resolve, reject) => {
+        void (async () => {
+          try {
+            const responsePromise = this.fetchClient(`${this.baseUrl}/.well-known/auth`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(message)
+            })
 
-          // For initialRequest message, mark connection as established and start pool.
-          if (message.messageType !== "initialRequest") {
-            resolve()
-          }
-          const response = await responsePromise
-          // Handle the response if data is received and callback is set
-          if (response.ok && this.onDataCallback) {
-            const responseMessage = await response.json()
-            this.onDataCallback(responseMessage as AuthMessage)
-          } else {
+            // For initialRequest message, mark connection as established and start pool.
+            if (message.messageType !== 'initialRequest') {
+              resolve()
+            }
+            const response = await responsePromise
+            // Handle the response if data is received and callback is set
+            if (response.ok && (this.onDataCallback != null)) {
+              const responseMessage = await response.json()
+              this.onDataCallback(responseMessage as AuthMessage)
+            } else {
             // Server may be a non authenticated server
-            throw new Error('HTTP server failed to authenticate')
+              throw new Error('HTTP server failed to authenticate')
+            }
+            if (message.messageType === 'initialRequest') {
+              resolve()
+            }
+          } catch (e) {
+            reject(e)
           }
-          if (message.messageType === "initialRequest") {
-            resolve()
-          }
-        } catch (e) {
-          reject(e)
-          return
-        }
+        })()
       })
     } else {
       // Parse message payload
@@ -81,7 +79,7 @@ export class SimplifiedFetchTransport implements Transport {
 
       // Send the byte array as the HTTP payload
       const url = `${this.baseUrl}${httpRequest.urlPostfix}`
-      let httpRequestWithAuthHeaders: any = httpRequest
+      const httpRequestWithAuthHeaders: any = httpRequest
       if (typeof httpRequest.headers !== 'object') {
         httpRequestWithAuthHeaders.headers = {}
       }
@@ -95,27 +93,27 @@ export class SimplifiedFetchTransport implements Transport {
       httpRequestWithAuthHeaders.headers['x-bsv-auth-request-id'] = httpRequest.requestId
 
       // Ensure Content-Type is set for requests with a body
-      if (httpRequestWithAuthHeaders.body) {
-        const headers = httpRequestWithAuthHeaders.headers;
-        if (!headers['content-type']) {
-          throw new Error('Content-Type header is required for requests with a body.');
+      if (httpRequestWithAuthHeaders.body != null) {
+        const headers = httpRequestWithAuthHeaders.headers
+        if (headers['content-type'] == null) {
+          throw new Error('Content-Type header is required for requests with a body.')
         }
 
-        const contentType = headers['content-type'];
+        const contentType = String(headers['content-type'] ?? '')
 
         // Transform body based on Content-Type
         if (contentType.includes('application/json')) {
           // Convert byte array to JSON string
-          httpRequestWithAuthHeaders.body = Utils.toUTF8(httpRequestWithAuthHeaders.body);
+          httpRequestWithAuthHeaders.body = Utils.toUTF8(httpRequestWithAuthHeaders.body)
         } else if (contentType.includes('application/x-www-form-urlencoded')) {
           // Convert byte array to URL-encoded string
-          httpRequestWithAuthHeaders.body = Utils.toUTF8(httpRequestWithAuthHeaders.body);
+          httpRequestWithAuthHeaders.body = Utils.toUTF8(httpRequestWithAuthHeaders.body)
         } else if (contentType.includes('text/plain')) {
           // Convert byte array to plain UTF-8 string
-          httpRequestWithAuthHeaders.body = Utils.toUTF8(httpRequestWithAuthHeaders.body);
+          httpRequestWithAuthHeaders.body = Utils.toUTF8(httpRequestWithAuthHeaders.body)
         } else {
           // For all other content types, treat as binary data
-          httpRequestWithAuthHeaders.body = new Uint8Array(httpRequestWithAuthHeaders.body);
+          httpRequestWithAuthHeaders.body = new Uint8Array(httpRequestWithAuthHeaders.body)
         }
       }
 
@@ -132,14 +130,13 @@ export class SimplifiedFetchTransport implements Transport {
         // Try parsing JSON error
         const errorInfo = await response.json()
         // Otherwise just throw whatever we got
-        throw new Error(`HTTP ${response.status} - ${JSON.stringify(errorInfo)}`);
+        throw new Error(`HTTP ${response.status} - ${JSON.stringify(errorInfo)}`)
       }
 
       const parsedBody = await response.arrayBuffer()
       const payloadWriter = new Utils.Writer()
-      if(response.headers.get('x-bsv-auth-request-id') != null)
-      {
-          payloadWriter.write(Utils.toArray(response.headers.get('x-bsv-auth-request-id'), 'base64'));
+      if (response.headers.get('x-bsv-auth-request-id') != null) {
+        payloadWriter.write(Utils.toArray(response.headers.get('x-bsv-auth-request-id'), 'base64'))
       }
       payloadWriter.writeVarIntNum(response.status)
 
@@ -147,7 +144,7 @@ export class SimplifiedFetchTransport implements Transport {
       // Parse response headers from the server and include only the signed headers:
       // - Include custom headers prefixed with x-bsv (excluding those starting with x-bsv-auth)
       // - Include the authorization header
-      const includedHeaders: [string, string][] = []
+      const includedHeaders: Array<[string, string]> = []
       response.headers.forEach((value, key) => {
         const lowerKey = key.toLowerCase()
         if ((lowerKey.startsWith('x-bsv-') || lowerKey === 'authorization') && !lowerKey.startsWith('x-bsv-auth')) {
@@ -174,7 +171,7 @@ export class SimplifiedFetchTransport implements Transport {
       }
 
       // Handle body
-      if (parsedBody) {
+      if (parsedBody != null) {
         const bodyAsArray = Array.from(new Uint8Array(parsedBody))
         payloadWriter.writeVarIntNum(bodyAsArray.length)
         payloadWriter.write(bodyAsArray)
@@ -191,11 +188,11 @@ export class SimplifiedFetchTransport implements Transport {
         yourNonce: response.headers.get('x-bsv-auth-your-nonce'),
         requestedCertificates: JSON.parse(response.headers.get('x-bsv-auth-requested-certificates')) as RequestedCertificateSet,
         payload: payloadWriter.toArray(),
-        signature: Utils.toArray(response.headers.get('x-bsv-auth-signature'), 'hex'),
+        signature: Utils.toArray(response.headers.get('x-bsv-auth-signature'), 'hex')
       }
 
       // If the server didn't provide the correct authentication headers, throw an error
-      if (!responseMessage.version) {
+      if (responseMessage.version == null) {
         throw new Error('HTTP server failed to authenticate')
       }
 
@@ -205,30 +202,30 @@ export class SimplifiedFetchTransport implements Transport {
   }
 
   /**
-   * Registers a callback to handle incoming messages. 
+   * Registers a callback to handle incoming messages.
    * This must be called before sending any messages to ensure responses can be processed.
-   * 
+   *
    * @param callback - A function to invoke when an incoming AuthMessage is received.
    * @returns A promise that resolves once the callback is set.
    */
-  async onData(callback: (message: AuthMessage) => Promise<void>): Promise<void> {
+  async onData (callback: (message: AuthMessage) => Promise<void>): Promise<void> {
     this.onDataCallback = (m) => {
-      callback(m)
+      void callback(m)
     }
   }
 
   /**
    * Deserializes a request payload from a byte array into an HTTP request-like structure.
-   * 
+   *
    * @param payload - The serialized payload to deserialize.
    * @returns An object representing the deserialized request, including the method,
    *          URL postfix (path and query string), headers, body, and request ID.
    */
-  deserializeRequestPayload(payload: number[]): {
-    method: string,
-    urlPostfix: string,
-    headers: Record<string, string>,
-    body: number[],
+  deserializeRequestPayload (payload: number[]): {
+    method: string
+    urlPostfix: string
+    headers: Record<string, string>
+    body: number[]
     requestId: string
   } {
     // Create a reader

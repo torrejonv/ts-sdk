@@ -119,7 +119,11 @@ export default class Transaction {
   static fromAtomicBEEF (beef: number[]): Transaction {
     const { tx, txid, beef: b } = Transaction.fromAnyBeef(beef)
     if (txid !== b.atomicTxid) {
-      if (b.atomicTxid) { throw new Error(`Transaction with TXID ${b.atomicTxid} not found in BEEF data.`) } else { throw new Error('beef must conform to BRC-95 and must contain the subject txid.') }
+      if (b.atomicTxid != null) {
+        throw new Error(`Transaction with TXID ${b.atomicTxid} not found in BEEF data.`)
+      } else {
+        throw new Error('beef must conform to BRC-95 and must contain the subject txid.')
+      }
     }
     return tx
   }
@@ -129,10 +133,14 @@ export default class Transaction {
     if (b.txs.length < 1) {
       throw new Error('beef must include at least one transaction.')
     }
-    const target = txid || b.atomicTxid || b.txs.slice(-1)[0].txid
+    const target = txid ?? b.atomicTxid ?? b.txs.slice(-1)[0].txid
     const tx = b.findAtomicTransaction(target)
     if (tx == null) {
-      if (txid) { throw new Error(`Transaction with TXID ${target} not found in BEEF data.`) } else { throw new Error('beef does not contain transaction for atomic txid.') }
+      if (txid != null) {
+        throw new Error(`Transaction with TXID ${target} not found in BEEF data.`)
+      } else {
+        throw new Error('beef does not contain transaction for atomic txid.')
+      }
     }
     return { tx, beef: b, txid: target }
   }

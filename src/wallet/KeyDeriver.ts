@@ -3,7 +3,8 @@ import {
   PublicKey,
   SymmetricKey,
   Hash,
-  Utils
+  Utils,
+  Point
 } from '../primitives/index.js'
 import { WalletProtocol, PubKeyHex } from './Wallet.interfaces.js'
 
@@ -92,12 +93,18 @@ export interface KeyDeriverApi {
 export class KeyDeriver implements KeyDeriverApi {
   rootKey: PrivateKey
   identityKey: string
+  private readonly anyone: PublicKey
 
   /**
    * Initializes the KeyDeriver instance with a root private key.
    * @param {PrivateKey | 'anyone'} rootKey - The root private key or the string 'anyone'.
    */
-  constructor (rootKey: PrivateKey | 'anyone') {
+  constructor (
+    rootKey: PrivateKey | 'anyone',
+    private readonly cacheSharedSecret?: ((priv: PrivateKey, pub: Point, point: Point) => void),
+    private readonly retrieveCachedSharedSecret?: ((priv: PrivateKey, pub: Point) => (Point | undefined))
+  ) {
+    this.anyone = new PrivateKey(1).toPublicKey()
     if (rootKey === 'anyone') {
       this.rootKey = new PrivateKey(1)
     } else {
@@ -123,12 +130,19 @@ export class KeyDeriver implements KeyDeriverApi {
     counterparty = this.normalizeCounterparty(counterparty)
     if (forSelf) {
       return this.rootKey
-        .deriveChild(counterparty, this.computeInvoiceNumber(protocolID, keyID))
+        .deriveChild(
+          counterparty,
+          this.computeInvoiceNumber(protocolID, keyID),
+          this.cacheSharedSecret,
+          this.retrieveCachedSharedSecret
+        )
         .toPublicKey()
     } else {
       return counterparty.deriveChild(
         this.rootKey,
-        this.computeInvoiceNumber(protocolID, keyID)
+        this.computeInvoiceNumber(protocolID, keyID),
+        this.cacheSharedSecret,
+        this.retrieveCachedSharedSecret
       )
     }
   }
@@ -148,7 +162,9 @@ export class KeyDeriver implements KeyDeriverApi {
     counterparty = this.normalizeCounterparty(counterparty)
     return this.rootKey.deriveChild(
       counterparty,
-      this.computeInvoiceNumber(protocolID, keyID)
+      this.computeInvoiceNumber(protocolID, keyID),
+      this.cacheSharedSecret,
+      this.retrieveCachedSharedSecret
     )
   }
 
@@ -168,9 +184,10 @@ export class KeyDeriver implements KeyDeriverApi {
     // If counterparty is 'anyone', we use 1*G as the public key.
     // This is a publicly derivable key and should only be used in scenarios where public disclosure is intended.
     if (counterparty === 'anyone') {
-      counterparty = new PrivateKey(1).toPublicKey()
+      counterparty = this.anyone
+    } else {
+      counterparty = this.normalizeCounterparty(counterparty)
     }
-    counterparty = this.normalizeCounterparty(counterparty)
     const derivedPublicKey = this.derivePublicKey(
       protocolID,
       keyID,

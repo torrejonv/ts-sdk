@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file. The format 
 ## Table of Contents
 
 - [Unreleased](#unreleased)
+- [1.6.20 - 2025-07-22](#1620---2025-07-22)
+- [1.6.19 - 2025-07-21](#1619---2025-07-21)
+- [1.6.18 - 2025-07-20](#1618---2025-07-20)
+- [1.6.17 - 2025-07-18](#1617---2025-07-18)
+- [1.6.16 - 2025-07-17](#1616---2025-07-17)
+- [1.6.14 - 2025-07-17](#1614---2025-07-17)
+- [1.6.13 - 2025-07-17](#1613---2025-07-17)
 - [1.6.12 - 2025-07-08](#1612---2025-07-08)
 - [1.6.11 - 2025-07-05](#1611---2025-07-05)
 - [1.6.10 - 2025-07-02](#1610---2025-07-02)
@@ -141,6 +148,70 @@ All notable changes to this project will be documented in this file. The format 
 ### Security
 
 ---
+
+### [1.6.20] - 2025-07-22
+
+### Fixed
+
+- Small ECDSA optimizations
+- Proper types for script evaluation errors (useful for programmatic access)
+- Clear rspack errors and use latest version
+
+### [1.6.19] - 2025-07-21
+
+### Added
+
+- Improve performance of PBKDF2-SHA512 by 5x
+- Improve build performance by 5x with rspack
+- ECDSA signature verification speed increased by 50%
+- Improve performance for sha256, sha512, sha256hmac, and sha512hmac with native BigInt logic
+- Fix remaining lint errors, removing final two files from the ignore-list
+
+---
+
+### [1.6.18] - 2025-07-20
+
+### Added
+
+- More default SLAP trackers (run by BSVA) to ensure redundancy and resiliency.
+
+---
+
+## [1.6.17] - 2025-07-18
+
+### Fixed
+
+- Increase ECDSA performance by 3x by using jacobian coordinates
+
+---
+
+## [1.6.16] - 2025-07-17
+
+### Fixed
+
+- Improved performance of point multiplication by 10x
+- Make proper use of CachedKey deriver within ProtoWallet by default.
+- Cache shared secret within BKDS
+
+---
+
+## [1.6.15] - 2025-07-17
+
+### Added
+
+- `signal` property to HttpClientRequestOptions for request aborting including timeouts.
+
+### Fixed
+
+- SymmetricKeyCompatibility.test.ts failed to compile with extra toBe argument.
+
+---
+
+## [1.6.14] - 2025-07-17
+
+### Changed
+
+- Default broadcaster changed to Gorilla Pool ARC because they do not enforce an api key.
 
 ## [1.6.13] - 2025-07-16
 

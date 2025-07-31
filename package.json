@@ -1,6 +1,6 @@
 {
   "name": "@bsv/sdk",
-  "version": "1.6.13",
+  "version": "1.6.20",
   "type": "module",
   "description": "BSV Blockchain Software Development Kit",
   "main": "dist/cjs/mod.js",
@@ -216,7 +216,7 @@
     "lint": "ts-standard --fix src/**/*.ts",
     "build": "npm run build:ts && npm run build:umd",
     "build:ts": "tsc -b && tsconfig-to-dual-package tsconfig.cjs.json",
-    "build:umd": "webpack --config webpack.config.js",
+    "build:umd": "rspack --config rspack.config.js",
     "dev": "tsc -b -w",
     "prepublish": "npm run build",
     "doc": "ts2md",
@@ -243,6 +243,7 @@
   "devDependencies": {
     "@eslint/js": "^9.23.0",
     "@jest/globals": "^29.7.0",
+    "@rspack/cli": "^1.4.9",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.13.14",
     "eslint": "^9.23.0",
@@ -255,17 +256,12 @@
     "ts2md": "^0.2.8",
     "tsconfig-to-dual-package": "^1.2.0",
     "typescript": "5.1",
-    "typescript-eslint": "^8.29.0",
-    "webpack": "^5.98.0",
-    "webpack-cli": "^6.0.1"
+    "typescript-eslint": "^8.29.0"
   },
   "ts-standard": {
     "project": "tsconfig.eslint.json",
     "ignore": [
-      "dist",
-      "src/script/ScriptTemplate.ts",
-      "src/transaction/Transaction.ts",
-      "src/auth/transports/SimplifiedFetchTransport.ts"
+      "dist"
     ]
   }
 }

@@ -41,7 +41,6 @@ Decrypts a message encrypted using the Bitcore variant of ECIES.
 ```ts
 public static bitcoreDecrypt(encBuf: number[], toPrivateKey: PrivateKey): number[] 
 ```
-
 See also: [PrivateKey](./primitives.md#class-privatekey)
 
 Returns
@@ -50,10 +49,10 @@ The decrypted message as a number array.
 
 Argument Details
 
-- **encBuf**
-    - The encrypted message buffer.
-- **toPrivateKey**
-    - The private key of the recipient.
++ **encBuf**
+  + The encrypted message buffer.
++ **toPrivateKey**
+  + The private key of the recipient.
 
 #### Method bitcoreEncrypt
 
@@ -62,7 +61,6 @@ Encrypts a given message using the Bitcore variant of ECIES.
 ```ts
 public static bitcoreEncrypt(messageBuf: number[], toPublicKey: PublicKey, fromPrivateKey?: PrivateKey, ivBuf?: number[]): number[] 
 ```
-
 See also: [PrivateKey](./primitives.md#class-privatekey), [PublicKey](./primitives.md#class-publickey)
 
 Returns
@@ -71,14 +69,14 @@ The encrypted message as a number array.
 
 Argument Details
 
-- **messageBuf**
-    - The message to be encrypted, in number array format.
-- **toPublicKey**
-    - The public key of the recipient.
-- **fromPrivateKey**
-    - The private key of the sender. If not provided, a random private key is used.
-- **ivBuf**
-    - The initialization vector for encryption. If not provided, a random IV is used.
++ **messageBuf**
+  + The message to be encrypted, in number array format.
++ **toPublicKey**
+  + The public key of the recipient.
++ **fromPrivateKey**
+  + The private key of the sender. If not provided, a random private key is used.
++ **ivBuf**
+  + The initialization vector for encryption. If not provided, a random IV is used.
 
 #### Method electrumDecrypt
 
@@ -87,7 +85,6 @@ Decrypts a message encrypted using the Electrum ECIES method.
 ```ts
 public static electrumDecrypt(encBuf: number[], toPrivateKey: PrivateKey, fromPublicKey?: PublicKey): number[] 
 ```
-
 See also: [PrivateKey](./primitives.md#class-privatekey), [PublicKey](./primitives.md#class-publickey)
 
 Returns
@@ -96,12 +93,12 @@ The decrypted message as a number array.
 
 Argument Details
 
-- **encBuf**
-    - The encrypted message buffer.
-- **toPrivateKey**
-    - The private key of the recipient.
-- **fromPublicKey**
-    - The public key of the sender. If not provided, it is extracted from the message.
++ **encBuf**
+  + The encrypted message buffer.
++ **toPrivateKey**
+  + The private key of the recipient.
++ **fromPublicKey**
+  + The public key of the sender. If not provided, it is extracted from the message.
 
 #### Method electrumEncrypt
 
@@ -110,7 +107,6 @@ Encrypts a given message using the Electrum ECIES method.
 ```ts
 public static electrumEncrypt(messageBuf: number[], toPublicKey: PublicKey, fromPrivateKey?: PrivateKey, noKey = false): number[] 
 ```
-
 See also: [PrivateKey](./primitives.md#class-privatekey), [PublicKey](./primitives.md#class-publickey)
 
 Returns
@@ -119,14 +115,14 @@ The encrypted message as a number array.
 
 Argument Details
 
-- **messageBuf**
-    - The message to be encrypted, in number array format.
-- **toPublicKey**
-    - The public key of the recipient.
-- **fromPrivateKey**
-    - The private key of the sender. If not provided, a random private key is used.
-- **noKey**
-    - If true, does not include the sender's public key in the encrypted message.
++ **messageBuf**
+  + The message to be encrypted, in number array format.
++ **toPublicKey**
+  + The public key of the recipient.
++ **fromPrivateKey**
+  + The private key of the sender. If not provided, a random private key is used.
++ **noKey**
+  + If true, does not include the sender's public key in the encrypted message.
 
 #### Method ivkEkM
 
@@ -140,7 +136,6 @@ public static ivkEkM(privKey: PrivateKey, pubKey: PublicKey): {
     kM: number[];
 } 
 ```
-
 See also: [PrivateKey](./primitives.md#class-privatekey), [PublicKey](./primitives.md#class-publickey)
 
 Returns
@@ -149,15 +144,14 @@ An object containing the iv, kE, and kM as number arrays.
 
 Argument Details
 
-- **privKey**
-    - The sender's private key.
-- **pubKey**
-    - The receiver's public key.
++ **privKey**
+  + The sender's private key.
++ **pubKey**
+  + The receiver's public key.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: HD
 
 ```ts
@@ -201,25 +195,24 @@ Initializes an HD wallet with optional parameters for version bytes, depth, pare
 ```ts
 constructor(versionBytesNum?: number, depth?: number, parentFingerPrint?: number[], childIndex?: number, chainCode?: number[], privKey?: PrivateKey, pubKey?: PublicKey) 
 ```
-
 See also: [PrivateKey](./primitives.md#class-privatekey), [PublicKey](./primitives.md#class-publickey)
 
 Argument Details
 
-- **versionBytesNum**
-    - Version bytes number for the wallet.
-- **depth**
-    - Depth of the key in the hierarchy.
-- **parentFingerPrint**
-    - Fingerprint of the parent key.
-- **childIndex**
-    - Index of the child key.
-- **chainCode**
-    - Chain code for key derivation.
-- **privKey**
-    - Private key of the wallet.
-- **pubKey**
-    - Public key of the wallet.
++ **versionBytesNum**
+  + Version bytes number for the wallet.
++ **depth**
+  + Depth of the key in the hierarchy.
++ **parentFingerPrint**
+  + Fingerprint of the parent key.
++ **childIndex**
+  + Index of the child key.
++ **chainCode**
+  + Chain code for key derivation.
++ **privKey**
+  + Private key of the wallet.
++ **pubKey**
+  + Public key of the wallet.
 
 #### Method derive
 
@@ -229,7 +222,6 @@ The path specifies the hierarchy of the child key to be derived.
 ```ts
 public derive(path: string): HD 
 ```
-
 See also: [HD](./compat.md#class-hd)
 
 Returns
@@ -238,8 +230,8 @@ A new HD instance representing the derived child wallet.
 
 Argument Details
 
-- **path**
-    - A string representing the derivation path (e.g., 'm/0'/1).
++ **path**
+  + A string representing the derivation path (e.g., 'm/0'/1).
 
 #### Method deriveChild
 
@@ -249,7 +241,6 @@ This method generates either a private or public child key depending on the curr
 ```ts
 public deriveChild(i: number): HD 
 ```
-
 See also: [HD](./compat.md#class-hd)
 
 Returns
@@ -258,8 +249,8 @@ A new HD instance representing the derived child wallet.
 
 Argument Details
 
-- **i**
-    - The index of the child key to derive.
++ **i**
+  + The index of the child key to derive.
 
 #### Method fromBinary
 
@@ -269,7 +260,6 @@ Parses a binary buffer to set up the wallet's properties.
 ```ts
 public static fromBinary(buf: number[]): HD 
 ```
-
 See also: [HD](./compat.md#class-hd)
 
 Returns
@@ -278,8 +268,8 @@ The new instance with properties set from the buffer.
 
 Argument Details
 
-- **buf**
-    - A buffer containing the wallet data.
++ **buf**
+  + A buffer containing the wallet data.
 
 #### Method fromBinary
 
@@ -296,8 +286,8 @@ The current instance with properties set from the buffer.
 
 Argument Details
 
-- **buf**
-    - A buffer containing the wallet data.
++ **buf**
+  + A buffer containing the wallet data.
 
 #### Method fromRandom
 
@@ -320,7 +310,6 @@ This method creates a root HD wallet with randomly generated private and public 
 ```ts
 public static fromRandom(): HD 
 ```
-
 See also: [HD](./compat.md#class-hd)
 
 Returns
@@ -335,7 +324,6 @@ This method generates keys and other properties from a given seed, conforming to
 ```ts
 public static fromSeed(bytes: number[]): HD 
 ```
-
 See also: [HD](./compat.md#class-hd)
 
 Returns
@@ -344,8 +332,8 @@ The current instance with properties set from the seed.
 
 Argument Details
 
-- **bytes**
-    - An array of bytes representing the seed.
++ **bytes**
+  + An array of bytes representing the seed.
 
 #### Method fromSeed
 
@@ -362,8 +350,8 @@ The current instance with properties set from the seed.
 
 Argument Details
 
-- **bytes**
-    - An array of bytes representing the seed.
++ **bytes**
+  + An array of bytes representing the seed.
 
 #### Method fromString
 
@@ -373,7 +361,6 @@ This method decodes a provided string to set up the HD wallet's properties.
 ```ts
 public static fromString(str: string): HD 
 ```
-
 See also: [HD](./compat.md#class-hd)
 
 Returns
@@ -382,8 +369,8 @@ The new instance with properties set from the string.
 
 Argument Details
 
-- **str**
-    - A base58 encoded string representing the wallet.
++ **str**
+  + A base58 encoded string representing the wallet.
 
 #### Method fromString
 
@@ -400,8 +387,8 @@ The current instance with properties set from the string.
 
 Argument Details
 
-- **str**
-    - A base58 encoded string representing the wallet.
++ **str**
+  + A base58 encoded string representing the wallet.
 
 #### Method isPrivate
 
@@ -437,7 +424,6 @@ This method strips away the private key information, leaving only the public par
 ```ts
 public toPublic(): HD 
 ```
-
 See also: [HD](./compat.md#class-hd)
 
 Returns
@@ -462,7 +448,6 @@ A base58 encoded string of the HD wallet.
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Class: Mnemonic
 
 ```ts
@@ -501,17 +486,16 @@ Constructs a Mnemonic object.
 ```ts
 constructor(mnemonic?: string, seed?: number[], wordlist = wordList) 
 ```
-
 See also: [wordList](./compat.md#variable-wordlist)
 
 Argument Details
 
-- **mnemonic**
-    - An optional mnemonic phrase.
-- **seed**
-    - An optional seed derived from the mnemonic.
-- **wordlist**
-    - An object containing a list of words and space character used in the mnemonic.
++ **mnemonic**
+  + An optional mnemonic phrase.
++ **seed**
+  + An optional seed derived from the mnemonic.
++ **wordlist**
+  + An object containing a list of words and space character used in the mnemonic.
 
 #### Method check
 
@@ -547,8 +531,8 @@ The Mnemonic instance with the mnemonic set from the entropy.
 
 Argument Details
 
-- **buf**
-    - The entropy buffer to convert. Must be at least 128 bits.
++ **buf**
+  + The entropy buffer to convert. Must be at least 128 bits.
 
 Throws
 
@@ -568,8 +552,8 @@ The Mnemonic instance with loaded mnemonic and seed.
 
 Argument Details
 
-- **bin**
-    - The binary representation of a mnemonic and seed.
++ **bin**
+  + The binary representation of a mnemonic and seed.
 
 #### Method fromEntropy
 
@@ -586,8 +570,8 @@ The Mnemonic instance with the mnemonic set from the given entropy.
 
 Argument Details
 
-- **buf**
-    - The entropy buffer, must be at least 128 bits.
++ **buf**
+  + The entropy buffer, must be at least 128 bits.
 
 Throws
 
@@ -600,7 +584,6 @@ Static method to create a Mnemonic instance from a given entropy.
 ```ts
 public static fromEntropy(buf: number[]): Mnemonic 
 ```
-
 See also: [Mnemonic](./compat.md#class-mnemonic)
 
 Returns
@@ -609,8 +592,8 @@ A new Mnemonic instance.
 
 Argument Details
 
-- **buf**
-    - The entropy buffer.
++ **buf**
+  + The entropy buffer.
 
 #### Method fromRandom
 
@@ -626,8 +609,8 @@ The Mnemonic instance with the new random mnemonic.
 
 Argument Details
 
-- **bits**
-    - The bit length for the random mnemonic (must be a multiple of 32 and at least 128).
++ **bits**
+  + The bit length for the random mnemonic (must be a multiple of 32 and at least 128).
 
 Throws
 
@@ -640,7 +623,6 @@ Static method to generate a Mnemonic instance with a random mnemonic.
 ```ts
 public static fromRandom(bits?: number): Mnemonic 
 ```
-
 See also: [Mnemonic](./compat.md#class-mnemonic)
 
 Returns
@@ -649,8 +631,8 @@ A new Mnemonic instance.
 
 Argument Details
 
-- **bits**
-    - The bit length for the random mnemonic.
++ **bits**
+  + The bit length for the random mnemonic.
 
 #### Method fromString
 
@@ -666,8 +648,8 @@ The Mnemonic instance with the set mnemonic.
 
 Argument Details
 
-- **mnemonic**
-    - The mnemonic phrase as a string.
++ **mnemonic**
+  + The mnemonic phrase as a string.
 
 #### Method fromString
 
@@ -676,7 +658,6 @@ Static method to create a Mnemonic instance from a mnemonic string.
 ```ts
 public static fromString(str: string): Mnemonic 
 ```
-
 See also: [Mnemonic](./compat.md#class-mnemonic)
 
 Returns
@@ -685,8 +666,8 @@ A new Mnemonic instance.
 
 Argument Details
 
-- **str**
-    - The mnemonic phrase.
++ **str**
+  + The mnemonic phrase.
 
 #### Method isValid
 
@@ -703,8 +684,8 @@ True if the mnemonic and passphrase combination is valid, false otherwise.
 
 Argument Details
 
-- **passphrase**
-    - The passphrase to validate.
++ **passphrase**
+  + The passphrase to validate.
 
 #### Method isValid
 
@@ -720,10 +701,10 @@ True if the combination is valid, false otherwise.
 
 Argument Details
 
-- **mnemonic**
-    - The mnemonic phrase.
-- **passphrase**
-    - The passphrase to validate.
++ **mnemonic**
+  + The mnemonic phrase.
++ **passphrase**
+  + The passphrase to validate.
 
 #### Method mnemonic2Seed
 
@@ -742,8 +723,8 @@ The Mnemonic instance with the seed generated from the mnemonic.
 
 Argument Details
 
-- **passphrase**
-    - An optional passphrase for added security.
++ **passphrase**
+  + An optional passphrase for added security.
 
 Throws
 
@@ -776,8 +757,8 @@ The generated seed.
 
 Argument Details
 
-- **passphrase**
-    - An optional passphrase for additional security.
++ **passphrase**
+  + An optional passphrase for additional security.
 
 Throws
 
@@ -800,7 +781,6 @@ The mnemonic phrase as a string.
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Functions
 
 ### Function: fromUtxo
@@ -829,15 +809,14 @@ See also: [Transaction](./transaction.md#class-transaction), [TransactionInput](
 
 Argument Details
 
-- **utxo**
-    - : jsonUtxo
-- **unlockingScriptTemplate**
-    - : { sign: (tx: Transaction, inputIndex: number) => Promise<UnlockingScript>, estimateLength: (tx: Transaction, inputIndex: number) => Promise<number> }
++ **utxo**
+  + : jsonUtxo
++ **unlockingScriptTemplate**
+  + : { sign: (tx: Transaction, inputIndex: number) => Promise<UnlockingScript>, estimateLength: (tx: Transaction, inputIndex: number) => Promise<number> }
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ## Types
 
 ## Enums
@@ -875,7 +854,6 @@ See also: [Writer](./primitives.md#class-writer), [hash256](./primitives.md#vari
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Variable: sign
 
 ```ts
@@ -896,7 +874,6 @@ See also: [BigNumber](./primitives.md#class-bignumber), [PrivateKey](./primitive
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Variable: verify
 
 ```ts
@@ -911,7 +888,6 @@ See also: [BigNumber](./primitives.md#class-bignumber), [PublicKey](./primitives
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
-
 ### Variable: wordList
 
 ```ts
