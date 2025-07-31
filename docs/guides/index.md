@@ -2,6 +2,15 @@
 
 Practical, problem-oriented guides to help you accomplish specific tasks with the BSV TypeScript SDK.
 
+## Token and Asset Management
+
+### [Token Creation and Management](./token-creation-management.md)
+
+- Creating tokens with baskets for organization
+- Token metadata and tagging systems
+- Redeeming and transferring tokens
+- Batch token operations and error handling
+
 ## Transaction Management
 
 ### [Transaction Signing Methods](./transaction-signing-methods.md)
@@ -23,6 +32,13 @@ Practical, problem-oriented guides to help you accomplish specific tasks with th
 - Step-by-step multisig implementation
 - Threshold signature schemes
 - Key ceremony management
+
+### [Creating Transactions with Direct Interfaces](./direct-transaction-creation.md)
+
+- Low-level transaction construction
+- Custom UTXO selection and management
+- Direct API usage for specialized applications
+- Alternative to WalletClient for advanced use cases
 
 ### [Implementing Transaction Batching](./transaction-batching.md)
 
@@ -110,7 +126,30 @@ Practical, problem-oriented guides to help you accomplish specific tasks with th
 - Confirmation monitoring
 - Double-spend detection
 
+### [Overlay Networks and Topic Broadcasting](./overlay-networks-broadcasting.md)
+
+- Broadcasting transactions to topic-based overlay networks
+- Multi-overlay communication patterns
+- Event-driven broadcasting systems
+- Cross-overlay message routing
+
+## Communication and Messaging
+
+### [Message Box Integration](./message-box-integration.md)
+
+- Secure encrypted messaging through message box services
+- End-to-end encrypted conversations
+- File sharing via message boxes
+- Multi-service message routing
+
 ## File and Data Management
+
+### [StorageUploader Patterns](./storage-uploader-patterns.md)
+
+- Efficient file upload patterns and strategies
+- Retention management and renewal systems
+- Multi-service storage with redundancy
+- Batch operations and chunked uploads
 
 ### [Implementing File Upload/Download Features](./file-upload-download.md)
 

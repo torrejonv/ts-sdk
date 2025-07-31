@@ -9,7 +9,7 @@ This comprehensive guide covers essential security practices when developing Bit
 - Basic knowledge of secure coding practices
 - Understanding of common attack vectors in cryptocurrency applications
 
-> **📚 Related Concepts**: This guide builds on [Key Management](../concepts/key-management.md), [Trust Model](../concepts/trust-model.md), [Digital Signatures](../concepts/signatures.md), and [Transaction Verification](../concepts/verification.md) concepts.
+> **📚 Related Concepts**: This guide builds on [Key Management](../concepts/key-management.md), [Digital Signatures](../concepts/signatures.md), and [Transaction Verification](../concepts/verification.md) concepts.
 
 ## Key Security Principles
 
