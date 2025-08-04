@@ -30,6 +30,7 @@ export interface DownloadResult {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: DownloaderConfig
 
 ```ts
@@ -41,6 +42,7 @@ export interface DownloaderConfig {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: FindFileData
 
 ```ts
@@ -55,6 +57,7 @@ export interface FindFileData {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: RenewFileResult
 
 ```ts
@@ -69,6 +72,7 @@ export interface RenewFileResult {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: UploadFileResult
 
 ```ts
@@ -81,6 +85,7 @@ export interface UploadFileResult {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: UploadableFile
 
 ```ts
@@ -93,6 +98,7 @@ export interface UploadableFile {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: UploaderConfig
 
 ```ts
@@ -107,6 +113,7 @@ See also: [WalletInterface](./wallet.md#interface-walletinterface)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ## Classes
 
 | |
@@ -137,6 +144,7 @@ Downloads the content from the UHRP URL after validating the hash for integrity.
 ```ts
 public async download(uhrpUrl: string): Promise<DownloadResult> 
 ```
+
 See also: [DownloadResult](./storage.md#interface-downloadresult)
 
 Returns
@@ -145,8 +153,8 @@ A promise that resolves to the downloaded content.
 
 Argument Details
 
-+ **uhrpUrl**
-  + The UHRP URL to download.
+- **uhrpUrl**
+    - The UHRP URL to download.
 
 #### Method resolve
 
@@ -162,15 +170,17 @@ A promise that resolves to an array of HTTP URLs.
 
 Argument Details
 
-+ **uhrpUrl**
-  + The UHRP URL to resolve.
+- **uhrpUrl**
+    - The UHRP URL to resolve.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Class: StorageUploader
 
 The StorageUploader class provides client-side methods for:
+
 - Uploading files with a specified retention period
 - Finding file metadata by UHRP URL
 - Listing all user uploads
@@ -198,12 +208,13 @@ Creates a new StorageUploader instance.
 ```ts
 constructor(config: UploaderConfig) 
 ```
+
 See also: [UploaderConfig](./storage.md#interface-uploaderconfig)
 
 Argument Details
 
-+ **config**
-  + An object containing the storage server's URL and a wallet interface
+- **config**
+    - An object containing the storage server's URL and a wallet interface
 
 #### Method findFile
 
@@ -212,6 +223,7 @@ Retrieves metadata for a file matching the given UHRP URL from the `/find` route
 ```ts
 public async findFile(uhrpUrl: string): Promise<FindFileData> 
 ```
+
 See also: [FindFileData](./storage.md#interface-findfiledata)
 
 Returns
@@ -220,8 +232,8 @@ An object with file name, size, MIME type, and expiry time
 
 Argument Details
 
-+ **uhrpUrl**
-  + The UHRP URL, e.g. "uhrp://abcd..."
+- **uhrpUrl**
+    - The UHRP URL, e.g. "uhrp://abcd..."
 
 Throws
 
@@ -248,6 +260,7 @@ If the server or the route returns an error
 Publishes a file to the storage server with the specified retention period.
 
 This will:
+
 1. Request an upload URL from the server.
 2. Perform an HTTP PUT to upload the file’s raw bytes.
 3. Return a UHRP URL referencing the file once published.
@@ -258,6 +271,7 @@ public async publishFile(params: {
     retentionPeriod: number;
 }): Promise<UploadFileResult> 
 ```
+
 See also: [UploadFileResult](./storage.md#interface-uploadfileresult), [UploadableFile](./storage.md#interface-uploadablefile)
 
 Returns
@@ -277,6 +291,7 @@ and re-mint the advertisement token on-chain.
 ```ts
 public async renewFile(uhrpUrl: string, additionalMinutes: number): Promise<RenewFileResult> 
 ```
+
 See also: [RenewFileResult](./storage.md#interface-renewfileresult)
 
 Returns
@@ -285,10 +300,10 @@ An object with the new and previous expiry times, plus any cost
 
 Argument Details
 
-+ **uhrpUrl**
-  + The UHRP URL of the file (e.g., "uhrp://abcd1234...")
-+ **additionalMinutes**
-  + The number of minutes to extend
+- **uhrpUrl**
+    - The UHRP URL of the file (e.g., "uhrp://abcd1234...")
+- **additionalMinutes**
+    - The number of minutes to extend
 
 Throws
 
@@ -297,6 +312,7 @@ If the request fails or the server returns an error
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ## Functions
 
 ## Types
@@ -338,6 +354,7 @@ See also: [fromBase58Check](./primitives.md#variable-frombase58check), [normaliz
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Variable: getURLForFile
 
 ```ts
@@ -352,6 +369,7 @@ See also: [getURLForHash](./storage.md#variable-geturlforhash), [sha256](./primi
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Variable: getURLForHash
 
 ```ts
@@ -368,6 +386,7 @@ See also: [toArray](./primitives.md#variable-toarray), [toBase58Check](./primiti
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Variable: isValidURL
 
 ```ts
@@ -387,6 +406,7 @@ See also: [getHashFromURL](./storage.md#variable-gethashfromurl)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Variable: normalizeURL
 
 ```ts

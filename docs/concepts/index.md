@@ -38,6 +38,14 @@ Core principles: zero dependencies, SPV-first approach, and vendor neutrality.
 
 How the SDK connects with Bitcoin wallets and manages authentication.
 
+### [Actions](./actions.md)
+
+The primary abstraction for creating and managing Bitcoin transactions in the SDK.
+
+### [Output Baskets](./output-baskets.md)
+
+Organizational system for managing and categorizing UTXOs in your wallet.
+
 ### [Chain Tracking](./chain-tracking.md)
 
 Understanding how the SDK interacts with the Bitcoin network for transaction data.

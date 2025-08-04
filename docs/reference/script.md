@@ -28,6 +28,7 @@ export default interface ScriptChunk {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: ScriptTemplate
 
 ```ts
@@ -46,6 +47,7 @@ Creates a locking script with the given parameters.
 ```ts
 lock: (...params: any[]) => LockingScript | Promise<LockingScript>
 ```
+
 See also: [LockingScript](./script.md#class-lockingscript)
 
 #### Property unlock
@@ -53,17 +55,20 @@ See also: [LockingScript](./script.md#class-lockingscript)
 Creates a function that generates an unlocking script along with its signature and length estimation.
 
 This method returns an object containing two functions:
+
 1. `sign` - A function that, when called with a transaction and an input index, returns an UnlockingScript instance.
 2. `estimateLength` - A function that returns the estimated length of the unlocking script in bytes.
 
 ```ts
 unlock: (...params: any[]) => ScriptTemplateUnlock
 ```
+
 See also: [ScriptTemplateUnlock](./script.md#interface-scripttemplateunlock)
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: ScriptTemplateUnlock
 
 ```ts
@@ -78,6 +83,7 @@ See also: [Transaction](./transaction.md#class-transaction), [UnlockingScript](.
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ## Classes
 
 | |
@@ -133,6 +139,7 @@ Always returns false for a LockingScript instance.
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Class: P2PKH
 
 P2PKH (Pay To Public Key Hash) class implementing ScriptTemplate.
@@ -158,6 +165,7 @@ Creates a P2PKH locking script for a given public key hash or address string
 ```ts
 lock(pubkeyhash: string | number[]): LockingScript 
 ```
+
 See also: [LockingScript](./script.md#class-lockingscript)
 
 Returns
@@ -166,14 +174,15 @@ Returns
 
 Argument Details
 
-+ **pubkeyhash**
-  + or address - An array or address representing the public key hash.
+- **pubkeyhash**
+    - or address - An array or address representing the public key hash.
 
 #### Method unlock
 
 Creates a function that generates a P2PKH unlocking script along with its signature and length estimation.
 
 The returned object contains:
+
 1. `sign` - A function that, when invoked with a transaction and an input index,
    produces an unlocking script suitable for a P2PKH locked output.
 2. `estimateLength` - A function that returns the estimated length of the unlocking script in bytes.
@@ -184,6 +193,7 @@ unlock(privateKey: PrivateKey, signOutputs: "all" | "none" | "single" = "all", a
     estimateLength: () => Promise<108>;
 } 
 ```
+
 See also: [PrivateKey](./primitives.md#class-privatekey), [Script](./script.md#class-script), [Transaction](./transaction.md#class-transaction), [UnlockingScript](./script.md#class-unlockingscript), [sign](./compat.md#variable-sign)
 
 Returns
@@ -192,20 +202,21 @@ Returns
 
 Argument Details
 
-+ **privateKey**
-  + The private key used for signing the transaction.
-+ **signOutputs**
-  + The signature scope for outputs.
-+ **anyoneCanPay**
-  + Flag indicating if the signature allows for other inputs to be added later.
-+ **sourceSatoshis**
-  + Optional. The amount being unlocked. Otherwise the input.sourceTransaction is required.
-+ **lockingScript**
-  + Optional. The lockinScript. Otherwise the input.sourceTransaction is required.
+- **privateKey**
+    - The private key used for signing the transaction.
+- **signOutputs**
+    - The signature scope for outputs.
+- **anyoneCanPay**
+    - Flag indicating if the signature allows for other inputs to be added later.
+- **sourceSatoshis**
+    - Optional. The amount being unlocked. Otherwise the input.sourceTransaction is required.
+- **lockingScript**
+    - Optional. The lockinScript. Otherwise the input.sourceTransaction is required.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Class: PushDrop
 
 ```ts
@@ -240,14 +251,15 @@ Constructs a new instance of the PushDrop class.
 ```ts
 constructor(wallet: WalletInterface, originator?: string) 
 ```
+
 See also: [WalletInterface](./wallet.md#interface-walletinterface)
 
 Argument Details
 
-+ **wallet**
-  + The wallet interface used for creating signatures and accessing public keys.
-+ **originator**
-  + — The originator to use with Wallet requests
+- **wallet**
+    - The wallet interface used for creating signatures and accessing public keys.
+- **originator**
+    - — The originator to use with Wallet requests
 
 #### Method decode
 
@@ -260,6 +272,7 @@ static decode(script: LockingScript): {
     fields: number[][];
 } 
 ```
+
 See also: [LockingScript](./script.md#class-lockingscript), [PublicKey](./primitives.md#class-publickey)
 
 Returns
@@ -268,8 +281,8 @@ An object containing PushDrop token fields and the locking public key. If a sign
 
 Argument Details
 
-+ **script**
-  + PushDrop script to decode back into token fields
+- **script**
+    - PushDrop script to decode back into token fields
 
 #### Method lock
 
@@ -281,6 +294,7 @@ async lock(fields: number[][], protocolID: [
     string
 ], keyID: string, counterparty: string, forSelf = false, includeSignature = true, lockPosition: "before" | "after" = "before"): Promise<LockingScript> 
 ```
+
 See also: [LockingScript](./script.md#class-lockingscript), [SecurityLevel](./wallet.md#type-securitylevel)
 
 Returns
@@ -289,18 +303,18 @@ The generated PushDrop locking script.
 
 Argument Details
 
-+ **fields**
-  + The token fields to include in the locking script.
-+ **protocolID**
-  + The protocol ID to use.
-+ **keyID**
-  + The key ID to use.
-+ **counterparty**
-  + The counterparty involved in the transaction, "self" or "anyone".
-+ **forSelf**
-  + Flag indicating if the lock is for the creator (default no).
-+ **includeSignature**
-  + Flag indicating if a signature should be included in the script (default yes).
+- **fields**
+    - The token fields to include in the locking script.
+- **protocolID**
+    - The protocol ID to use.
+- **keyID**
+    - The key ID to use.
+- **counterparty**
+    - The counterparty involved in the transaction, "self" or "anyone".
+- **forSelf**
+    - Flag indicating if the lock is for the creator (default no).
+- **includeSignature**
+    - Flag indicating if a signature should be included in the script (default yes).
 
 #### Method unlock
 
@@ -315,6 +329,7 @@ unlock(protocolID: [
     estimateLength: () => Promise<73>;
 } 
 ```
+
 See also: [LockingScript](./script.md#class-lockingscript), [SecurityLevel](./wallet.md#type-securitylevel), [Transaction](./transaction.md#class-transaction), [UnlockingScript](./script.md#class-unlockingscript), [sign](./compat.md#variable-sign)
 
 Returns
@@ -323,26 +338,27 @@ An object containing functions to sign the transaction and estimate the script l
 
 Argument Details
 
-+ **protocolID**
-  + The protocol ID to use.
-+ **keyID**
-  + The key ID to use.
-+ **counterparty**
-  + The counterparty involved in the transaction, "self" or "anyone".
-+ **sourceTXID**
-  + The TXID of the source transaction.
-+ **sourceSatoshis**
-  + The number of satoshis in the source output.
-+ **lockingScript**
-  + The locking script of the source output.
-+ **signOutputs**
-  + Specifies which outputs to sign.
-+ **anyoneCanPay**
-  + Specifies if the anyone-can-pay flag is set.
+- **protocolID**
+    - The protocol ID to use.
+- **keyID**
+    - The key ID to use.
+- **counterparty**
+    - The counterparty involved in the transaction, "self" or "anyone".
+- **sourceTXID**
+    - The TXID of the source transaction.
+- **sourceSatoshis**
+    - The number of satoshis in the source output.
+- **lockingScript**
+    - The locking script of the source output.
+- **signOutputs**
+    - Specifies which outputs to sign.
+- **anyoneCanPay**
+    - Specifies if the anyone-can-pay flag is set.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Class: RPuzzle
 
 RPuzzle class implementing ScriptTemplate.
@@ -371,8 +387,8 @@ constructor(type: "raw" | "SHA1" | "SHA256" | "HASH256" | "RIPEMD160" | "HASH160
 
 Argument Details
 
-+ **type**
-  + Denotes the type of puzzle to create
+- **type**
+    - Denotes the type of puzzle to create
 
 #### Method lock
 
@@ -381,6 +397,7 @@ Creates an R puzzle locking script for a given R value or R value hash.
 ```ts
 lock(value: number[]): LockingScript 
 ```
+
 See also: [LockingScript](./script.md#class-lockingscript)
 
 Returns
@@ -389,14 +406,15 @@ Returns
 
 Argument Details
 
-+ **value**
-  + An array representing the R value or its hash.
+- **value**
+    - An array representing the R value or its hash.
 
 #### Method unlock
 
 Creates a function that generates an R puzzle unlocking script along with its signature and length estimation.
 
 The returned object contains:
+
 1. `sign` - A function that, when invoked with a transaction and an input index,
    produces an unlocking script suitable for an R puzzle locked output.
 2. `estimateLength` - A function that returns the estimated length of the unlocking script in bytes.
@@ -407,6 +425,7 @@ unlock(k: BigNumber, privateKey: PrivateKey, signOutputs: "all" | "none" | "sing
     estimateLength: () => Promise<108>;
 } 
 ```
+
 See also: [BigNumber](./primitives.md#class-bignumber), [PrivateKey](./primitives.md#class-privatekey), [Transaction](./transaction.md#class-transaction), [UnlockingScript](./script.md#class-unlockingscript), [sign](./compat.md#variable-sign)
 
 Returns
@@ -415,18 +434,19 @@ Returns
 
 Argument Details
 
-+ **k**
-  + — The K-value used to unlock the R-puzzle.
-+ **privateKey**
-  + The private key used for signing the transaction. If not provided, a random key will be generated.
-+ **signOutputs**
-  + The signature scope for outputs.
-+ **anyoneCanPay**
-  + Flag indicating if the signature allows for other inputs to be added later.
+- **k**
+    - — The K-value used to unlock the R-puzzle.
+- **privateKey**
+    - The private key used for signing the transaction. If not provided, a random key will be generated.
+- **signOutputs**
+    - The signature scope for outputs.
+- **anyoneCanPay**
+    - Flag indicating if the signature allows for other inputs to be added later.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Class: Script
 
 The Script class represents a script in a Bitcoin SV transaction,
@@ -464,12 +484,13 @@ See also: [BigNumber](./primitives.md#class-bignumber), [ScriptChunk](./script.m
 ```ts
 constructor(chunks: ScriptChunk[] = []) 
 ```
+
 See also: [ScriptChunk](./script.md#interface-scriptchunk)
 
 Argument Details
 
-+ **chunks**
-  + =[] - An array of script chunks to directly initialize the script.
+- **chunks**
+    - =[] - An array of script chunks to directly initialize the script.
 
 #### Method findAndDelete
 
@@ -478,6 +499,7 @@ Deletes the given item wherever it appears in the current script.
 ```ts
 findAndDelete(script: Script): Script 
 ```
+
 See also: [Script](./script.md#class-script)
 
 Returns
@@ -486,14 +508,15 @@ This script instance for chaining.
 
 Argument Details
 
-+ **script**
-  + The script containing the item to delete from the current script.
+- **script**
+    - The script containing the item to delete from the current script.
 
 #### Method fromASM
 
 ```ts
 static fromASM(asm: string): Script 
 ```
+
 See also: [Script](./script.md#class-script)
 
 Returns
@@ -502,8 +525,8 @@ A new Script instance.
 
 Argument Details
 
-+ **asm**
-  + The script in ASM string format.
+- **asm**
+    - The script in ASM string format.
 
 Example
 
@@ -516,6 +539,7 @@ const script = Script.fromASM("OP_DUP OP_HASH160 abcd... OP_EQUALVERIFY OP_CHECK
 ```ts
 static fromBinary(bin: number[]): Script 
 ```
+
 See also: [Script](./script.md#class-script)
 
 Returns
@@ -524,8 +548,8 @@ A new Script instance.
 
 Argument Details
 
-+ **bin**
-  + The script in binary array format.
+- **bin**
+    - The script in binary array format.
 
 Example
 
@@ -538,6 +562,7 @@ const script = Script.fromBinary([0x76, 0xa9, ...])
 ```ts
 static fromHex(hex: string): Script 
 ```
+
 See also: [Script](./script.md#class-script)
 
 Returns
@@ -546,8 +571,8 @@ A new Script instance.
 
 Argument Details
 
-+ **hex**
-  + The script in hexadecimal format.
+- **hex**
+    - The script in hexadecimal format.
 
 Example
 
@@ -590,6 +615,7 @@ True if the script is an unlocking script, otherwise false.
 ```ts
 removeCodeseparators(): Script 
 ```
+
 See also: [Script](./script.md#class-script)
 
 Returns
@@ -601,6 +627,7 @@ This script instance for chaining.
 ```ts
 setChunkOpCode(i: number, op: number): Script 
 ```
+
 See also: [Script](./script.md#class-script)
 
 Returns
@@ -609,10 +636,10 @@ This script instance for chaining.
 
 Argument Details
 
-+ **i**
-  + The index of the chunk.
-+ **op**
-  + The opcode to set.
+- **i**
+    - The index of the chunk.
+- **op**
+    - The opcode to set.
 
 #### Method toASM
 
@@ -649,6 +676,7 @@ The script in hexadecimal format.
 ```ts
 writeBin(bin: number[]): Script 
 ```
+
 See also: [Script](./script.md#class-script)
 
 Returns
@@ -657,8 +685,8 @@ This script instance for chaining.
 
 Argument Details
 
-+ **bin**
-  + The binary data to append.
+- **bin**
+    - The binary data to append.
 
 Throws
 
@@ -669,6 +697,7 @@ Throws an error if the data is too large to be pushed.
 ```ts
 writeBn(bn: BigNumber): Script 
 ```
+
 See also: [BigNumber](./primitives.md#class-bignumber), [Script](./script.md#class-script)
 
 Returns
@@ -677,14 +706,15 @@ This script instance for chaining.
 
 Argument Details
 
-+ **bn**
-  + The BigNumber to append.
+- **bn**
+    - The BigNumber to append.
 
 #### Method writeNumber
 
 ```ts
 writeNumber(num: number): Script 
 ```
+
 See also: [Script](./script.md#class-script)
 
 Returns
@@ -693,14 +723,15 @@ This script instance for chaining.
 
 Argument Details
 
-+ **num**
-  + The number to append.
+- **num**
+    - The number to append.
 
 #### Method writeOpCode
 
 ```ts
 writeOpCode(op: number): Script 
 ```
+
 See also: [Script](./script.md#class-script)
 
 Returns
@@ -709,14 +740,15 @@ This script instance for chaining.
 
 Argument Details
 
-+ **op**
-  + The opcode to append.
+- **op**
+    - The opcode to append.
 
 #### Method writeScript
 
 ```ts
 writeScript(script: Script): Script 
 ```
+
 See also: [Script](./script.md#class-script)
 
 Returns
@@ -725,12 +757,13 @@ This script instance for chaining.
 
 Argument Details
 
-+ **script**
-  + The script to append.
+- **script**
+    - The script to append.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Class: Spend
 
 The Spend class represents a spend action within a Bitcoin SV transaction.
@@ -799,34 +832,35 @@ constructor(params: {
     memoryLimit?: number;
 }) 
 ```
+
 See also: [LockingScript](./script.md#class-lockingscript), [TransactionInput](./transaction.md#interface-transactioninput), [TransactionOutput](./transaction.md#interface-transactionoutput), [UnlockingScript](./script.md#class-unlockingscript)
 
 Argument Details
 
-+ **params.sourceTXID**
-  + The transaction ID of the source UTXO.
-+ **params.sourceOutputIndex**
-  + The index of the output in the source transaction.
-+ **params.sourceSatoshis**
-  + The amount of satoshis in the source UTXO.
-+ **params.lockingScript**
-  + The locking script associated with the UTXO.
-+ **params.transactionVersion**
-  + The version of the current transaction.
-+ **params.otherInputs**
-  + -
+- **params.sourceTXID**
+    - The transaction ID of the source UTXO.
+- **params.sourceOutputIndex**
+    - The index of the output in the source transaction.
+- **params.sourceSatoshis**
+    - The amount of satoshis in the source UTXO.
+- **params.lockingScript**
+    - The locking script associated with the UTXO.
+- **params.transactionVersion**
+    - The version of the current transaction.
+- **params.otherInputs**
+        - -
 An array of other inputs in the transaction.
-+ **params.outputs**
-  + -
+- **params.outputs**
+        - -
 The outputs of the current transaction.
-+ **params.inputIndex**
-  + The index of this input in the current transaction.
-+ **params.unlockingScript**
-  + The unlocking script for this spend.
-+ **params.inputSequence**
-  + The sequence number of this input.
-+ **params.lockTime**
-  + The lock time of the transaction.
+- **params.inputIndex**
+    - The index of this input in the current transaction.
+- **params.unlockingScript**
+    - The unlocking script for this spend.
+- **params.inputSequence**
+    - The sequence number of this input.
+- **params.lockTime**
+    - The lock time of the transaction.
 
 Example
 
@@ -869,6 +903,7 @@ if (spend.validate()) {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Class: UnlockingScript
 
 The UnlockingScript class represents an unlocking script in a Bitcoin SV transaction.
@@ -908,6 +943,7 @@ Always returns true for an UnlockingScript instance.
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ## Functions
 
 ## Types
@@ -915,4 +951,3 @@ Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](
 ## Enums
 
 ## Variables
-

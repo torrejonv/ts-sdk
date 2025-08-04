@@ -30,6 +30,7 @@ export interface DisplayableIdentity {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: IdentityClientOptions
 
 ```ts
@@ -46,6 +47,7 @@ See also: [WalletProtocol](./wallet.md#type-walletprotocol)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ## Classes
 
 ### Class: IdentityClient
@@ -74,6 +76,7 @@ Parse out identity and certifier attributes to display from an IdentityCertifica
 ```ts
 static parseIdentity(identityToParse: IdentityCertificate): DisplayableIdentity 
 ```
+
 See also: [DisplayableIdentity](./identity.md#interface-displayableidentity), [IdentityCertificate](./wallet.md#interface-identitycertificate)
 
 Returns
@@ -82,10 +85,10 @@ Returns
 
 Argument Details
 
-+ **serialNumber**
-  + Unique serial number of the certificate to revoke revelation
-+ **identityToParse**
-  + The Identity Certificate to parse
+- **serialNumber**
+    - Unique serial number of the certificate to revoke revelation
+- **identityToParse**
+    - The Identity Certificate to parse
 
 #### Method publiclyRevealAttributes
 
@@ -95,6 +98,7 @@ The publicly revealed certificate is included in a blockchain transaction and br
 ```ts
 async publiclyRevealAttributes(certificate: WalletCertificate, fieldsToReveal: CertificateFieldNameUnder50Bytes[]): Promise<BroadcastResponse | BroadcastFailure> 
 ```
+
 See also: [BroadcastFailure](./transaction.md#interface-broadcastfailure), [BroadcastResponse](./transaction.md#interface-broadcastresponse), [CertificateFieldNameUnder50Bytes](./wallet.md#type-certificatefieldnameunder50bytes), [WalletCertificate](./wallet.md#interface-walletcertificate)
 
 Returns
@@ -103,10 +107,10 @@ A promise that resolves with the broadcast result from the overlay network.
 
 Argument Details
 
-+ **certificate**
-  + The master certificate to selectively reveal.
-+ **fieldsToReveal**
-  + An array of certificate field names to reveal. Only these fields will be included in the public certificate.
+- **certificate**
+    - The master certificate to selectively reveal.
+- **fieldsToReveal**
+    - An array of certificate field names to reveal. Only these fields will be included in the public certificate.
 
 Throws
 
@@ -119,6 +123,7 @@ Resolves displayable identity certificates by specific identity attributes, issu
 ```ts
 async resolveByAttributes(args: DiscoverByAttributesArgs): Promise<DisplayableIdentity[]> 
 ```
+
 See also: [DiscoverByAttributesArgs](./wallet.md#interface-discoverbyattributesargs), [DisplayableIdentity](./identity.md#interface-displayableidentity)
 
 Returns
@@ -127,8 +132,8 @@ The promise resolves to displayable identities.
 
 Argument Details
 
-+ **args**
-  + Attributes and optional parameters used to discover certificates.
+- **args**
+    - Attributes and optional parameters used to discover certificates.
 
 #### Method resolveByIdentityKey
 
@@ -137,6 +142,7 @@ Resolves displayable identity certificates, issued to a given identity key by a 
 ```ts
 async resolveByIdentityKey(args: DiscoverByIdentityKeyArgs): Promise<DisplayableIdentity[]> 
 ```
+
 See also: [DiscoverByIdentityKeyArgs](./wallet.md#interface-discoverbyidentitykeyargs), [DisplayableIdentity](./identity.md#interface-displayableidentity)
 
 Returns
@@ -145,12 +151,13 @@ The promise resolves to displayable identities.
 
 Argument Details
 
-+ **args**
-  + Arguments for requesting the discovery based on the identity key.
+- **args**
+    - Arguments for requesting the discovery based on the identity key.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ## Functions
 
 ## Types
@@ -185,6 +192,7 @@ See also: [IdentityClientOptions](./identity.md#interface-identityclientoptions)
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Variable: KNOWN_IDENTITY_TYPES
 
 ```ts
@@ -204,6 +212,7 @@ KNOWN_IDENTITY_TYPES = {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Variable: defaultIdentity
 
 ```ts

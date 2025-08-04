@@ -58,6 +58,7 @@ outputsToAdmit: number[]
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: LookupQuestion
 
 The question asked to the Overlay Services Engine when a consumer of state wishes to look up information.
@@ -89,6 +90,7 @@ service: string
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: LookupResolverConfig
 
 Configuration options for the Lookup resolver.
@@ -120,6 +122,7 @@ The facilitator used to make requests to Overlay Services hosts.
 ```ts
 facilitator?: OverlayLookupFacilitator
 ```
+
 See also: [OverlayLookupFacilitator](./overlay-tools.md#interface-overlaylookupfacilitator)
 
 #### Property hostOverrides
@@ -133,6 +136,7 @@ hostOverrides?: Record<string, string[]>
 #### Property networkPreset
 
 The network preset to use, unless other options override it.
+
 - mainnet: use mainnet SLAP trackers and HTTPS facilitator
 - testnet: use testnet SLAP trackers and HTTPS facilitator
 - local: directly query from localhost:8080 and a facilitator that permits plain HTTP
@@ -152,6 +156,7 @@ slapTrackers?: string[]
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: OverlayBroadcastFacilitator
 
 Facilitates transaction broadcasts that return STEAK.
@@ -167,6 +172,7 @@ See also: [STEAK](./overlay-tools.md#type-steak), [TaggedBEEF](./overlay-tools.m
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: OverlayLookupFacilitator
 
 Facilitates lookups to URLs that return answers.
@@ -186,11 +192,13 @@ Returns a lookup answer for a lookup question
 ```ts
 lookup: (url: string, question: LookupQuestion, timeout?: number) => Promise<LookupAnswer>
 ```
+
 See also: [LookupAnswer](./overlay-tools.md#type-lookupanswer), [LookupQuestion](./overlay-tools.md#interface-lookupquestion)
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: SHIPBroadcasterConfig
 
 Configuration options for the SHIP broadcaster.
@@ -215,11 +223,13 @@ The facilitator used to make requests to Overlay Services hosts.
 ```ts
 facilitator?: OverlayBroadcastFacilitator
 ```
+
 See also: [OverlayBroadcastFacilitator](./overlay-tools.md#interface-overlaybroadcastfacilitator)
 
 #### Property networkPreset
 
 The network preset to use, unless other options override it.
+
 - mainnet: use mainnet resolver and HTTPS facilitator
 - testnet: use testnet resolver and HTTPS facilitator
 - local: directly send to localhost:8080 and a facilitator that permits plain HTTP
@@ -259,11 +269,13 @@ The resolver used to locate suitable hosts with SHIP
 ```ts
 resolver?: LookupResolver
 ```
+
 See also: [LookupResolver](./overlay-tools.md#class-lookupresolver)
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Interface: TaggedBEEF
 
 Tagged BEEF
@@ -279,6 +291,7 @@ export interface TaggedBEEF {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ## Classes
 
 | |
@@ -309,6 +322,7 @@ See also: [OverlayBroadcastFacilitator](./overlay-tools.md#interface-overlaybroa
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Class: HTTPSOverlayLookupFacilitator
 
 ```ts
@@ -325,6 +339,7 @@ See also: [LookupAnswer](./overlay-tools.md#type-lookupanswer), [LookupQuestion]
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Class: LookupResolver
 
 Represents an SHIP transaction broadcaster.
@@ -345,11 +360,13 @@ Given a LookupQuestion, returns a LookupAnswer. Aggregates across multiple servi
 ```ts
 async query(question: LookupQuestion, timeout?: number): Promise<LookupAnswer> 
 ```
+
 See also: [LookupAnswer](./overlay-tools.md#type-lookupanswer), [LookupQuestion](./overlay-tools.md#interface-lookupquestion)
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Class: OverlayAdminTokenTemplate
 
 Script template enabling the creation, unlocking, and decoding of SHIP and SLAP advertisements.
@@ -381,12 +398,13 @@ Constructs a new Overlay Admin template instance
 ```ts
 constructor(wallet: WalletInterface) 
 ```
+
 See also: [WalletInterface](./wallet.md#interface-walletinterface)
 
 Argument Details
 
-+ **wallet**
-  + Wallet to use for locking and unlocking
+- **wallet**
+    - Wallet to use for locking and unlocking
 
 #### Method decode
 
@@ -400,6 +418,7 @@ static decode(script: LockingScript): {
     topicOrService: string;
 } 
 ```
+
 See also: [LockingScript](./script.md#class-lockingscript)
 
 Returns
@@ -408,8 +427,8 @@ Decoded SHIP or SLAP advertisement
 
 Argument Details
 
-+ **script**
-  + Locking script comprising a SHIP or SLAP token to decode
+- **script**
+    - Locking script comprising a SHIP or SLAP token to decode
 
 #### Method lock
 
@@ -418,6 +437,7 @@ Creates a new advertisement locking script
 ```ts
 async lock(protocol: "SHIP" | "SLAP", domain: string, topicOrService: string): Promise<LockingScript> 
 ```
+
 See also: [LockingScript](./script.md#class-lockingscript)
 
 Returns
@@ -426,12 +446,12 @@ Locking script comprising the advertisement token
 
 Argument Details
 
-+ **protocol**
-  + SHIP or SLAP
-+ **domain**
-  + Domain where the topic or service is available
-+ **topicOrService**
-  + Topic or service to advertise
+- **protocol**
+    - SHIP or SLAP
+- **domain**
+    - Domain where the topic or service is available
+- **topicOrService**
+    - Topic or service to advertise
 
 #### Method unlock
 
@@ -443,6 +463,7 @@ unlock(protocol: "SHIP" | "SLAP"): {
     estimateLength: (tx: Transaction, inputIndex: number) => Promise<number>;
 } 
 ```
+
 See also: [Transaction](./transaction.md#class-transaction), [UnlockingScript](./script.md#class-unlockingscript), [sign](./compat.md#variable-sign)
 
 Returns
@@ -451,12 +472,13 @@ Script unlocker capable of unlocking the advertisement token
 
 Argument Details
 
-+ **protocol**
-  + SHIP or SLAP, depending on the token to unlock
+- **protocol**
+    - SHIP or SLAP, depending on the token to unlock
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Class: TopicBroadcaster
 
 Broadcasts transactions to one or more overlay topics.
@@ -477,14 +499,15 @@ Constructs an instance of the SHIP broadcaster.
 ```ts
 constructor(topics: string[], config: SHIPBroadcasterConfig = {}) 
 ```
+
 See also: [SHIPBroadcasterConfig](./overlay-tools.md#interface-shipbroadcasterconfig)
 
 Argument Details
 
-+ **topics**
-  + The list of SHIP topic names where transactions are to be sent.
-+ **config**
-  + Configuration options for the SHIP broadcaster.
+- **topics**
+    - The list of SHIP topic names where transactions are to be sent.
+- **config**
+    - Configuration options for the SHIP broadcaster.
 
 #### Method broadcast
 
@@ -493,6 +516,7 @@ Broadcasts a transaction to Overlay Services via SHIP.
 ```ts
 async broadcast(tx: Transaction): Promise<BroadcastResponse | BroadcastFailure> 
 ```
+
 See also: [BroadcastFailure](./transaction.md#interface-broadcastfailure), [BroadcastResponse](./transaction.md#interface-broadcastresponse), [Transaction](./transaction.md#class-transaction)
 
 Returns
@@ -501,12 +525,13 @@ A promise that resolves to either a success or failure response.
 
 Argument Details
 
-+ **tx**
-  + The transaction to be sent.
+- **tx**
+    - The transaction to be sent.
 
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ## Functions
 
 ## Types
@@ -539,6 +564,7 @@ export type LookupAnswer = {
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Type: STEAK
 
 Submitted Transaction Execution AcKnowledgment
@@ -552,6 +578,7 @@ See also: [AdmittanceInstructions](./overlay-tools.md#interface-admittanceinstru
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ## Enums
 
 ## Variables
@@ -576,6 +603,7 @@ DEFAULT_SLAP_TRACKERS: string[] = [
 Links: [API](#api), [Interfaces](#interfaces), [Classes](#classes), [Functions](#functions), [Types](#types), [Enums](#enums), [Variables](#variables)
 
 ---
+
 ### Variable: DEFAULT_TESTNET_SLAP_TRACKERS
 
 ```ts
