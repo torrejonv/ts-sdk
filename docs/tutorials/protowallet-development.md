@@ -734,7 +734,6 @@ Congratulations! You've successfully built a comprehensive ProtoWallet developme
 
 - Learn about [Development Wallet Setup](../guides/development-wallet-setup.md) for production-ready wallet implementation
 - Explore [Key Management](./key-management.md) for advanced cryptographic key handling
-- Understand [Security Best Practices](../guides/security-best-practices.md) for secure wallet development
 
 ## Additional Resources
 

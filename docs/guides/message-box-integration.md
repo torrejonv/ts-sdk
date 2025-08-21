@@ -566,5 +566,4 @@ class RobustMessageHandler {
 
 - [Creating Encrypted Messages](./encrypted-messages.md)
 - [Authenticated API Communication](./authenticated-api-communication.md)
-- [Security Best Practices](./security-best-practices.md)
 - [ECDH Key Exchange](../tutorials/ecdh-key-exchange.md)

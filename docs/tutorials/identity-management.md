@@ -719,7 +719,6 @@ Congratulations! You've successfully built a comprehensive identity management s
 
 - Learn about [AuthFetch Integration](./authfetch-tutorial.md) to use identities for API authentication
 - Explore [Identity Verification Systems](../guides/identity-verification-systems.md) for advanced verification patterns
-- Understand [Security Best Practices](../guides/security-best-practices.md) for production identity systems
 
 ## Additional Resources
 

@@ -940,7 +940,6 @@ The BSV TypeScript SDK's `SymmetricKey` class provides a robust, secure implemen
 - Explore the [ECDH Key Exchange](./ecdh-key-exchange.md) tutorial for asymmetric encryption
 - Learn about [Messages Reference](../reference/messages.md) for authentication
 - Study [Advanced Transaction Construction](./advanced-transaction.md) for complex applications
-- Review the [Security Best Practices](../guides/security-best-practices.md) guide
 
 ## Additional Resources
 

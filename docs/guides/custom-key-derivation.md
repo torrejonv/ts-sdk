@@ -636,4 +636,3 @@ The patterns shown here can be adapted to your specific requirements while maint
 - **[Type-42 Key Derivation](../tutorials/type-42.md)**: Standardized two-party key derivation protocol
 - **[AES Symmetric Encryption](../tutorials/aes-encryption.md)**: Password-based key derivation for encryption
 - **[Key Management Concepts](../concepts/key-management.md)**: Fundamental key management principles
-- **[Security Best Practices](./security-best-practices.md)**: Comprehensive security guidelines

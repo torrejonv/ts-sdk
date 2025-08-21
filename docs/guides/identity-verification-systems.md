@@ -402,5 +402,4 @@ class IdentityAccessControl {
 ## Related
 
 - [Identity Management Tutorial](../tutorials/identity-management.md)
-- [Security Best Practices](./security-best-practices.md)
 - [AuthFetch Tutorial](../tutorials/authfetch-tutorial.md)

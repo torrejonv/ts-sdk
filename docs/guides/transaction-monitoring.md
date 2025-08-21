@@ -1617,7 +1617,6 @@ async function securePaymentProcessing(paymentTxid: string, paymentAmount: numbe
 - [Transaction Broadcasting](../tutorials/transaction-broadcasting.md) - Broadcasting transactions and basic monitoring patterns
 - [Chain Tracking](./chain-tracking.md) - Using ChainTracker for blockchain state monitoring
 - [Error Handling](../tutorials/error-handling.md) - Comprehensive error handling patterns
-- [Security Best Practices](./security-best-practices.md) - Security considerations for production applications
 
 ### API References
 

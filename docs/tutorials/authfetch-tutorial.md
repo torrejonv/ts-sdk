@@ -977,7 +977,6 @@ Congratulations! You've successfully implemented a comprehensive authenticated c
 
 - Learn about [Identity Management](./identity-management.md) for advanced identity workflows
 - Explore [Authenticated API Communication](../guides/authenticated-api-communication.md) for server-side implementation
-- Understand [Security Best Practices](../guides/security-best-practices.md) for production deployments
 
 ## Additional Resources
 

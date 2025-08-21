@@ -1555,7 +1555,6 @@ console.log('Error statistics:', status.errors)
 - [Advanced Transaction Signing](./advanced-transaction-signing.md) - SIGHASH types and manual signing
 - [Multi-Signature Transactions](./multisig-transactions.md) - Multi-signature patterns
 - [Error Handling Tutorial](../tutorials/error-handling.md) - Comprehensive error handling
-- [Security Best Practices](./security-best-practices.md) - Security guidelines
 - [Performance Optimization](../performance.md) - Performance tuning techniques
 
 ## Summary

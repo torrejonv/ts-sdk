@@ -217,4 +217,3 @@ By understanding these concepts, developers can build applications that respect 
 
 - [Identity Management Tutorial](../tutorials/identity-management.md) - Hands-on implementation guide
 - [AuthFetch Tutorial](../tutorials/authfetch-tutorial.md) - Authenticated communication using identity
-- [Security Best Practices](../guides/security-best-practices.md) - Secure identity implementation patterns

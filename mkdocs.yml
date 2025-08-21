@@ -87,7 +87,6 @@ nav:
       - Transaction Monitoring: guides/transaction-monitoring.md
       - Transaction Signing Methods: guides/transaction-signing-methods.md
     - Cryptographic Operations:
-      - Security Best Practices: guides/security-best-practices.md
       - Complex Signatures: guides/complex-signatures.md
       - Custom Key Derivation: guides/custom-key-derivation.md
       - Encrypted Messages: guides/encrypted-messages.md

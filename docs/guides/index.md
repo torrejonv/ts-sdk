@@ -48,12 +48,6 @@ Practical, problem-oriented guides to help you accomplish specific tasks with th
 
 ## Cryptographic Operations
 
-### [Security Best Practices](./security-best-practices.md)
-
-- Private key management and protection
-- Secure transaction construction
-- Cryptographic operation security
-- Wallet integration security patterns
 - Production security checklist
 
 ### [Setting up Development Wallets](./development-wallet-setup.md)

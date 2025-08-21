@@ -97,4 +97,3 @@ class CertificateAuthAPI {
 ## Related
 
 - [AuthFetch Tutorial](../tutorials/authfetch-tutorial.md)
-- [Security Best Practices](./security-best-practices.md)

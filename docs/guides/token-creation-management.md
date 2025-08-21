@@ -155,4 +155,3 @@ const response = await wallet.createAction({
 
 - [Transaction Signing Methods](./transaction-signing-methods.md)
 - [Direct Transaction Creation](./direct-transaction-creation.md)
-- [Security Best Practices](./security-best-practices.md)

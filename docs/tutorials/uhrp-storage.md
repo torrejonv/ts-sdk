@@ -579,7 +579,6 @@ UHRP provides a robust foundation for decentralized file storage with content ad
 
 - Learn about [Identity Management and Certificates](./identity-management.md)
 - Explore [AuthFetch for Authenticated HTTP Requests](./authfetch-tutorial.md)
-- Review [Security Best Practices](../guides/security-best-practices.md)
 
 UHRP provides a robust foundation for decentralized file storage with content addressing and integrity verification.
 

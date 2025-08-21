@@ -706,5 +706,4 @@ const largeFileResults = await chunkedUploader.uploadLargeFile(
 
 - [File Upload/Download Features](./file-upload-download.md)
 - [UHRP Storage Tutorial](../tutorials/uhrp-storage.md)
-- [Security Best Practices](./security-best-practices.md)
 - [Error Handling](../tutorials/error-handling.md)

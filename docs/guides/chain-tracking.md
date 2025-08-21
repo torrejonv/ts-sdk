@@ -413,7 +413,6 @@ try {
 
 - Learn about [Transaction Verification](../concepts/verification.md) for SPV implementation
 - Explore [BEEF Format](../concepts/beef.md) for efficient data exchange
-- Review [Security Best Practices](./security-best-practices.md) for production deployment
 - Check out the [SPV and Merkle Proofs](../tutorials/spv-merkle-proofs.md) tutorial
 
 ## Conclusion

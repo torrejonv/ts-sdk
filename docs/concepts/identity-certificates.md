@@ -302,5 +302,4 @@ Understanding these concepts helps developers and users participate in building 
 ## Further Reading
 
 - [Identity Management Tutorial](../tutorials/identity-management.md) - Practical certificate implementation
-- [Security Best Practices](../guides/security-best-practices.md) - Secure certificate handling
 - [AuthFetch Tutorial](../tutorials/authfetch-tutorial.md) - Using certificates for authentication

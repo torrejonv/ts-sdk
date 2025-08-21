@@ -370,5 +370,4 @@ async function setupDevelopmentEnvironment() {
 ## Related
 
 - [ProtoWallet Tutorial](../tutorials/protowallet-development.md)
-- [Security Best Practices](./security-best-practices.md)
 - [Advanced Transaction Construction](../tutorials/advanced-transaction.md)

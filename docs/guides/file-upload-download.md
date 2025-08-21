@@ -276,4 +276,3 @@ class FileManager {
 ## Related
 
 - [UHRP Storage Tutorial](../tutorials/uhrp-storage.md)
-- [Security Best Practices](./security-best-practices.md)
