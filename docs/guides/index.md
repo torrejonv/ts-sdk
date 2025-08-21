@@ -46,12 +46,6 @@ Practical, problem-oriented guides to help you accomplish specific tasks with th
 - Fee optimization strategies
 - Error handling for batch failures
 
-### [Handling Large Transactions](./large-transactions.md)
-
-- Memory management techniques
-- Streaming transaction construction
-- UTXO selection algorithms
-
 ## Cryptographic Operations
 
 ### [Security Best Practices](./security-best-practices.md)

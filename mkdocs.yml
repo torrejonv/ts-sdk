@@ -82,7 +82,6 @@ nav:
     - Transaction Management:
       - Advanced Transaction Signing: guides/advanced-transaction-signing.md
       - Direct Transaction Creation: guides/direct-transaction-creation.md
-      - Large Transactions: guides/large-transactions.md
       - Multi-signature Transactions: guides/multisig-transactions.md
       - Transaction Batching: guides/transaction-batching.md
       - Transaction Monitoring: guides/transaction-monitoring.md

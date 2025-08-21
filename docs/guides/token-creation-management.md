@@ -32,20 +32,33 @@ console.log('Token created:', response)
 ### Token with Custom Data
 
 ```typescript
-import { WalletClient, Script } from '@bsv/sdk'
+import { WalletClient, Script, OP, PrivateKey } from '@bsv/sdk'
 
 const wallet = new WalletClient('auto', 'localhost')
 
 // Create a token with embedded custom data
-const customData = 'Hello World'
-const dataHex = Buffer.from(customData, 'utf8').toString('hex')
-const lockingScript = Script.fromASM(`OP_RETURN ${dataHex}`).toHex()
+const data = Array.from('Hello World', char => char.charCodeAt(0))
+
+// Generate recipient key (in practice, you'd get this from the actual recipient)
+const recipientPrivKey = new PrivateKey(1)
+const recipientPubKey = recipientPrivKey.toPublicKey()
+const recipientPubKeyHash = recipientPubKey.toHash()
+
+const lockingScript = new Script([
+  { op: data.length, data },
+  { op: OP.OP_DROP },
+  { op: OP.OP_DUP },
+  { op: OP.OP_HASH160 },
+  { op: recipientPubKeyHash.length, data: recipientPubKeyHash },
+  { op: OP.OP_EQUALVERIFY },
+  { op: OP.OP_CHECKSIG }
+])
 
 const response = await wallet.createAction({
   description: 'create hello world token',
   outputs: [{
-    satoshis: 1,
-    lockingScript: lockingScript,
+    satoshis: 1000,
+    lockingScript: lockingScript.toHex(),
     basket: 'hello world tokens',
     outputDescription: 'hello world token'
   }]
@@ -85,10 +98,7 @@ console.log('Tokens with BEEF data:', response)
 // List tokens with specific criteria
 const response = await wallet.listOutputs({
   basket: 'event tickets',
-  taggedOutputs: {
-    tag: 'VIP',
-    value: 'true'
-  }
+  tags: ['VIP', 'true']
 })
 ```
 
@@ -123,6 +133,8 @@ console.log('Token redeemed:', response)
 
 ```typescript
 // Redeem token with custom unlocking conditions
+import { P2PKH } from '@bsv/sdk'
+
 const response = await wallet.createAction({
   description: 'redeem premium token',
   inputBEEF: list.BEEF,
@@ -133,147 +145,11 @@ const response = await wallet.createAction({
   }],
   outputs: [{
     satoshis: 1,
-    lockingScript: Script.fromASM('OP_DUP OP_HASH160 ' + recipientAddress + ' OP_EQUALVERIFY OP_CHECKSIG').toHex(),
+    lockingScript: new P2PKH().lock(recipientAddress).toHex(),
     outputDescription: 'token transfer'
   }]
 })
 ```
-
-## Basket Management
-
-### Creating Organized Token Systems
-
-```typescript
-// Group related tokens in baskets
-const ticketBaskets = [
-  'event tickets',
-  'concert tickets', 
-  'sports tickets',
-  'travel tickets'
-]
-
-// Create tokens in different categories
-for (const basket of ticketBaskets) {
-  await wallet.createAction({
-    description: `create ${basket.replace(' tickets', '')} ticket`,
-    outputs: [{
-      satoshis: 1,
-      lockingScript: Script.fromASM('OP_NOP').toHex(),
-      basket: basket,
-      outputDescription: `${basket.replace(' tickets', '')} ticket`
-    }]
-  })
-}
-```
-
-### Cross-Basket Operations
-
-```typescript
-// Move tokens between baskets by spending and recreating
-const sourceTokens = await wallet.listOutputs({
-  basket: 'draft tickets',
-  include: 'entire transactions'
-})
-
-const response = await wallet.createAction({
-  description: 'publish tickets',
-  inputBEEF: sourceTokens.BEEF,
-  inputs: sourceTokens.outputs.map(output => ({
-    outpoint: output.outpoint,
-    unlockingScript: Script.fromASM('OP_TRUE').toHex(),
-    inputDescription: 'draft ticket'
-  })),
-  outputs: sourceTokens.outputs.map(output => ({
-    satoshis: 1,
-    lockingScript: Script.fromASM('OP_NOP').toHex(),
-    basket: 'published tickets',
-    outputDescription: 'published ticket'
-  }))
-})
-```
-
-## Advanced Patterns
-
-### Token Metadata Management
-
-```typescript
-// Create tokens with rich metadata
-const response = await wallet.createAction({
-  description: 'create premium event ticket',
-  outputs: [{
-    satoshis: 1,
-    lockingScript: Script.fromASM('OP_NOP').toHex(),
-    basket: 'event tickets',
-    outputDescription: 'premium event ticket',
-    tags: {
-      'event': 'BSV Conference 2024',
-      'tier': 'VIP',
-      'section': 'A',
-      'row': '1',
-      'seat': '5'
-    }
-  }]
-})
-```
-
-### Batch Token Operations
-
-```typescript
-// Create multiple tokens in a single transaction
-const outputs = Array.from({ length: 100 }, (_, i) => ({
-  satoshis: 1,
-  lockingScript: Script.fromASM('OP_NOP').toHex(),
-  basket: 'event tickets',
-  outputDescription: `ticket ${i + 1}`,
-  tags: {
-    'ticketNumber': (i + 1).toString(),
-    'batch': 'batch-001'
-  }
-}))
-
-const response = await wallet.createAction({
-  description: 'create ticket batch',
-  outputs
-})
-```
-
-## Error Handling
-
-### Robust Token Management
-
-```typescript
-async function safeTokenOperation(operation: string, params: any) {
-  try {
-    const wallet = new WalletClient('auto', 'localhost')
-    
-    switch (operation) {
-      case 'create':
-        return await wallet.createAction(params)
-      case 'list':
-        return await wallet.listOutputs(params)
-      default:
-        throw new Error(`Unknown operation: ${operation}`)
-    }
-  } catch (error) {
-    if (error.message.includes('insufficient funds')) {
-      throw new Error('Not enough funds to create token')
-    } else if (error.message.includes('basket not found')) {
-      throw new Error(`Basket "${params.basket}" does not exist`)
-    } else {
-      throw new Error(`Token operation failed: ${error.message}`)
-    }
-  }
-}
-```
-
-## Best Practices
-
-1. **Use Descriptive Basket Names**: Choose clear, hierarchical basket names for easy organization
-2. **Include Meaningful Descriptions**: Always provide clear descriptions for your token operations
-3. **Handle Errors Gracefully**: Implement proper error handling for network and wallet issues
-4. **Use Tags for Metadata**: Leverage the tagging system for rich token metadata
-5. **Batch Operations**: Create multiple tokens in single transactions when possible for efficiency
-6. **Verify Before Redeeming**: Always check token availability before attempting redemption
 
 ## Related Guides
 

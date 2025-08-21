@@ -1633,5 +1633,4 @@ async function securePaymentProcessing(paymentTxid: string, paymentAmount: numbe
 ### Advanced Topics
 
 - [Transaction Batching](./transaction-batching.md) - Efficient batch transaction processing
-- [Large Transactions](./large-transactions.md) - Handling high-volume transaction scenarios
 - [ARC Configuration](../reference/arc-config.md) - Advanced transaction broadcasting configuration

@@ -252,6 +252,12 @@ class CustomSigningTemplate implements ScriptTemplate {
   
   lock(publicKeyHash: number[]): LockingScript {
     // Custom locking script: OP_DUP OP_HASH160 <pubKeyHash> OP_EQUALVERIFY OP_CHECKSIG
+    // Note: For standard P2PKH scripts, use the built-in P2PKH class:
+    // import { P2PKH } from '@bsv/sdk'
+    // const p2pkh = new P2PKH()
+    // return p2pkh.lock(publicKeyHash)
+    
+    // This example shows manual construction for educational purposes:
     return new LockingScript([
       { op: OP.OP_DUP },
       { op: OP.OP_HASH160 },
@@ -453,37 +459,6 @@ function secureSign(
 }
 ```
 
-### Performance Optimization
-
-1. **Cache preimages**: For multiple signatures on the same transaction
-2. **Batch verification**: Verify multiple signatures together when possible
-3. **Use templates**: Leverage existing script templates when possible
-
-```typescript
-class SignatureCache {
-  private preimageCache = new Map<string, number[]>()
-  
-  getCachedPreimage(
-    tx: Transaction,
-    inputIndex: number,
-    sighashType: number
-  ): number[] | null {
-    const key = `${tx.id('hex')}-${inputIndex}-${sighashType}`
-    return this.preimageCache.get(key) || null
-  }
-  
-  setCachedPreimage(
-    tx: Transaction,
-    inputIndex: number,
-    sighashType: number,
-    preimage: number[]
-  ): void {
-    const key = `${tx.id('hex')}-${inputIndex}-${sighashType}`
-    this.preimageCache.set(key, preimage)
-  }
-}
-```
-
 ## Error Handling
 
 Handle common signing errors gracefully:
@@ -529,6 +504,5 @@ This guide covered advanced transaction signing techniques including:
 - Custom script templates with advanced signing
 - Multi-signature patterns and threshold signing
 - Security best practices and error handling
-- Performance optimization techniques
 
 These advanced techniques provide fine-grained control over transaction signing behavior, enabling sophisticated Bitcoin applications with complex signing requirements.

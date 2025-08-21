@@ -51,9 +51,9 @@ console.log('Generated 3 key pairs for 2-of-3 multisig')
 ### Step 2: Create Multisig Script Template
 
 ```typescript
-import { Script, OP, ScriptTemplate, Transaction, UnlockingScript, LockingScript, ScriptTemplateUnlock } from '@bsv/sdk'
+import { Script, OP, Transaction, UnlockingScript, LockingScript } from '@bsv/sdk'
 
-class MultiSigTemplate implements ScriptTemplate {
+class MultiSigTemplate {
   private threshold: number
   private publicKeys: PublicKey[]
 
@@ -106,7 +106,7 @@ class MultiSigTemplate implements ScriptTemplate {
     return new LockingScript(script.chunks)
   }
 
-  unlock(privateKeys: PrivateKey[]): ScriptTemplateUnlock {
+  unlock(privateKeys: PrivateKey[]) {
     if (privateKeys.length < this.threshold) {
       throw new Error(`Need at least ${this.threshold} private keys`)
     }
@@ -278,12 +278,10 @@ async function spendFromMultisig(
   
   try {
     // Create recipient script (P2PKH for simplicity)
-    const recipientScript = new Script()
-    recipientScript.writeOpCode(OP.OP_DUP)
-    recipientScript.writeOpCode(OP.OP_HASH160)
-    recipientScript.writeBin(Buffer.from(recipientAddress, 'hex'))
-    recipientScript.writeOpCode(OP.OP_EQUALVERIFY)
-    recipientScript.writeOpCode(OP.OP_CHECKSIG)
+    // Note: Ensure P2PKH is imported: import { P2PKH } from '@bsv/sdk'
+    const { P2PKH } = await import('@bsv/sdk')
+    const p2pkh = new P2PKH()
+    const recipientScript = p2pkh.lock(recipientAddress)
     
     // Create spending transaction
     const tx = await createMultisigSpendingTx(
@@ -328,11 +326,16 @@ async function spendFromMultisig(
 }
 
 // Example usage
+// Generate recipient address (in practice, get from actual recipient)
+const recipientPrivKey = PrivateKey.fromRandom()
+const recipientPubKey = recipientPrivKey.toPublicKey()
+const recipientAddress = recipientPubKey.toHash() // This is the hash160 of the public key
+
 const spendingTx = await spendFromMultisig(
   fundingTxid,
   0, // Output index
   1000, // Amount
-  'recipient_address_hash160',
+  recipientAddress,
   [key1, key2], // 2 signatures for 2-of-3
   multisigTemplate
 )

@@ -1205,7 +1205,6 @@ These patterns enable you to build resilient Bitcoin applications that gracefull
 
 ## Next Steps
 
-- Review the [Large Transactions Guide](../guides/large-transactions.md) for efficiency patterns
 - Check out [Security Best Practices](../guides/security-best-practices.md) for comprehensive security
 - Explore specific error handling in other tutorials for your use case
 
